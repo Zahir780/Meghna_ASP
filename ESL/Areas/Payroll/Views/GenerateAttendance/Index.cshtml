@@ -1,0 +1,58 @@
+﻿<style>
+    
+</style>
+
+<section class="panel">
+    <header class="panel-heading">
+        <div class="panel-actions">
+            <a href="#" class="fa fa-caret-down"></a>
+        </div>
+        <h2 class="panel-title entryListHeader">Generate Attendance</h2>
+    </header>
+
+    <div class="panel-body">
+        <form class="form-horizontal form-bordered" autocomplete="off">
+            <input type="hidden" id="autoId" />
+            <div class="col-12">
+                <div class="row" style="margin:0; padding:0;">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-6">
+                        <div class="row" style="margin:0; padding:0;">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Generate Date:</label>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                        <input disabled type="text" id="pGenerateDate" onkeypress="inputMask(event,'00-00-0000')" class="form-control input-sm datepick" required />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4" style="display:flex"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Date Of Attendance:</label>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                        <input type="text" id="pAttendanceDate" onkeypress="inputMask(event,'00-00-0000')" class="form-control input-sm datepick" required />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4" style="display:flex"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <footer class="panel-footer text-center">
+        <partial name="_ModalButtonGenerate" />
+    </footer>
+</section>
+@section Scripts{
+    <script src="~/js/JSPayroll/GenerateAttendanceService.js" asp-append-version="true"></script>
+}

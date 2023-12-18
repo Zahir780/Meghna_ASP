@@ -1,0 +1,74 @@
+﻿@using ESL.Utility
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic -->
+    <meta charset="UTF-8">
+    <title>Meghna - Login</title>
+    <meta name="keywords" content="CODEC" />
+    <meta name="description" content="CODEC">
+    <meta name="author" content="eslctg@gmail.com">
+    <link rel="icon" href="/images/favicon.png" type="image/png" sizes="16x16">
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <link rel="stylesheet" href="~/css/login.css" />
+
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/assets/vendor/font-awesome/css/font-awesome.css" />
+    <style>
+        #cover {
+            background: #222 url('/images/bg_1920x1080.jpg') center center no-repeat;
+            background-size: cover;
+            height: 100%;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 15px;
+        }
+
+        #cover-caption {
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+
+        form:before {
+            content: '';
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background-color: #fff;
+            z-index: -1;
+            border-radius: 10px;
+            box-shadow: 6px 0px 40px #000;
+        }
+
+        .gradient-custom-2 {
+            background: #fccb90;
+            background: -webkit-linear-gradient(to right, #424242, #d8363a, #dd3675, #ea6c27);
+            background: linear-gradient(to right, #424242, #d8363a, #dd3675, #ea6c27);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            padding: 15px;
+            color: #fff;
+        }
+
+        internal-autofill-selected {
+            background-color: #fff !important;
+        }
+    </style>
+</head>
+<body>
+
+    @RenderBody()
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>

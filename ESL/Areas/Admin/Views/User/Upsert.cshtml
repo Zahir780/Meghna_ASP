@@ -1,0 +1,369 @@
+﻿@model ESL.Models.ViewModels.Menus
+@using ESL.Models.ViewModels
+
+
+@functions{
+
+    public string ShowSubItems(IEnumerable<Menu> menus, string html, string leftPadding)
+    {
+        var checkbox_parent = "checkbox-primary";
+        var menu_name = "";
+        var row_parent = "parent";
+
+
+        foreach (Menu subItem in menus)
+        {
+            var IsActive = subItem.IsActive ? "checked='checked'" : "";
+            var IsAdd = subItem.IsAdd ? "checked='checked'" : "";
+            var IsEdit = subItem.IsEdit ? "checked='checked'" : "";
+            var IsDelete = subItem.IsDelete ? "checked='checked'" : "";
+            var IsPreview = subItem.IsPreview ? "checked='checked'" : "";
+            var switchoff = subItem.IsActive ? "" : "switch-disable";
+            if (subItem.Menus.Count == 0)
+            {
+                checkbox_parent = "checkbox-primary";
+                menu_name = "";
+                row_parent = "child";
+            }
+            else
+            {
+                checkbox_parent = "checkbox-warning";
+                menu_name = "bold";
+                row_parent = "parent";
+            }
+
+
+
+            if (subItem.Menus.Count == 0) // add child Menu
+            {
+                html += "<tr class='" + row_parent + "'>" +
+                    "<td style = 'vertical-align: inherit;' >" +
+                        "<div class='checkbox-custom " + @checkbox_parent + " " + leftPadding + "'>" +
+                            "<input type ='checkbox' class='todo-check form-control' data-uid='" + @ViewBag.UserId + "'  data-menuvid='" + subItem.VId + "' data-key='menu' onchange='menuchange(event)' " + @IsActive + " />" +
+                            "<label class='todo-label'>" +
+                                "<span class='" + @menu_name + "'>" + subItem.Name + "</span>" +
+                            "</label>" +
+                        "</div>" +
+                    "</td>";
+                if (!subItem.IsReporting)
+                {
+                    html += "<td>" +
+                    "<div class='switch switch-sm switch-success switch-" + subItem.VId + " " + switchoff + "'>" +
+                        "<input type ='checkbox' class='form-control ' data-uid='" + @ViewBag.UserId + "'  data-menuvid='" + subItem.VId + "' data-key='add' onchange='menuchange(event)'  " + @IsAdd + " data-plugin-ios-switch />" +
+                    "</div>" +
+                    "</td>" +
+                    "<td>" +
+                        "<div class='switch switch-sm switch-warning switch-" + subItem.VId + " " + switchoff + "'>" +
+                            "<input type ='checkbox' class='form-control' data-uid='" + @ViewBag.UserId + "'  data-menuvid='" + subItem.VId + "' data-key='edit' onchange='menuchange(event)'  " + @IsEdit + " data-plugin-ios-switch />" +
+                        "</div>" +
+                    "</td>" +
+                    "<td>" +
+                        "<div class='switch switch-sm switch-danger switch-" + subItem.VId + " " + switchoff + "'>" +
+                            "<input type ='checkbox' class='form-control' data-uid='" + @ViewBag.UserId + "'  data-menuvid='" + subItem.VId + "' data-key='delete' onchange='menuchange(event)' " + @IsDelete + " data-plugin-ios-switch />" +
+                        "</div>" +
+                    "</td>" +
+                    "<td>" +
+                        "<div class='switch switch-sm switch-primary switch-" + subItem.VId + " " + switchoff + "'> " +
+                            "<input type ='checkbox' class='form-control' data-uid='" + @ViewBag.UserId + "'  data-menuvid='" + subItem.VId + "' data-key='preview' onchange='menuchange(event)' " + @IsPreview + " data-plugin-ios-switch />" +
+                        "</div>" +
+                    "</td>";
+                }
+                else
+                {
+                    html += "<td></td>" +
+                    "<td></td>" +
+                    "<td></td>" +
+                    "<td></td>";
+                }
+
+                html += "</tr>";
+            }
+            else // add parent Menu
+            {
+                html += "<tr class='" + row_parent + "'>" +
+                    "<td style = 'vertical-align: inherit;' >" +
+                        "<div class='" + leftPadding + "'>" +
+                            "<i class='" + subItem.Icon + "' style='color: #47a447;font-size: 22px;margin-right: 10px;'></i>" +
+                            "<label class='todo-label' style='vertical-align: super;'>" +
+                             "<span class='" + @menu_name + "' style='color: #000;'>" + subItem.Name + "</span>" +
+                           "</label>" +
+                        "</div>" +
+                    "</td>" +
+                "</tr>";
+            }
+
+            // Show subItem in HTML
+            html = ShowSubItems(subItem.Menus, html, "leftPadding");
+        }
+
+        return html;
+    }
+}
+<style>
+    .switch-disable {
+        pointer-events: none;
+    }
+</style>
+
+<div>
+
+    <section class="panel panel-group">
+        <header class="panel-heading bg-primary">
+
+            <div class="widget-profile-info">
+                <div class="profile-picture">
+                    <img src="@ViewBag.UserPic" onerror="this.src = '/images/defult_user.jpg'">
+                </div>
+                <div class="profile-info">
+                    <h4 class="name text-semibold">Access settings for (@ViewBag.Username)</h4>
+
+                    <h5 class="role">@ViewBag.UserType</h5>
+
+                    <div class="profile-footer">
+
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div id="accordion">
+            <div class="panel panel-accordion panel-accordion-first">
+                <div class="" style="display: flex;">
+                    <a class="mb-xs mt-xs mr-xs modal-with-zoom-anim btn btn-primary" style="margin-left:10px;" href="#permissionAll">Parmission All</a>
+                    <!-- Modal Animation -->
+                    <div id="permissionAll" class="zoom-anim-dialog modal-block modal-block-primary mfp-hide">
+                        <section class="panel">
+                            <header class="panel-heading">
+                                <h2 class="panel-title">Are you sure?</h2>
+                            </header>
+                            <div class="panel-body">
+                                <div class="modal-wrapper">
+                                    <div class="modal-icon">
+                                        <i class="fa fa-question-circle"></i>
+                                    </div>
+                                    <div class="modal-text">
+                                        <p>Are you sure that you want to permission all access for this user?</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <footer class="panel-footer">
+                                <div class="row">
+                                    <div class="col-md-12 text-right">
+                                        <button data-uid="@ViewBag.UserId" id="btnConfirm" class="btn btn-primary modal-confirm">Confirm</button>
+                                        <button class="btn btn-default modal-dismiss">Cancel</button>
+                                    </div>
+                                </div>
+                            </footer>
+                        </section>
+                    </div>
+
+                    <div style="display: flex; margin:auto; margin: auto 0 auto auto;">
+                        <button id="btnsave" data-uid="@ViewBag.UserId" onclick="SaveData()" class="btn btn-success" style="margin-right: 10px !important;width: auto;"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+                        <a type="button" asp-area="Admin" asp-controller="User" asp-action="Index" class="btn btn-primary form-control" style="padding: 6px 6px;color: #fff;margin-right: 10px !important;width: auto;height: auto;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+                    </div>
+
+                </div>
+                <div id="collapse1One" class="accordion-body collapse in">
+                    <div class="panel-body">
+
+
+                        <div class="tabs tabs-info col-md-12 ">
+                            <ul class="nav nav-tabs">
+
+                                @{ int i = 0;
+                                    foreach (Menu menu in Model.Modules)
+                                    {
+
+                                        if (i == 0)
+                                        {
+                                            <li>
+                                                <a class="active" href="#@menu.Key" data-toggle="tab"><i class="@menu.Icon"></i> @menu.Name </a>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li>
+                                                <a href="#@menu.Key" data-toggle="tab"><i class="@menu.Icon"></i> @menu.Name </a>
+                                            </li>
+                                        }
+
+                                        i++;
+                                    }
+                                }
+                            </ul>
+
+                            <div class="tab-content">
+
+
+                                @{ int j = 0; string activate = "";
+                                    foreach (Menu menu in Model.Modules)
+                                    {
+                                        string html = "";
+
+                                        if (j == 0)
+                                        { activate = "active"; }
+                                        else { activate = ""; }
+
+                                        <div id="@menu.Key" class="tab-pane @activate">
+                                            <div class="widget-todo-list table-responsive">
+                                                <table class="table table-bordered table-striped no-footer">
+                                                    <thead>
+                                                        <tr role="row">
+                                                            <th style="width: 260px;">
+                                                                Menu Name
+                                                            </th>
+                                                            <th style="width: 60px;">
+                                                                Insert
+                                                            </th>
+                                                            <th style="width: 60px;">
+                                                                Edit
+                                                            </th>
+                                                            <th style="width: 60px;">
+                                                                Delete
+                                                            </th>
+                                                            <th style="width: 60px;">
+                                                                Preview
+                                                            </th>
+                                                            @* <th style="width: 60px;">
+                                                                    Excel
+                                                                </th>
+                                                                <th style="width: 60px;">
+                                                                    Word
+                                                                </th>*@
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @Html.Raw(ShowSubItems(menu.Menus, html, ""))
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        j++;
+
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+
+@section Scripts{
+
+    <script src="~/js/userAuthentication.js"></script>
+
+    <script type="text/javascript">
+
+
+
+        function SaveData() {
+            //console.log(document.getElementById('btnsave'));
+            var element = document.getElementById('btnsave');
+            var uId = element.getAttribute('data-uid')
+            var stack_bottomright = { "dir1": "up", "dir2": "left", "firstpos1": 15, "firstpos2": 15 };
+            //console.log("id" + uId);
+            $.ajax({
+                url: '/Admin/User/SaveMenu',
+                data: JSON.stringify({ "uId": uId }),
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    new PNotify({
+                        title: 'Success!',
+                        text: 'User Authentication save.',
+                        type: 'success',
+                        addclass: 'stack-bottomright',
+                        stack: stack_bottomright
+                    });
+                    setTimeout(() => { window.location.href = '@Url.Action("Index", "User")'; }, 2000);
+
+                }
+            });
+
+        };
+
+        function SaveAllData() {
+            var element = document.getElementById('btnConfirm');
+            var uId = element.getAttribute('data-uid')
+            var stack_bottomright = { "dir1": "up", "dir2": "left", "firstpos1": 15, "firstpos2": 15 };
+            //console.log("id" + uId);
+            $.ajax({
+                url: '/Admin/User/SaveAllMenu',
+                data: JSON.stringify({ "uId": uId }),
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    new PNotify({
+                        title: 'Success!',
+                        text: 'User Authentication save.',
+                        type: 'success',
+                        addclass: 'stack-bottomright',
+                        stack: stack_bottomright
+                    });
+                    setTimeout(() => { window.location.href = '@Url.Action("Index", "User")'; }, 2000);
+
+
+                }
+            });
+
+        };
+
+        function menuchange(e) {
+            var menuVId = e.target.getAttribute('data-menuvid');
+            var uId = e.target.getAttribute('data-uid');
+            var key = e.target.getAttribute('data-key');
+            var isActive = e.target.checked;
+            console.log(menuVId);
+            console.log(uId);
+            console.log(key);
+            if (key == 'menu') {
+                var x = document.getElementsByClassName('switch-' + menuVId);
+                var i;
+                for (i = 0; i < x.length; i++) {
+                    if (isActive)
+                        x[i].classList.remove('switch-disable');
+                    else
+                        x[i].classList.add('switch-disable');
+                    var xx = x[i].getElementsByClassName("ios-switch")[0];
+                    xx.classList.remove('on');
+                    //xx.classList.remove('off');
+                    //xx.classList.add(isActive ? 'on' : 'off');
+                }
+            }
+
+            //console.log(menuVId + " " + uId + " " + isActive + " " + key);
+            $.ajax({
+                url: '/Admin/User/ChangeMenu',
+                data: JSON.stringify({ "uId": uId, "menuVId": menuVId, "key": key, "isActive": isActive }),
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (result) {
+                    //  alert(result.ItemList[0].Str);
+                    //console.log(result);
+
+                }
+            });
+
+
+        };
+
+
+
+    </script>
+
+}
+
+
+
+
+
+

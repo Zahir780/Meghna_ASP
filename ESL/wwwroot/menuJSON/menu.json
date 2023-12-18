@@ -1,0 +1,432 @@
+{
+  "Modules": [
+    {
+      "Id": 1,
+      "ModuleId": 0,
+      "ParentId": 0,
+      "Name": "Administration Module",
+      "Key": "admin",
+      "Icon": "fa fa-cog",
+      "Menus": [
+        {
+          "Id": 100,
+          "Name": "Settings",
+          "Icon": "fa fa-cog",
+          "ModuleId": 1,
+          "ParentId": 0,
+          "Menus": [
+            {
+              "Id": 101,
+              "ModuleId": 1,
+              "ParentId": 100,
+              "Name": "Company",
+              "Url": "/Admin/Company",
+              "Menus": []
+            },
+            {
+              "Id": 102,
+              "ModuleId": 1,
+              "ParentId": 100,
+              "Name": "Users",
+              "Url": "/Admin/User",
+              "Menus": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": 2,
+      "ModuleId": 0,
+      "ParentId": 0,
+      "Name": "HRM Module",
+      "Key": "payroll",
+      "Icon": "fa fa-users",
+      "Menus": [
+        {
+          "Id": 30000,
+          "ModuleId": 2,
+          "ParentId": 0,
+          "Name": "Master Setup",
+          "Icon": "fa fa-cogs",
+          "Menus": [
+            {
+              "Id": 30101,
+              "ModuleId": 2,
+              "ParentId": 30000,
+              "Name": "Department Info",
+              "Url": "/Payroll/DepartmentInfo",
+              "Menus": []
+            },
+            {
+              "Id": 30102,
+              "ModuleId": 2,
+              "ParentId": 3000,
+              "Name": "Section Info",
+              "Url": "/Payroll/SectionInfo",
+              "Menus": []
+            },
+            {
+              "Id": 30103,
+              "ModuleId": 2,
+              "ParentId": 3100,
+              "Name": "Designation Rank",
+              "Url": "/Payroll/DesignationRankInfo",
+              "Menus": []
+            },
+            {
+              "Id": 30104,
+              "ModuleId": 2,
+              "ParentId": 3100,
+              "Name": "Designation Info",
+              "Url": "/Payroll/DesignationInfo",
+              "Menus": []
+            },
+            {
+              "Id": 30105,
+              "ModuleId": 2,
+              "ParentId": 3100,
+              "Name": "Employee Info",
+              "Url": "/Payroll/EmployeeInfo",
+              "Menus": []
+            },
+            {
+              "Id": 30106,
+              "ModuleId": 2,
+              "ParentId": 3100,
+              "Name": "Shift Info",
+              "Url": "/Payroll/ShiftInfo",
+              "Menus": []
+            }
+          ]
+        },
+        {
+          "Id": 31000,
+          "ModuleId": 2,
+          "ParentId": 0,
+          "Name": "Attendance",
+          "Icon": "fa fa-inbox",
+          "Menus": [
+            {
+              "Id": 31100,
+              "ModuleId": 2,
+              "ParentId": 31000,
+              "Name": "Holiday Declaration",
+              "Url": "/Payroll/HolidayDeclaration",
+              "Menus": []
+            },
+            {
+              "Id": 31105,
+              "ModuleId": 2,
+              "ParentId": 31000,
+              "Name": "Assign Duty Roste",
+              "Url": "/Payroll/DutyRoster",
+              "Menus": []
+            },
+            {
+              "Id": 31105,
+              "ModuleId": 2,
+              "ParentId": 31000,
+              "Name": "Delete Duty Roste",
+              "Url": "/Payroll/DeleteDutyRoster",
+              "Menus": []
+            },
+            {
+              "Id": 31101,
+              "ModuleId": 2,
+              "ParentId": 31000,
+              "Name": "Generate Attendance",
+              "Url": "/Payroll/GenerateAttendance",
+              "Menus": []
+            },
+            {
+              "Id": 31102,
+              "ModuleId": 2,
+              "ParentId": 31000,
+              "Name": "Attendance Manually",
+              "Url": "/Payroll/DateBetweenAttendanceManuallyMachine",
+              "Menus": []
+            },
+            {
+              "Id": 31103,
+              "ModuleId": 2,
+              "ParentId": 31000,
+              "Name": "Edit Monthly Attendance",
+              "Url": "/Payroll/EditDailyOrMonthlyAttendance",
+              "Menus": []
+            },
+            {
+              "Id": 31104,
+              "ModuleId": 2,
+              "ParentId": 31000,
+              "Name": "Delete Attendance",
+              "Url": "/Payroll/DeleteAttendance",
+              "Menus": []
+            }
+          ]
+        },
+        {
+          "Id": 32000,
+          "ModuleId": 2,
+          "ParentId": 0,
+          "Name": "Salary",
+          "Icon": "fa fa-money",
+          "Menus": [
+            {
+              "Id": 32100,
+              "ModuleId": 2,
+              "ParentId": 32000,
+              "Name": "Generate Monthly Salary",
+              "Url": "/Payroll/GenerateMonthlySalary",
+              "Menus": []
+            },
+            {
+              "Id": 32101,
+              "ModuleId": 2,
+              "ParentId": 32000,
+              "Name": "Edit Monthly Salary",
+              "Url": "/Payroll/EditMonthlySalary",
+              "Menus": []
+            },
+            {
+              "Id": 32102,
+              "ModuleId": 2,
+              "ParentId": 32000,
+              "Name": "Delete Monthly Salary",
+              "Url": "/Payroll/DeleteMonthlySalary",
+              "Menus": []
+            }
+          ]
+        },
+        {
+          "Id": 33000,
+          "ModuleId": 2,
+          "ParentId": 0,
+          "Name": "Report",
+          "Url": "/Payroll/PayrollReport",
+          "IsReporting": true,
+          "Menus": [
+            {
+              "Id": 33100,
+              "ModuleId": 2,
+              "ParentId": 33000,
+              "Icon": "fa fa-file-pdf-o",
+              "Name": "Master Report",
+              "Url": "",
+              "IsReporting": true,
+              "Menus": [
+                {
+                  "Id": 33101,
+                  "ModuleId": 2,
+                  "ParentId": 33100,
+                  "Key": "RptEmployeeProfileBioData",
+                  "Name": "Employee Profile (Bio-Data)",
+                  "Url": "",
+                  "IsReporting": true,
+                  "Menus": []
+                },
+                {
+                  "Id": 33102,
+                  "ModuleId": 2,
+                  "ParentId": 33100,
+                  "Key": "RptEmployeeList",
+                  "Name": "Employee List",
+                  "Url": "",
+                  "IsReporting": true,
+                  "Menus": []
+                },
+                /*{
+                  "Id": 33103,
+                  "ModuleId": 2,
+                  "ParentId": 33100,
+                  "Key": "RptEditEmployeeInfo",
+                  "Name": "Edit Employee Information",
+                  "Url": "",
+                  "IsReporting": true,
+                  "Menus": []
+                },*/
+
+            //{
+            //  "Id": 33104,
+            //  "ModuleId": 2,
+            //  "ParentId": 33100,
+            //  "Key": "RptApplicationAndAppointmentLetter",
+            //  "Name": "Application And Appointment Letter",
+            //  "Url": "",
+            //  "IsReporting": true,
+            //  "Menus": []
+            //},
+            {
+              "Id": 33105,
+              "ModuleId": 2,
+              "ParentId": 33100,
+              "Key": "RptCertification",
+              "Name": "Certification",
+              "Url": "",
+              "IsReporting": true,
+              "Menus": []
+            }
+          ]
+            },
+            {
+              "Id": 33200,
+              "ModuleId": 2,
+              "ParentId": 33000,
+              "Icon": "fa fa-file-pdf-o",
+              "Name": "Attendance Report",
+              "Url": "",
+              "IsReporting": true,
+              "Menus": [
+
+                {
+                  "Id": 33208,
+                  "ModuleId": 2,
+                  "ParentId": 3200,
+                  "Key": "RptMonthlyDutyRoster",
+                  "Name": "Monthly Duty Roster",
+                  "Url": "",
+                  "IsReporting": true,
+                  "Menus": []
+                },
+
+                {
+                  "Id": 33201,
+                  "ModuleId": 2,
+                  "ParentId": 33200,
+                  "Key": "RptDailyAttendanceStatement",
+                  "Name": "Daily Attendance Statement",
+                  "Url": "",
+                  "IsReporting": true,
+                  "Menus": []
+                },
+                {
+                  "Id": 33202,
+                  "ModuleId": 2,
+                  "ParentId": 3200,
+                  "Key": "RptDailyAbsentStatement",
+                  "Name": "Daily Absent Statement",
+                  "Url": "",
+                  "IsReporting": true,
+                  "Menus": []
+                },
+                {
+                  "Id": 33203,
+                  "ModuleId": 2,
+                  "ParentId": 3200,
+                  "Key": "RptDailyLateInEmployeeList",
+                  "Name": "Daily LateIn Employee List",
+                  "Url": "",
+                  "IsReporting": true,
+                  "Menus": []
+                },
+                {
+                  "Id": 33204,
+                  "ModuleId": 2,
+                  "ParentId": 3200,
+                  "Key": "RptDailyEarlyOutEmployeeList",
+                  "Name": "Daily Early Out Employee List",
+                  "Url": "",
+                  "IsReporting": true,
+                  "Menus": []
+                },
+
+
+
+                {
+                  "Id": 33205,
+                  "ModuleId": 2,
+                  "ParentId": 3200,
+                  "Key": "RptIndividualEmployeeAttendance",
+                  "Name": "Individual Employee Attendance",
+                  "Url": "",
+                  "IsReporting": true,
+                  "Menus": []
+                },
+                {
+                  "Id": 33206,
+                  "ModuleId": 2,
+                  "ParentId": 3200,
+                  "Key": "RptMonthlyAttendanceSummary",
+                  "Name": "Monthly Attendance Summary",
+                  "Url": "",
+                  "IsReporting": true,
+                  "Menus": []
+                }
+                /*,
+                {
+                  "Id": 33207,
+                  "ModuleId": 2,
+                  "ParentId": 3200,
+                  "Key": "RptShortViewOfAttendance",
+                  "Name": "Short View Of Attendance",
+                  "Url": "",
+                  "IsReporting": true,
+                  "Menus": []
+                }
+                */
+
+
+
+
+
+              ]
+            },
+            {
+              "Id": 33300,
+              "ModuleId": 2,
+              "ParentId": 33000,
+              "Icon": "fa fa-file-pdf-o",
+              "Name": "Salary Report",
+              "Url": "",
+              "IsReporting": true,
+              "Menus": [
+                {
+                  "Id": 33301,
+                  "ModuleId": 2,
+                  "ParentId": 33300,
+                  "Key": "RptMonthlySalary",
+                  "Name": "Monthly Salary",
+                  "Url": "",
+                  "IsReporting": true,
+                  "Menus": []
+                },
+                {
+                  "Id": 33302,
+                  "ModuleId": 2,
+                  "ParentId": 33300,
+                  "Key": "RptPaySlip",
+                  "Name": "PaySlip",
+                  "Url": "",
+                  "IsReporting": true,
+                  "Menus": []
+                },
+                {
+                  "Id": 33303,
+                  "ModuleId": 2,
+                  "ParentId": 33300,
+                  "Key": "RptBankAdviceWithForwardingLatter",
+                  "Name": "Bank Advice With Forwarding Latter",
+                  "Url": "",
+                  "IsReporting": true,
+                  "Menus": []
+                },
+                {
+                  "Id": 33304,
+                  "ModuleId": 2,
+                  "ParentId": 33300,
+                  "Key": "RptNoteRequisition",
+                  "Name": "Note Requisition",
+                  "Url": "",
+                  "IsReporting": true,
+                  "Menus": []
+                }
+
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+
+}

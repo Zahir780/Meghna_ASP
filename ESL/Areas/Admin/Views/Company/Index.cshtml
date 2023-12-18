@@ -1,0 +1,42 @@
+﻿
+<section class="panel">
+    <header class="panel-heading">
+        <div class="panel-actions">
+            <a href="#" class="fa fa-caret-down"></a>
+        </div>
+        <h2 class="panel-title">Company List</h2>
+    </header>
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="mb-md">
+                    @*<a  class="btn btn-primary" asp-action="Upsert">Add <i class="fa fa-plus"></i></a>*@
+                </div>
+            </div>
+        </div>
+        <table data-edit="@ViewBag.isEdit" class="table table-bordered table-striped" id="tblData">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    @if (ViewBag.isEdit)
+                    {
+                        <th>Action</th>
+                    }
+
+
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+    @section Scripts{
+
+        <script src="~/js/company.js"></script>
+    }

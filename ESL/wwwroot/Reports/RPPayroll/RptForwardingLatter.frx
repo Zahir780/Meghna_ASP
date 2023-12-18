@@ -1,0 +1,1223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="07/03/2022 12:09:16" ReportInfo.Modified="07/03/2022 13:32:02" ReportInfo.CreatorVersion="2019.4.9.0">
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlqptFCOHItsXj9OrOQmsiMEanvRgjeo2AmWhKljliUxZM+oGLbYM81a9Ue0b7NfxaQyQtfo5Epa3kKU/7uflwfHFSb4ZoWMdoVyAEHrXgIyzhAdIQ4mwaMuTtibT2Ab+kXjklRRbBlVuulfI+aPVEPwqkQM4itLYQx3nIFFKA2EiOdBfGB4SGCHMNMHle5g7kL">
+      <TableDataSource Name="tbCategory" DataType="System.Int32" Enabled="true" TableName="tbCategory">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="Code" DataType="System.String"/>
+        <Column Name="Name" DataType="System.String"/>
+        <Column Name="PrimaryCategoryId" DataType="System.Int32"/>
+        <Column Name="vUserId" DataType="System.String"/>
+        <Column Name="vUserName" DataType="System.String"/>
+        <Column Name="vUserIp" DataType="System.String"/>
+        <Column Name="dEntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="AspNetUsers" DataType="System.Int32" Enabled="true" TableName="AspNetUsers">
+        <Column Name="Id" DataType="System.String"/>
+        <Column Name="UserName" DataType="System.String"/>
+        <Column Name="NormalizedUserName" DataType="System.String"/>
+        <Column Name="Email" DataType="System.String"/>
+        <Column Name="NormalizedEmail" DataType="System.String"/>
+        <Column Name="EmailConfirmed" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="PasswordHash" DataType="System.String"/>
+        <Column Name="SecurityStamp" DataType="System.String"/>
+        <Column Name="ConcurrencyStamp" DataType="System.String"/>
+        <Column Name="PhoneNumber" DataType="System.String"/>
+        <Column Name="PhoneNumberConfirmed" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="TwoFactorEnabled" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="LockoutEnd" DataType="System.DateTimeOffset"/>
+        <Column Name="LockoutEnabled" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="AccessFailedCount" DataType="System.Int32"/>
+        <Column Name="City" DataType="System.String"/>
+        <Column Name="CompanyId" DataType="System.Int32"/>
+        <Column Name="Name" DataType="System.String"/>
+        <Column Name="PostalCode" DataType="System.String"/>
+        <Column Name="State" DataType="System.String"/>
+        <Column Name="StreetAddress" DataType="System.String"/>
+        <Column Name="Discriminator" DataType="System.String"/>
+        <Column Name="ImagePF" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbUdMoneyReceipt" DataType="System.Int32" Enabled="true" TableName="tbUdMoneyReceipt">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="TransactionId" DataType="System.Int32"/>
+        <Column Name="TransactionType" DataType="System.String"/>
+        <Column Name="FiscalYearId" DataType="System.String"/>
+        <Column Name="VoucherNo" DataType="System.String"/>
+        <Column Name="MRno" DataType="System.String"/>
+        <Column Name="Date" DataType="System.DateTime"/>
+        <Column Name="ChequeNo" DataType="System.String"/>
+        <Column Name="ChequeDate" DataType="System.DateTime"/>
+        <Column Name="ChequeClear" DataType="System.Int32"/>
+        <Column Name="ParticularId" DataType="System.String"/>
+        <Column Name="ParticularName" DataType="System.String"/>
+        <Column Name="DebitCreditCard" DataType="System.String"/>
+        <Column Name="bKashMobile" DataType="System.String"/>
+        <Column Name="UnitRate" DataType="System.Double"/>
+        <Column Name="Quantity" DataType="System.Double"/>
+        <Column Name="Amount" DataType="System.Decimal"/>
+        <Column Name="ReceivedFrom" DataType="System.String"/>
+        <Column Name="Address" DataType="System.String"/>
+        <Column Name="Remarks" DataType="System.String"/>
+        <Column Name="ReceivedHead" DataType="System.String"/>
+        <Column Name="BankName" DataType="System.String"/>
+        <Column Name="BranchName" DataType="System.String"/>
+        <Column Name="Status" DataType="System.String"/>
+        <Column Name="UdFlag" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserName" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="AspNetRoleClaims" DataType="System.Int32" Enabled="true" TableName="AspNetRoleClaims">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="RoleId" DataType="System.String"/>
+        <Column Name="ClaimType" DataType="System.String"/>
+        <Column Name="ClaimValue" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbChequeDetails" DataType="System.Int32" Enabled="true" TableName="tbChequeDetails">
+        <Column Name="Id" DataType="System.Int64"/>
+        <Column Name="TransactionId" DataType="System.String"/>
+        <Column Name="TransactionDate" DataType="System.DateTime"/>
+        <Column Name="TansactionType" DataType="System.String"/>
+        <Column Name="ChequeNo" DataType="System.String"/>
+        <Column Name="ChequeDate" DataType="System.DateTime"/>
+        <Column Name="PartyAccountDetails" DataType="System.String"/>
+        <Column Name="VoucherNo" DataType="System.String"/>
+        <Column Name="POSId" DataType="System.String"/>
+        <Column Name="BankId" DataType="System.String"/>
+        <Column Name="BankName" DataType="System.String"/>
+        <Column Name="BranchName" DataType="System.String"/>
+        <Column Name="MrNo" DataType="System.String"/>
+        <Column Name="Narration" DataType="System.String"/>
+        <Column Name="receivedFrom" DataType="System.String"/>
+        <Column Name="flag" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserName" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+        <Column Name="EntryForm" DataType="System.String"/>
+        <Column Name="ClearanceDate" DataType="System.DateTime"/>
+        <Column Name="ClearUserId" DataType="System.String"/>
+        <Column Name="ClearUserName" DataType="System.String"/>
+        <Column Name="ClearUserIp" DataType="System.String"/>
+        <Column Name="ClearEntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbQR_Code" DataType="System.Int32" Enabled="true" TableName="tbQR_Code">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="MemberId" DataType="System.Int64"/>
+        <Column Name="MRNo" DataType="System.String"/>
+        <Column Name="QRcodePath" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="AspNetUserClaims" DataType="System.Int32" Enabled="true" TableName="AspNetUserClaims">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="ClaimType" DataType="System.String"/>
+        <Column Name="ClaimValue" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="AspNetUserLogins" DataType="System.Int32" Enabled="true" TableName="AspNetUserLogins">
+        <Column Name="LoginProvider" DataType="System.String"/>
+        <Column Name="ProviderKey" DataType="System.String"/>
+        <Column Name="ProviderDisplayName" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbSubCategory" DataType="System.Int32" Enabled="true" TableName="tbSubCategory">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="SubCode" DataType="System.String"/>
+        <Column Name="Name" DataType="System.String"/>
+        <Column Name="PrimaryCategoryId" DataType="System.Int32"/>
+        <Column Name="CategoryId" DataType="System.Int32"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="AspNetUserRoles" DataType="System.Int32" Enabled="true" TableName="AspNetUserRoles">
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="RoleId" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbSupplierInfo" DataType="System.Int32" Enabled="true" TableName="tbSupplierInfo">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="SupplierCode" DataType="System.String"/>
+        <Column Name="SupplierName" DataType="System.String"/>
+        <Column Name="Address" DataType="System.String"/>
+        <Column Name="Telephone" DataType="System.String"/>
+        <Column Name="Mobile" DataType="System.String"/>
+        <Column Name="Fax" DataType="System.String"/>
+        <Column Name="Email" DataType="System.String"/>
+        <Column Name="ContactPerson" DataType="System.String"/>
+        <Column Name="Designation" DataType="System.String"/>
+        <Column Name="contactPersonMobile" DataType="System.String"/>
+        <Column Name="Status" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="AccountsIntegrationStatus" DataType="System.String"/>
+        <Column Name="PrimaryGroupId" DataType="System.Int32"/>
+        <Column Name="MainGroupId" DataType="System.Int32"/>
+        <Column Name="SubGroupId" DataType="System.Int32"/>
+        <Column Name="TaxPercentage" DataType="System.Decimal"/>
+        <Column Name="VatPercentage" DataType="System.Decimal"/>
+        <Column Name="CreditPeriod" DataType="System.Int32"/>
+        <Column Name="DrAmount" DataType="System.Decimal"/>
+        <Column Name="CrAmount" DataType="System.Decimal"/>
+        <Column Name="Tin" DataType="System.String"/>
+        <Column Name="TinAttachment" DataType="System.String"/>
+        <Column Name="VatBin" DataType="System.String"/>
+        <Column Name="VatBinAttachment" DataType="System.String"/>
+        <Column Name="TradeLicense" DataType="System.String"/>
+        <Column Name="TradeLicenseAttachment" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="entryTime" DataType="System.DateTime"/>
+        <Column Name="LedgerId" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="AspNetUserTokens" DataType="System.Int32" Enabled="true" TableName="AspNetUserTokens">
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="LoginProvider" DataType="System.String"/>
+        <Column Name="Name" DataType="System.String"/>
+        <Column Name="Value" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbUserAuthentication" DataType="System.Int32" Enabled="true" TableName="tbUserAuthentication">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="AccessUserId" DataType="System.String"/>
+        <Column Name="ModuleId" DataType="System.Int32"/>
+        <Column Name="ParentId" DataType="System.Int32"/>
+        <Column Name="MenuId" DataType="System.Int32"/>
+        <Column Name="isActive" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="isAdd" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="isEdit" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="isDelete" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="isPreview" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="isReport" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="isExcel" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="isWord" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="date" DataType="System.DateTime"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIP" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbPrimaryCategory" DataType="System.Int32" Enabled="true" TableName="tbPrimaryCategory">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="Code" DataType="System.String"/>
+        <Column Name="Name" DataType="System.String"/>
+        <Column Name="Status" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbDepartment" DataType="System.Int32" Enabled="true" TableName="tbDepartment">
+        <Column Name="iAutoId" DataType="System.Int32"/>
+        <Column Name="vDepartmentID" DataType="System.String"/>
+        <Column Name="vDepartmentName" DataType="System.String"/>
+        <Column Name="iActive" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="vCompanyId" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbExpoToken" DataType="System.Int32" Enabled="true" TableName="tbExpoToken">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="UserId" DataType="System.Int32"/>
+        <Column Name="Token" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbMainGroup" DataType="System.Int32" Enabled="true" TableName="tbMainGroup">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="Type" DataType="System.String"/>
+        <Column Name="PrimaryGroupId" DataType="System.Int32"/>
+        <Column Name="MainGroupId" DataType="System.String"/>
+        <Column Name="MainGroupCode" DataType="System.String"/>
+        <Column Name="MainGroupName" DataType="System.String"/>
+        <Column Name="Active" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="EntryForm" DataType="System.String"/>
+        <Column Name="CompanyId" DataType="System.Int32"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserName" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbDesignation" DataType="System.Int32" Enabled="true" TableName="tbDesignation">
+        <Column Name="iAutoId" DataType="System.Int32"/>
+        <Column Name="vDesignationID" DataType="System.String"/>
+        <Column Name="vDesignationName" DataType="System.String"/>
+        <Column Name="iRank" DataType="System.Int32"/>
+        <Column Name="iActive" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="vCompanyId" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbLeave" DataType="System.Int32" Enabled="true" TableName="tbLeave">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="EmployeeId" DataType="System.Int32"/>
+        <Column Name="Type" DataType="System.String"/>
+        <Column Name="AppliedDate" DataType="System.DateTime"/>
+        <Column Name="FromDate" DataType="System.DateTime"/>
+        <Column Name="ToDate" DataType="System.DateTime"/>
+        <Column Name="Days" DataType="System.Int32"/>
+        <Column Name="IsApproved" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="ApprovedBy" DataType="System.Int32"/>
+        <Column Name="ApprovedByName" DataType="System.String"/>
+        <Column Name="ApprovedDate" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbProjectInfo" DataType="System.Int32" Enabled="true" TableName="tbProjectInfo">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="ProjectCode" DataType="System.String"/>
+        <Column Name="Name" DataType="System.String"/>
+        <Column Name="Locations" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbWastageInfo" DataType="System.Int32" Enabled="true" TableName="tbWastageInfo">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="TransactionNo" DataType="System.String"/>
+        <Column Name="TransactionDate" DataType="System.DateTime"/>
+        <Column Name="Reason" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbBranch" DataType="System.Int32" Enabled="true" TableName="tbBranch">
+        <Column Name="iAutoId" DataType="System.Int32"/>
+        <Column Name="vBranchID" DataType="System.String"/>
+        <Column Name="vBranchName" DataType="System.String"/>
+        <Column Name="iActive" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="vCompanyId" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbsubsubCategory" DataType="System.Int32" Enabled="true" TableName="tbsubsubCategory">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="subsubCategoryCode" DataType="System.String"/>
+        <Column Name="Name" DataType="System.String"/>
+        <Column Name="primaryCategoryId" DataType="System.Int32"/>
+        <Column Name="categoryId" DataType="System.Int32"/>
+        <Column Name="subCategoryId" DataType="System.Int32"/>
+        <Column Name="vUserId" DataType="System.String"/>
+        <Column Name="vUserIp" DataType="System.String"/>
+        <Column Name="dEntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbCampInfo" DataType="System.Int32" Enabled="true" TableName="tbCampInfo">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="CampCode" DataType="System.String"/>
+        <Column Name="Name" DataType="System.String"/>
+        <Column Name="Description" DataType="System.String"/>
+        <Column Name="ProjectId" DataType="System.Int32"/>
+      </TableDataSource>
+      <TableDataSource Name="tbSection" DataType="System.Int32" Enabled="true" TableName="tbSection">
+        <Column Name="iAutoId" DataType="System.Int32"/>
+        <Column Name="vSectionID" DataType="System.String"/>
+        <Column Name="vSectionName" DataType="System.String"/>
+        <Column Name="iActive" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="vCompanyId" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbAssetOpBalance" DataType="System.Int32" Enabled="true" TableName="tbAssetOpBalance">
+        <Column Name="sl" DataType="System.Int32"/>
+        <Column Name="AssetId" DataType="System.String"/>
+        <Column Name="AssetDrAmount" DataType="System.Decimal"/>
+        <Column Name="AssetCrAmount" DataType="System.Decimal"/>
+        <Column Name="DepreciationDrAmount" DataType="System.Decimal"/>
+        <Column Name="DepreciationCrAmount" DataType="System.Decimal"/>
+        <Column Name="userId" DataType="System.String"/>
+        <Column Name="createTime" DataType="System.DateTime"/>
+        <Column Name="OpeningDate" DataType="System.DateTime"/>
+        <Column Name="FiscalYear" DataType="System.String"/>
+        <Column Name="UserName" DataType="System.String"/>
+        <Column Name="ComponyId" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbDesignationRank" DataType="System.Int32" Enabled="true" TableName="tbDesignationRank">
+        <Column Name="iAutoId" DataType="System.Int32"/>
+        <Column Name="vRankID" DataType="System.String"/>
+        <Column Name="iRank" DataType="System.Int32"/>
+        <Column Name="vRemarks" DataType="System.String"/>
+        <Column Name="iActive" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="vCompanyId" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbReceiptInfo" DataType="System.Int32" Enabled="true" TableName="tbReceiptInfo">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="ReceiptNo" DataType="System.String"/>
+        <Column Name="ReceiptDate" DataType="System.DateTime"/>
+        <Column Name="SupplierId" DataType="System.Int32"/>
+        <Column Name="ChallanNo" DataType="System.String"/>
+        <Column Name="ChallanDate" DataType="System.DateTime"/>
+        <Column Name="entryTime" DataType="System.DateTime"/>
+        <Column Name="userIp" DataType="System.String"/>
+        <Column Name="userId" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbEmployeeInfo" DataType="System.Int32" Enabled="true" TableName="tbEmployeeInfo">
+        <Column Name="iAutoId" DataType="System.Int64"/>
+        <Column Name="vEmployeeId" DataType="System.String"/>
+        <Column Name="vEmployeeCode" DataType="System.String"/>
+        <Column Name="vFingerId" DataType="System.String"/>
+        <Column Name="vEmployeeName" DataType="System.String"/>
+        <Column Name="vDesignationId" DataType="System.String"/>
+        <Column Name="vDesignationName" DataType="System.String"/>
+        <Column Name="vBranchId" DataType="System.String"/>
+        <Column Name="vBranchName" DataType="System.String"/>
+        <Column Name="vDepartmentId" DataType="System.String"/>
+        <Column Name="vDepartmentName" DataType="System.String"/>
+        <Column Name="vSectionId" DataType="System.String"/>
+        <Column Name="vSectionName" DataType="System.String"/>
+        <Column Name="vReligion" DataType="System.String"/>
+        <Column Name="vContactNo" DataType="System.String"/>
+        <Column Name="vEmailAddress" DataType="System.String"/>
+        <Column Name="vGender" DataType="System.String"/>
+        <Column Name="dDateOfBirth" DataType="System.DateTime"/>
+        <Column Name="vNationality" DataType="System.String"/>
+        <Column Name="vNationalIdNo" DataType="System.String"/>
+        <Column Name="vEmployeeType" DataType="System.String"/>
+        <Column Name="vServiceType" DataType="System.String"/>
+        <Column Name="dApplicationDate" DataType="System.DateTime"/>
+        <Column Name="dInterviewDate" DataType="System.DateTime"/>
+        <Column Name="dJoiningDate" DataType="System.DateTime"/>
+        <Column Name="dConfirmationDate" DataType="System.DateTime"/>
+        <Column Name="vProbationPeriod" DataType="System.String"/>
+        <Column Name="vEmployeeStatus" DataType="System.String"/>
+        <Column Name="iStatus" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="dStatusDate" DataType="System.DateTime"/>
+        <Column Name="vEmployeePhoto" DataType="System.String"/>
+        <Column Name="vFatherName" DataType="System.String"/>
+        <Column Name="vMotherName" DataType="System.String"/>
+        <Column Name="vPresentAddress" DataType="System.String"/>
+        <Column Name="vPermanentAddress" DataType="System.String"/>
+        <Column Name="vBloodGroup" DataType="System.String"/>
+        <Column Name="vBankId" DataType="System.String"/>
+        <Column Name="vBankName" DataType="System.String"/>
+        <Column Name="vBankBranchId" DataType="System.String"/>
+        <Column Name="vBankBranchName" DataType="System.String"/>
+        <Column Name="vAccountNo" DataType="System.String"/>
+        <Column Name="vMoneyTransferType" DataType="System.String"/>
+        <Column Name="vRoutingNo" DataType="System.String"/>
+        <Column Name="mBasic" DataType="System.Decimal"/>
+        <Column Name="mHouseRent" DataType="System.Decimal"/>
+        <Column Name="mMedicalAllowance" DataType="System.Decimal"/>
+        <Column Name="mGross" DataType="System.Decimal"/>
+        <Column Name="vCompanyId" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbEmployeeVerifie" DataType="System.Int32" Enabled="true" TableName="tbEmployeeVerifie">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="EmployeeId" DataType="System.Int32"/>
+        <Column Name="Date" DataType="System.DateTime"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbNotification" DataType="System.Int32" Enabled="true" TableName="tbNotification">
+        <Column Name="id" DataType="System.Int32"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="EmployeeVerifyId" DataType="System.Int32"/>
+        <Column Name="Type" DataType="System.Int32"/>
+        <Column Name="IsRead" DataType="System.Int32"/>
+        <Column Name="Date" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbRole" DataType="System.Int32" Enabled="true" TableName="tbRole">
+        <Column Name="id" DataType="System.Int32"/>
+        <Column Name="Name" DataType="System.String"/>
+        <Column Name="Description" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="Companies" DataType="System.Int32" Enabled="true" TableName="Companies">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="Name" DataType="System.String"/>
+        <Column Name="StreetAddress" DataType="System.String"/>
+        <Column Name="City" DataType="System.String"/>
+        <Column Name="State" DataType="System.String"/>
+        <Column Name="PostalCode" DataType="System.String"/>
+        <Column Name="PhoneNumber" DataType="System.String"/>
+        <Column Name="IsAuthorizedCompany" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="Persistance" DataType="System.DateTime"/>
+        <Column Name="Status" DataType="System.Int32"/>
+        <Column Name="Email" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbReceiptDetails" DataType="System.Int32" Enabled="true" TableName="tbReceiptDetails">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="ReceiptId" DataType="System.Int32"/>
+        <Column Name="ReceiptNo" DataType="System.String"/>
+        <Column Name="categoryId" DataType="System.Int32"/>
+        <Column Name="ItemId" DataType="System.Int32"/>
+        <Column Name="unitId" DataType="System.Int32"/>
+        <Column Name="qty" DataType="System.Decimal"/>
+        <Column Name="rate" DataType="System.Decimal"/>
+      </TableDataSource>
+      <TableDataSource Name="tbChatMessage" DataType="System.Int32" Enabled="true" TableName="tbChatMessage">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="SenderId" DataType="System.String"/>
+        <Column Name="SenderName" DataType="System.String"/>
+        <Column Name="SenderPic" DataType="System.String"/>
+        <Column Name="ReceiverId" DataType="System.String"/>
+        <Column Name="ReceiverName" DataType="System.String"/>
+        <Column Name="Date" DataType="System.DateTime"/>
+        <Column Name="Text" DataType="System.String"/>
+        <Column Name="IsRead" DataType="System.Boolean" BindableControl="CheckBox"/>
+      </TableDataSource>
+      <TableDataSource Name="tbOilClient" DataType="System.Int32" Enabled="true" TableName="tbOilClient">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="Name" DataType="System.String"/>
+        <Column Name="Address" DataType="System.String"/>
+        <Column Name="ContactPerson" DataType="System.String"/>
+        <Column Name="Mobile" DataType="System.String"/>
+        <Column Name="Email" DataType="System.String"/>
+        <Column Name="Status" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+        <Column Name="LedgerId" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbSubGroup" DataType="System.Int32" Enabled="true" TableName="tbSubGroup">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="PrimaryGroupId" DataType="System.Int32"/>
+        <Column Name="MainGroupId" DataType="System.Int32"/>
+        <Column Name="SubGroupId" DataType="System.String"/>
+        <Column Name="SubGroupName" DataType="System.String"/>
+        <Column Name="EntryFrom" DataType="System.String"/>
+        <Column Name="Active" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="CompanyId" DataType="System.Int32"/>
+        <Column Name="UserName" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+        <Column Name="SubGroupCode" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="Type" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbPrimaryGroup" DataType="System.Int32" Enabled="true" TableName="tbPrimaryGroup">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="Code" DataType="System.String"/>
+        <Column Name="PrimaryGroupId" DataType="System.String"/>
+        <Column Name="Name" DataType="System.String"/>
+        <Column Name="GroupType" DataType="System.String"/>
+        <Column Name="NoteNo" DataType="System.Int32"/>
+        <Column Name="Type" DataType="System.String"/>
+        <Column Name="CompanyId" DataType="System.Int32"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserName" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbNarrationInfo" DataType="System.Int32" Enabled="true" TableName="tbNarrationInfo">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="VoucherType" DataType="System.String"/>
+        <Column Name="NarrationId" DataType="System.String"/>
+        <Column Name="Narration" DataType="System.String"/>
+        <Column Name="Active" DataType="System.Int32"/>
+        <Column Name="CompanyId" DataType="System.String"/>
+        <Column Name="UserName" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+        <Column Name="UserId" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbSales" DataType="System.Int32" Enabled="true" TableName="tbSales">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="MemoNo" DataType="System.String"/>
+        <Column Name="SellId" DataType="System.Int32"/>
+        <Column Name="VoucharId" DataType="System.String"/>
+        <Column Name="SellDateTime" DataType="System.DateTime"/>
+        <Column Name="TTC" DataType="System.Int32"/>
+        <Column Name="ClientId" DataType="System.Int32"/>
+        <Column Name="ClientName" DataType="System.String"/>
+        <Column Name="VichaleId" DataType="System.Int32"/>
+        <Column Name="VehicalNumber" DataType="System.String"/>
+        <Column Name="OilCanId" DataType="System.Int32"/>
+        <Column Name="OilCanNo" DataType="System.String"/>
+        <Column Name="Amount" DataType="System.Decimal"/>
+        <Column Name="TotalQty" DataType="System.Decimal"/>
+        <Column Name="PertialQty" DataType="System.Decimal"/>
+        <Column Name="TotalMoney" DataType="System.Decimal"/>
+        <Column Name="Weight" DataType="System.Decimal"/>
+        <Column Name="TotalWeight" DataType="System.Decimal"/>
+        <Column Name="PaymentType" DataType="System.String"/>
+        <Column Name="PaidAmount" DataType="System.Decimal"/>
+        <Column Name="Discount" DataType="System.Decimal"/>
+        <Column Name="Tax" DataType="System.Decimal"/>
+        <Column Name="CardName" DataType="System.String"/>
+        <Column Name="BikashNumber" DataType="System.String"/>
+        <Column Name="UploadFlag" DataType="System.Int32"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserName" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbSalesDetails" DataType="System.Int32" Enabled="true" TableName="tbSalesDetails">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="SalesId" DataType="System.Int32"/>
+        <Column Name="ItemId" DataType="System.Int32"/>
+        <Column Name="ItemName" DataType="System.String"/>
+        <Column Name="GunId" DataType="System.Int32"/>
+        <Column Name="Qty" DataType="System.Decimal"/>
+        <Column Name="Price" DataType="System.Decimal"/>
+        <Column Name="TotalPrice" DataType="System.Decimal"/>
+        <Column Name="SalesDateTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbBankName" DataType="System.Int32" Enabled="true" TableName="tbBankName">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="BankName" DataType="System.String"/>
+        <Column Name="BankLogo" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbMoneyReceipt" DataType="System.Int32" Enabled="true" TableName="tbMoneyReceipt">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="TransactionId" DataType="System.Int32"/>
+        <Column Name="TransactionType" DataType="System.String"/>
+        <Column Name="FiscalYearId" DataType="System.String"/>
+        <Column Name="VoucherNo" DataType="System.String"/>
+        <Column Name="MRno" DataType="System.String"/>
+        <Column Name="Date" DataType="System.DateTime"/>
+        <Column Name="ChequeNo" DataType="System.String"/>
+        <Column Name="ChequeDate" DataType="System.DateTime"/>
+        <Column Name="ChequeClear" DataType="System.Int32"/>
+        <Column Name="ParticularId" DataType="System.String"/>
+        <Column Name="ParticularName" DataType="System.String"/>
+        <Column Name="DebitCreditCard" DataType="System.String"/>
+        <Column Name="bKashMobile" DataType="System.String"/>
+        <Column Name="UnitRate" DataType="System.Double"/>
+        <Column Name="Quantity" DataType="System.Double"/>
+        <Column Name="Amount" DataType="System.Decimal"/>
+        <Column Name="ReceivedFrom" DataType="System.String"/>
+        <Column Name="Address" DataType="System.String"/>
+        <Column Name="Remarks" DataType="System.String"/>
+        <Column Name="ReceivedHead" DataType="System.String"/>
+        <Column Name="BankName" DataType="System.String"/>
+        <Column Name="BranchName" DataType="System.String"/>
+        <Column Name="Status" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserName" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbFiscalYear" DataType="System.Int32" Enabled="true" TableName="tbFiscalYear">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="CompanyId" DataType="System.String"/>
+        <Column Name="FiscalYearId" DataType="System.String"/>
+        <Column Name="FiscalYear" DataType="System.String"/>
+        <Column Name="OpeningDate" DataType="System.DateTime"/>
+        <Column Name="ClosingDate" DataType="System.DateTime"/>
+        <Column Name="RunningFlag" DataType="System.Int32"/>
+        <Column Name="IsClosed" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="UserName" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+        <Column Name="UserId" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbItemInformation" DataType="System.Int32" Enabled="true" TableName="tbItemInformation">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="Name" DataType="System.String"/>
+        <Column Name="ItemCode" DataType="System.String"/>
+        <Column Name="PrimaryCategoryId" DataType="System.Int32"/>
+        <Column Name="CategoryId" DataType="System.Int32"/>
+        <Column Name="SubcategoryId" DataType="System.Int32"/>
+        <Column Name="SubsubCategoryId" DataType="System.Int32"/>
+        <Column Name="UnitId" DataType="System.Int32"/>
+        <Column Name="ModelOrGrade" DataType="System.String"/>
+        <Column Name="BrandOrSection" DataType="System.String"/>
+        <Column Name="Size" DataType="System.String"/>
+        <Column Name="Maxlevel" DataType="System.Decimal"/>
+        <Column Name="Minlevel" DataType="System.Decimal"/>
+        <Column Name="Relevel" DataType="System.Decimal"/>
+        <Column Name="ItemType" DataType="System.String"/>
+        <Column Name="ImageUrl" DataType="System.String"/>
+        <Column Name="Attachemnt" DataType="System.String"/>
+        <Column Name="PackSize" DataType="System.String"/>
+        <Column Name="WallThikness" DataType="System.String"/>
+        <Column Name="SalesUnit" DataType="System.String"/>
+        <Column Name="Angle" DataType="System.String"/>
+        <Column Name="SalesRate" DataType="System.Decimal"/>
+        <Column Name="Density" DataType="System.String"/>
+        <Column Name="priceDeclaredDate" DataType="System.DateTime"/>
+        <Column Name="Materials" DataType="System.String"/>
+        <Column Name="SupplierId" DataType="System.Int32"/>
+        <Column Name="Color" DataType="System.String"/>
+        <Column Name="HsCode" DataType="System.String"/>
+        <Column Name="Capacity" DataType="System.String"/>
+        <Column Name="SpecificationCode" DataType="System.String"/>
+        <Column Name="Volume" DataType="System.String"/>
+        <Column Name="GenericName" DataType="System.String"/>
+        <Column Name="Pressure" DataType="System.String"/>
+        <Column Name="Weight" DataType="System.String"/>
+        <Column Name="Head" DataType="System.String"/>
+        <Column Name="Length" DataType="System.String"/>
+        <Column Name="Npsh" DataType="System.String"/>
+        <Column Name="Width" DataType="System.String"/>
+        <Column Name="Speed" DataType="System.String"/>
+        <Column Name="Breadth" DataType="System.String"/>
+        <Column Name="Range" DataType="System.String"/>
+        <Column Name="Dia" DataType="System.String"/>
+        <Column Name="Phase" DataType="System.String"/>
+        <Column Name="InnerDia" DataType="System.String"/>
+        <Column Name="Voltage" DataType="System.String"/>
+        <Column Name="Volt" DataType="System.String"/>
+        <Column Name="OuterDia" DataType="System.String"/>
+        <Column Name="Frequency" DataType="System.String"/>
+        <Column Name="MHz" DataType="System.String"/>
+        <Column Name="BDN" DataType="System.String"/>
+        <Column Name="Curent" DataType="System.String"/>
+        <Column Name="PN" DataType="System.String"/>
+        <Column Name="vUserId" DataType="System.String"/>
+        <Column Name="vUserIp" DataType="System.String"/>
+        <Column Name="dEntryTime" DataType="System.DateTime"/>
+        <Column Name="LedgerId" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbLedgerOpeningBalance" DataType="System.Int32" Enabled="true" TableName="tbLedgerOpeningBalance">
+        <Column Name="Id" DataType="System.Int64"/>
+        <Column Name="OpeningDate" DataType="System.DateTime"/>
+        <Column Name="FiscalYearId" DataType="System.String"/>
+        <Column Name="LedgerId" DataType="System.String"/>
+        <Column Name="LedgerName" DataType="System.String"/>
+        <Column Name="DrAmount" DataType="System.Decimal"/>
+        <Column Name="CrAmount" DataType="System.Decimal"/>
+        <Column Name="CompanyId" DataType="System.String"/>
+        <Column Name="Flag" DataType="System.String"/>
+        <Column Name="UserName" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbChequeBookInfo" DataType="System.Int32" Enabled="true" TableName="tbChequeBookInfo">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="BookId" DataType="System.String"/>
+        <Column Name="BookDate" DataType="System.DateTime"/>
+        <Column Name="LedgerId" DataType="System.String"/>
+        <Column Name="LedgerName" DataType="System.String"/>
+        <Column Name="BookNo" DataType="System.String"/>
+        <Column Name="FolioStart" DataType="System.String"/>
+        <Column Name="FolioEnd" DataType="System.String"/>
+        <Column Name="Active" DataType="System.Int32"/>
+        <Column Name="CompanyId" DataType="System.String"/>
+        <Column Name="UserName" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+        <Column Name="UserId" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbBankBranch" DataType="System.Int32" Enabled="true" TableName="tbBankBranch">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="BranchName" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbItemOpeningStock" DataType="System.Int32" Enabled="true" TableName="tbItemOpeningStock">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="OpeningDate" DataType="System.DateTime"/>
+        <Column Name="TransactionNo" DataType="System.String"/>
+        <Column Name="FiscalYearId" DataType="System.String"/>
+        <Column Name="ItemType" DataType="System.String"/>
+        <Column Name="ItemId" DataType="System.Int32"/>
+        <Column Name="UnitId" DataType="System.Int32"/>
+        <Column Name="Qty" DataType="System.Decimal"/>
+        <Column Name="Rate" DataType="System.Decimal"/>
+        <Column Name="Amount" DataType="System.Decimal"/>
+        <Column Name="WarehouseId" DataType="System.Int32"/>
+        <Column Name="Rack" DataType="System.String"/>
+        <Column Name="Shelf" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbStockRegisterReport" DataType="System.Int32" Enabled="true" TableName="tbStockRegisterReport">
+        <Column Name="Particular" DataType="System.String"/>
+        <Column Name="Date" DataType="System.DateTime"/>
+        <Column Name="PrimaryCategoryId" DataType="System.String"/>
+        <Column Name="PrimaryCategoryName" DataType="System.String"/>
+        <Column Name="CategoryId" DataType="System.String"/>
+        <Column Name="CategoryName" DataType="System.String"/>
+        <Column Name="SubCategoryId" DataType="System.String"/>
+        <Column Name="SubCategoryName" DataType="System.String"/>
+        <Column Name="SubSubCategoryId" DataType="System.String"/>
+        <Column Name="SubSubCategoryName" DataType="System.String"/>
+        <Column Name="ItemId" DataType="System.Int32"/>
+        <Column Name="ItemCode" DataType="System.String"/>
+        <Column Name="ItemName" DataType="System.String"/>
+        <Column Name="UnitId" DataType="System.Int32"/>
+        <Column Name="UnitName" DataType="System.String"/>
+        <Column Name="OpeningQty" DataType="System.Double"/>
+        <Column Name="OpeningRate" DataType="System.Decimal"/>
+        <Column Name="OpeningAmount" DataType="System.Decimal"/>
+        <Column Name="PurchaseQty" DataType="System.Double"/>
+        <Column Name="PurchaseRate" DataType="System.Decimal"/>
+        <Column Name="PurchaseAmount" DataType="System.Decimal"/>
+        <Column Name="IssueReturnQty" DataType="System.Double"/>
+        <Column Name="IssueReturnRate" DataType="System.Decimal"/>
+        <Column Name="IssueReturnAmount" DataType="System.Decimal"/>
+        <Column Name="IssueQty" DataType="System.Double"/>
+        <Column Name="IssueRate" DataType="System.Decimal"/>
+        <Column Name="IssueAmount" DataType="System.Decimal"/>
+        <Column Name="SalesQty" DataType="System.Double"/>
+        <Column Name="SalesRate" DataType="System.Decimal"/>
+        <Column Name="SalesAmount" DataType="System.Decimal"/>
+        <Column Name="WastageQty" DataType="System.Double"/>
+        <Column Name="WastageRate" DataType="System.Decimal"/>
+        <Column Name="WastageAmount" DataType="System.Decimal"/>
+        <Column Name="ClosingQty" DataType="System.Double"/>
+        <Column Name="ClosingRate" DataType="System.Decimal"/>
+        <Column Name="ClosingAmount" DataType="System.Decimal"/>
+        <Column Name="Flag" DataType="System.String"/>
+        <Column Name="StatusFlag" DataType="System.Int32"/>
+        <Column Name="SupplierId" DataType="System.Int32"/>
+        <Column Name="SupplierName" DataType="System.String"/>
+        <Column Name="WarehouseId" DataType="System.Int32"/>
+        <Column Name="WarehouseName" DataType="System.String"/>
+        <Column Name="ChallanNo" DataType="System.String"/>
+        <Column Name="IssueRef" DataType="System.String"/>
+        <Column Name="RequisitionNo" DataType="System.String"/>
+        <Column Name="RequisitionDate" DataType="System.DateTime"/>
+        <Column Name="UserName" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbSalesTracker" DataType="System.Int32" Enabled="true" TableName="tbSalesTracker">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="SaleId" DataType="System.Int32"/>
+        <Column Name="MemoNo" DataType="System.String"/>
+        <Column Name="SellId" DataType="System.Int32"/>
+        <Column Name="VoucharId" DataType="System.String"/>
+        <Column Name="SellDateTime" DataType="System.DateTime"/>
+        <Column Name="TTC" DataType="System.Int32"/>
+        <Column Name="ClientId" DataType="System.Int32"/>
+        <Column Name="ClientName" DataType="System.String"/>
+        <Column Name="VichaleId" DataType="System.Int32"/>
+        <Column Name="VehicalNumber" DataType="System.String"/>
+        <Column Name="OilCanId" DataType="System.Int32"/>
+        <Column Name="OilCanNo" DataType="System.String"/>
+        <Column Name="Amount" DataType="System.Decimal"/>
+        <Column Name="TotalQty" DataType="System.Decimal"/>
+        <Column Name="PertialQty" DataType="System.Decimal"/>
+        <Column Name="TotalMoney" DataType="System.Decimal"/>
+        <Column Name="Weight" DataType="System.Decimal"/>
+        <Column Name="TotalWeight" DataType="System.Decimal"/>
+        <Column Name="PaymentType" DataType="System.String"/>
+        <Column Name="PaidAmount" DataType="System.Decimal"/>
+        <Column Name="Discount" DataType="System.Decimal"/>
+        <Column Name="Tax" DataType="System.Decimal"/>
+        <Column Name="CardName" DataType="System.String"/>
+        <Column Name="BikashNumber" DataType="System.String"/>
+        <Column Name="UploadFlag" DataType="System.Int32"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserName" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+        <Column Name="ItemId" DataType="System.Int32"/>
+        <Column Name="ItemName" DataType="System.String"/>
+        <Column Name="GunId" DataType="System.Int32"/>
+        <Column Name="Qty" DataType="System.Decimal"/>
+        <Column Name="Price" DataType="System.Decimal"/>
+        <Column Name="TotalPrice" DataType="System.Decimal"/>
+        <Column Name="SalesDateTime" DataType="System.DateTime"/>
+        <Column Name="EditedBy" DataType="System.String"/>
+        <Column Name="EditedTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbTestReading" DataType="System.Int32" Enabled="true" TableName="tbTestReading">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="MemoNo" DataType="System.String"/>
+        <Column Name="SellId" DataType="System.Int32"/>
+        <Column Name="SellDateTime" DataType="System.DateTime"/>
+        <Column Name="TTC" DataType="System.Int32"/>
+        <Column Name="OilCanId" DataType="System.Int32"/>
+        <Column Name="Amount" DataType="System.Decimal"/>
+        <Column Name="TotalQty" DataType="System.Decimal"/>
+        <Column Name="TotalMoney" DataType="System.Decimal"/>
+        <Column Name="Weight" DataType="System.Decimal"/>
+        <Column Name="TotalWeight" DataType="System.Decimal"/>
+        <Column Name="UploadFlag" DataType="System.Int32"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserName" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+        <Column Name="ItemId" DataType="System.Int32"/>
+        <Column Name="ItemName" DataType="System.String"/>
+        <Column Name="GunId" DataType="System.Int32"/>
+        <Column Name="Qty" DataType="System.Decimal"/>
+        <Column Name="Price" DataType="System.Decimal"/>
+        <Column Name="TotalPrice" DataType="System.Decimal"/>
+        <Column Name="TestReadingTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbOilVType" DataType="System.Int32" Enabled="true" TableName="tbOilVType">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="Name" DataType="System.String"/>
+        <Column Name="Date" DataType="System.DateTime"/>
+        <Column Name="UserId" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbUnit" DataType="System.Int32" Enabled="true" TableName="tbUnit">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="UnitName" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="entryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbGun" DataType="System.Int32" Enabled="true" TableName="tbGun">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="GunNo" DataType="System.String"/>
+        <Column Name="Status" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbIssueInfo" DataType="System.Int32" Enabled="true" TableName="tbIssueInfo">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="IssueNo" DataType="System.String"/>
+        <Column Name="IssueDate" DataType="System.DateTime"/>
+        <Column Name="IssueTo" DataType="System.Int32"/>
+        <Column Name="ChallanNo" DataType="System.String"/>
+        <Column Name="ItemType" DataType="System.String"/>
+        <Column Name="ProductionType" DataType="System.Int32"/>
+        <Column Name="IssueRef" DataType="System.String"/>
+        <Column Name="RequisitionNo" DataType="System.String"/>
+        <Column Name="RequisitionDate" DataType="System.DateTime"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbOilVichale" DataType="System.Int32" Enabled="true" TableName="tbOilVichale">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="OilClientId" DataType="System.Int32"/>
+        <Column Name="OilVTypeId" DataType="System.Int32"/>
+        <Column Name="VichaleNumber" DataType="System.String"/>
+        <Column Name="DriverName" DataType="System.String"/>
+        <Column Name="DriverMobile" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbIssueDetails" DataType="System.Int32" Enabled="true" TableName="tbIssueDetails">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="IssueNo" DataType="System.String"/>
+        <Column Name="IssueTo" DataType="System.Int32"/>
+        <Column Name="ItemId" DataType="System.Int32"/>
+        <Column Name="UnitId" DataType="System.Int32"/>
+        <Column Name="StockQty" DataType="System.Decimal"/>
+        <Column Name="Qty" DataType="System.Decimal"/>
+        <Column Name="Rate" DataType="System.Decimal"/>
+        <Column Name="Amount" DataType="System.Decimal"/>
+        <Column Name="WarehouseId" DataType="System.Int32"/>
+        <Column Name="Remarks" DataType="System.String"/>
+        <Column Name="Rack" DataType="System.String"/>
+        <Column Name="Shelf" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbPurchaseReceiptDetails" DataType="System.Int32" Enabled="true" TableName="tbPurchaseReceiptDetails">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="ReceiptNo" DataType="System.String"/>
+        <Column Name="ItemId" DataType="System.Int32"/>
+        <Column Name="UnitId" DataType="System.Int32"/>
+        <Column Name="Qty" DataType="System.Decimal"/>
+        <Column Name="Rate" DataType="System.Decimal"/>
+        <Column Name="Amount" DataType="System.Decimal"/>
+        <Column Name="WarehouseId" DataType="System.Int32"/>
+        <Column Name="POQty" DataType="System.Decimal"/>
+        <Column Name="LeftQty" DataType="System.Decimal"/>
+        <Column Name="ShortQty" DataType="System.Decimal"/>
+        <Column Name="Rack" DataType="System.String"/>
+        <Column Name="Shelf" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbUdPrimaryCategory" DataType="System.Int32" Enabled="true" TableName="tbUdPrimaryCategory">
+        <Column Name="AutoId" DataType="System.Int32"/>
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="Code" DataType="System.String"/>
+        <Column Name="Name" DataType="System.String"/>
+        <Column Name="Status" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+        <Column Name="UdFlag" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbPurchaseReceiptInfo" DataType="System.Int32" Enabled="true" TableName="tbPurchaseReceiptInfo">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="ReceiptNo" DataType="System.String"/>
+        <Column Name="ReceiptDate" DataType="System.DateTime"/>
+        <Column Name="PurchaseType" DataType="System.String"/>
+        <Column Name="ItemType" DataType="System.String"/>
+        <Column Name="SupplierId" DataType="System.Int32"/>
+        <Column Name="Address" DataType="System.String"/>
+        <Column Name="MRType" DataType="System.String"/>
+        <Column Name="MRNo" DataType="System.String"/>
+        <Column Name="ChallanNo" DataType="System.String"/>
+        <Column Name="ChallanDate" DataType="System.DateTime"/>
+        <Column Name="ChallanAttachment" DataType="System.String"/>
+        <Column Name="PONo" DataType="System.String"/>
+        <Column Name="PODate" DataType="System.DateTime"/>
+        <Column Name="POAttachment" DataType="System.String"/>
+        <Column Name="InvoiceNo" DataType="System.String"/>
+        <Column Name="InvoiceDate" DataType="System.DateTime"/>
+        <Column Name="InvoiceAttachment" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbLedger" DataType="System.Int32" Enabled="true" TableName="tbLedger">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="OpeningDate" DataType="System.DateTime"/>
+        <Column Name="PrimaryGroupId" DataType="System.Int32"/>
+        <Column Name="MainGroupId" DataType="System.Int32"/>
+        <Column Name="SubGroupId" DataType="System.Int32"/>
+        <Column Name="LedgerId" DataType="System.String"/>
+        <Column Name="LedgerCode" DataType="System.String"/>
+        <Column Name="LedgerName" DataType="System.String"/>
+        <Column Name="ParentId" DataType="System.String"/>
+        <Column Name="CreateFrom" DataType="System.String"/>
+        <Column Name="LedgerType" DataType="System.String"/>
+        <Column Name="CreditLimit" DataType="System.Int32"/>
+        <Column Name="Active" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="CompanyId" DataType="System.Int32"/>
+        <Column Name="EntryFrom" DataType="System.String"/>
+        <Column Name="UserName" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+        <Column Name="Type" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbWareHouse" DataType="System.Int32" Enabled="true" TableName="tbWareHouse">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="Name" DataType="System.String"/>
+        <Column Name="Address" DataType="System.String"/>
+        <Column Name="PhoneNumber" DataType="System.String"/>
+        <Column Name="Mobile" DataType="System.String"/>
+        <Column Name="Email" DataType="System.String"/>
+        <Column Name="StoreIncharge" DataType="System.String"/>
+        <Column Name="Degination" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbWastageDetails" DataType="System.Int32" Enabled="true" TableName="tbWastageDetails">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="TransactionNo" DataType="System.String"/>
+        <Column Name="ItemId" DataType="System.Int32"/>
+        <Column Name="UnitId" DataType="System.Int32"/>
+        <Column Name="StockQty" DataType="System.Decimal"/>
+        <Column Name="Qty" DataType="System.Decimal"/>
+        <Column Name="Rate" DataType="System.Decimal"/>
+        <Column Name="Amount" DataType="System.Decimal"/>
+        <Column Name="WarehouseId" DataType="System.Int32"/>
+        <Column Name="Remarks" DataType="System.String"/>
+        <Column Name="Rack" DataType="System.String"/>
+        <Column Name="Shelf" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbFDRInformation" DataType="System.Int32" Enabled="true" TableName="tbFDRInformation">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="TransactionId" DataType="System.Int32"/>
+        <Column Name="TransactionDate" DataType="System.DateTime"/>
+        <Column Name="MasterFDRId" DataType="System.String"/>
+        <Column Name="Investment" DataType="System.String"/>
+        <Column Name="BankId" DataType="System.String"/>
+        <Column Name="BankName" DataType="System.String"/>
+        <Column Name="BranchId" DataType="System.String"/>
+        <Column Name="BranchName" DataType="System.String"/>
+        <Column Name="FDRLedgerID" DataType="System.String"/>
+        <Column Name="FDRName" DataType="System.String"/>
+        <Column Name="OpeningDate" DataType="System.DateTime"/>
+        <Column Name="DurationMonth" DataType="System.Int32"/>
+        <Column Name="DurationYear" DataType="System.Int32"/>
+        <Column Name="ExpiryDate" DataType="System.DateTime"/>
+        <Column Name="RateOfInterest" DataType="System.Decimal"/>
+        <Column Name="VoucherNo" DataType="System.String"/>
+        <Column Name="ProfitTaken" DataType="System.String"/>
+        <Column Name="Scheme" DataType="System.String"/>
+        <Column Name="Type" DataType="System.String"/>
+        <Column Name="OpAmount" DataType="System.Decimal"/>
+        <Column Name="BalanceTransferLedgerId" DataType="System.String"/>
+        <Column Name="BalanceTransferLedgerName" DataType="System.String"/>
+        <Column Name="TransferAmount" DataType="System.Decimal"/>
+        <Column Name="ChequeNo" DataType="System.String"/>
+        <Column Name="ChequeDate" DataType="System.DateTime"/>
+        <Column Name="EntryForm" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserName" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+        <Column Name="FiscalYearId" DataType="System.Int32"/>
+      </TableDataSource>
+      <TableDataSource Name="tbChequeCancel" DataType="System.Int32" Enabled="true" TableName="tbChequeCancel">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="BankLedgerId" DataType="System.String"/>
+        <Column Name="BankName" DataType="System.String"/>
+        <Column Name="BookNo" DataType="System.String"/>
+        <Column Name="FolioNo" DataType="System.String"/>
+        <Column Name="CancelDate" DataType="System.DateTime"/>
+        <Column Name="Reason" DataType="System.String"/>
+        <Column Name="UdFlag" DataType="System.String"/>
+        <Column Name="UserName" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="tbVoucher" DataType="System.Int32" Enabled="true" TableName="tbVoucher">
+        <Column Name="Id" DataType="System.Int64"/>
+        <Column Name="TransactionId" DataType="System.String"/>
+        <Column Name="TransactionType" DataType="System.String"/>
+        <Column Name="MRNo" DataType="System.String"/>
+        <Column Name="FiscalYearId" DataType="System.String"/>
+        <Column Name="VoucherNo" DataType="System.String"/>
+        <Column Name="VoucherDate" DataType="System.DateTime"/>
+        <Column Name="VoucherType" DataType="System.String"/>
+        <Column Name="LedgerId" DataType="System.String"/>
+        <Column Name="LedgerName" DataType="System.String"/>
+        <Column Name="DrAmount" DataType="System.Decimal"/>
+        <Column Name="CrAmount" DataType="System.Decimal"/>
+        <Column Name="Narration" DataType="System.String"/>
+        <Column Name="TransactionWith" DataType="System.String"/>
+        <Column Name="ChequeNo" DataType="System.String"/>
+        <Column Name="ChequeDate" DataType="System.DateTime"/>
+        <Column Name="BankName" DataType="System.String"/>
+        <Column Name="BranchName" DataType="System.String"/>
+        <Column Name="ChequeClear" DataType="System.Int32"/>
+        <Column Name="AttachCheque" DataType="System.String"/>
+        <Column Name="AuditApprove" DataType="System.Int32"/>
+        <Column Name="AuditBy" DataType="System.String"/>
+        <Column Name="AuditIp" DataType="System.String"/>
+        <Column Name="AuditTime" DataType="System.DateTime"/>
+        <Column Name="ApproveBy" DataType="System.String"/>
+        <Column Name="ApproveIp" DataType="System.String"/>
+        <Column Name="ApproveTime" DataType="System.DateTime"/>
+        <Column Name="AttachBill" DataType="System.String"/>
+        <Column Name="AttachReference" DataType="System.String"/>
+        <Column Name="POSId" DataType="System.String"/>
+        <Column Name="POSName" DataType="System.String"/>
+        <Column Name="CompanyId" DataType="System.String"/>
+        <Column Name="EntryFrom" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserName" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+        <Column Name="JVType" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbOilCan" DataType="System.Int32" Enabled="true" TableName="tbOilCan">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="OilCanNo" DataType="System.String"/>
+        <Column Name="OilId" DataType="System.Int32"/>
+        <Column Name="OilName" DataType="System.String"/>
+        <Column Name="Volume" DataType="System.Decimal"/>
+        <Column Name="Height" DataType="System.Decimal"/>
+        <Column Name="HighOilLevel" DataType="System.Decimal"/>
+        <Column Name="LowOilLevel" DataType="System.Decimal"/>
+        <Column Name="HighWaterLevel" DataType="System.Decimal"/>
+        <Column Name="LowWaterLevel" DataType="System.Decimal"/>
+        <Column Name="HighTemperature" DataType="System.Decimal"/>
+        <Column Name="LowTemperature" DataType="System.Decimal"/>
+        <Column Name="Status" DataType="System.Boolean" BindableControl="CheckBox"/>
+      </TableDataSource>
+      <TableDataSource Name="tbAttendance" DataType="System.Int32" Enabled="true" TableName="tbAttendance">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="EmployeeId" DataType="System.Int32"/>
+        <Column Name="Date" DataType="System.DateTime"/>
+        <Column Name="InTime" DataType="System.DateTime"/>
+        <Column Name="OutTime" DataType="System.DateTime"/>
+        <Column Name="InAddress" DataType="System.String"/>
+        <Column Name="OutAddress" DataType="System.String"/>
+        <Column Name="InCoords" DataType="System.String"/>
+        <Column Name="OutCoords" DataType="System.String"/>
+        <Column Name="InPic" DataType="System.String"/>
+        <Column Name="OutPic" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbUdCategory" DataType="System.Int32" Enabled="true" TableName="tbUdCategory">
+        <Column Name="AutoId" DataType="System.Int32"/>
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="Code" DataType="System.String"/>
+        <Column Name="Name" DataType="System.String"/>
+        <Column Name="PrimaryCategoryId" DataType="System.Int32"/>
+        <Column Name="vUserId" DataType="System.String"/>
+        <Column Name="vUserName" DataType="System.String"/>
+        <Column Name="vUserIp" DataType="System.String"/>
+        <Column Name="dEntryTime" DataType="System.DateTime"/>
+        <Column Name="UdFlag" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbUdVoucher" DataType="System.Int32" Enabled="true" TableName="tbUdVoucher">
+        <Column Name="Id" DataType="System.Int64"/>
+        <Column Name="TransactionId" DataType="System.String"/>
+        <Column Name="TransactionType" DataType="System.String"/>
+        <Column Name="MRNo" DataType="System.String"/>
+        <Column Name="FiscalYearId" DataType="System.String"/>
+        <Column Name="VoucherNo" DataType="System.String"/>
+        <Column Name="VoucherDate" DataType="System.DateTime"/>
+        <Column Name="VoucherType" DataType="System.String"/>
+        <Column Name="LedgerId" DataType="System.String"/>
+        <Column Name="LedgerName" DataType="System.String"/>
+        <Column Name="DrAmount" DataType="System.Decimal"/>
+        <Column Name="CrAmount" DataType="System.Decimal"/>
+        <Column Name="Narration" DataType="System.String"/>
+        <Column Name="TransactionWith" DataType="System.String"/>
+        <Column Name="ChequeNo" DataType="System.String"/>
+        <Column Name="ChequeDate" DataType="System.DateTime"/>
+        <Column Name="BankName" DataType="System.String"/>
+        <Column Name="BranchName" DataType="System.String"/>
+        <Column Name="ChequeClear" DataType="System.Int32"/>
+        <Column Name="AttachCheque" DataType="System.String"/>
+        <Column Name="AuditApprove" DataType="System.Int32"/>
+        <Column Name="AuditBy" DataType="System.String"/>
+        <Column Name="AuditIp" DataType="System.String"/>
+        <Column Name="AuditTime" DataType="System.DateTime"/>
+        <Column Name="ApproveBy" DataType="System.String"/>
+        <Column Name="ApproveIp" DataType="System.String"/>
+        <Column Name="ApproveTime" DataType="System.DateTime"/>
+        <Column Name="AttachBill" DataType="System.String"/>
+        <Column Name="AttachReference" DataType="System.String"/>
+        <Column Name="POSId" DataType="System.String"/>
+        <Column Name="POSName" DataType="System.String"/>
+        <Column Name="CompanyId" DataType="System.String"/>
+        <Column Name="EntryFrom" DataType="System.String"/>
+        <Column Name="UdFlag" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserName" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+        <Column Name="JVType" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="__EFMigrationsHistory" DataType="System.Int32" Enabled="true" TableName="__EFMigrationsHistory">
+        <Column Name="MigrationId" DataType="System.String"/>
+        <Column Name="ProductVersion" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="tbLedgerBudget" DataType="System.Int32" Enabled="true" TableName="tbLedgerBudget">
+        <Column Name="Id" DataType="System.Int64"/>
+        <Column Name="BudgetId" DataType="System.String"/>
+        <Column Name="FiscalYearId" DataType="System.String"/>
+        <Column Name="LedgerId" DataType="System.String"/>
+        <Column Name="LedgerName" DataType="System.String"/>
+        <Column Name="BudgetAmount" DataType="System.Decimal"/>
+        <Column Name="CompanyId" DataType="System.String"/>
+        <Column Name="UserName" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="AspNetRoles" DataType="System.Int32" Enabled="true" TableName="AspNetRoles">
+        <Column Name="Id" DataType="System.String"/>
+        <Column Name="Name" DataType="System.String"/>
+        <Column Name="NormalizedName" DataType="System.String"/>
+        <Column Name="ConcurrencyStamp" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="vwLedgerList" DataType="System.Int32" Enabled="true" TableName="vwLedgerList">
+        <Column Name="R" DataType="System.String"/>
+        <Column Name="H" DataType="System.String"/>
+        <Column Name="G" DataType="System.String"/>
+        <Column Name="S" DataType="System.String"/>
+        <Column Name="L" DataType="System.String"/>
+        <Column Name="LedgerId" DataType="System.String"/>
+        <Column Name="LedgerCode" DataType="System.String"/>
+        <Column Name="NoteNo" DataType="System.Int32"/>
+        <Column Name="CompanyId" DataType="System.Int32"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+    <Parameter Name="phone" DataType="System.String"/>
+    <Parameter Name="companyName" DataType="System.String"/>
+    <Parameter Name="companyAddress" DataType="System.String"/>
+    <Parameter Name="title" DataType="System.String"/>
+    <Parameter Name="userName" DataType="System.String"/>
+    <Parameter Name="developer" DataType="System.String"/>
+    <Parameter Name="month" DataType="System.String"/>
+    <Parameter Name="year" DataType="System.String"/>
+  </Dictionary>
+  <ReportPage Name="Page1" BottomMargin="2" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="633.15">
+      <TextObject Name="Text77" Left="9.45" Top="481.95" Width="217.35" Height="18.9" Text="- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - " Font="Arial, 10pt"/>
+      <TextObject Name="Text78" Left="9.45" Top="500.85" Width="217.35" Height="37.8" Text="Mohammad Mohiuddin,FCMA&#13;&#10;Managing Director" Font="Arial, 10pt"/>
+      <TextObject Name="Text1" Left="236.25" Top="18.9" Width="170.1" Height="28.35" Border.Lines="All" Text="Private &amp; Confidential" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text2" Left="21.43" Top="105.49" Width="217.35" Height="18.9" Text="Date: [date]" VertAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text3" Left="18.9" Top="122.85" Width="576.45" Height="113.4" Text="To,&#13;&#10;The Manager&#13;&#10;[date],&#13;&#10;[date]&#13;&#10;[date]" VertAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text4" Left="18.9" Top="255.15" Width="670.95" Height="18.9" Text="Sub: Transfer Salary of [date] From A/C-[date]" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text5" Left="18.9" Top="292.95" Width="94.5" Height="18.9" Text="Dear Sir," VertAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text6" Left="18.9" Top="321.3" Width="670.95" Height="47.25" Text="Shall appreciate if you kindly transfer Tk.[date][date] to our Employees bank accounts." Font="Arial, 10pt"/>
+      <TextObject Name="Text7" Left="18.9" Top="368.55" Width="557.55" Height="18.9" Text="List of Employees bank A/C attached here with." Font="Arial, 10pt"/>
+      <TextObject Name="Text8" Left="18.9" Top="406.35" Width="425.25" Height="37.8" Text="Thanking You.&#13;&#10;Sincerely Yours" Font="Arial, 10pt"/>
+      <TextObject Name="Text9" Left="9.45" Top="548.1" Width="396.9" Height="18.9" Text="Enclosed: List of Employees bank A/C and Amount." Font="Arial, 10pt"/>
+    </ReportTitleBand>
+  </ReportPage>
+</Report>

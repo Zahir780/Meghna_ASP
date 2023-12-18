@@ -1,0 +1,127 @@
+﻿<style>
+    
+</style>
+
+<section class="panel">
+    <header class="panel-heading">
+        <div class="panel-actions">
+            <a href="#" class="fa fa-caret-down"></a>
+        </div>
+        <h2 class="panel-title entryListHeader">Generate Monthly Salary</h2>
+    </header>
+
+    <div class="panel-body">
+        <form class="form-horizontal form-bordered" autocomplete="off">
+            <input type="hidden" id="autoId" />
+            <div class="col-12">
+                <div class="row" style="margin:0; padding:0;">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-6">
+                        <div class="row" style="margin:0; padding:0;">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Generate Date:</label>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                        <input type="text" id="pGenerateDate" onkeypress="inputMask(event,'00-00-0000')" class="form-control input-sm datepick" required />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4" style="display:flex"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Department:</label>
+                                <div class="col-sm-8" style="display: flex;">
+                                    <select data-plugin-selectTwo id="pDepartmentId" class="form-control input-sm">
+                                        <option value="0">==Choose a Department==</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Section:</label>
+                                <div class="col-sm-8" style="display: flex;">
+                                    <select data-plugin-selectTwo id="pSectionId" class="form-control input-sm">
+                                        <option value="0">==Choose a Section==</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Employee:</label>
+                                <div class="col-sm-8" style="display: flex;">
+                                    <select data-plugin-selectTwo id="pEmployeeId" class="form-control input-sm">
+                                        <option value="0">==Choose a Employee==</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Salary of Month:</label>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                        <input type="text" id="pSalaryMonthDate" onkeypress="inputMask(event,'00-00-0000')" class="form-control input-sm datepick" required />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4" style="display:flex"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Total Days:</label>
+                                <div class="col-sm-2">
+                                    <div class="input-group">
+                                        <input type="text" id="pTotalDays" style="width: 40px;" class="form-control input-sm amount" required />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4" style="display:flex"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>No of Fridays:</label>
+                                <div class="col-sm-2">
+                                    <div class="input-group">
+                                        <input type="text" id="pFridays" style="width: 40px;" class="form-control input-sm amount" required />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4" style="display:flex"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>No of Holidays:</label>
+                                <div class="col-sm-2">
+                                    <div class="input-group">
+                                        <input type="text" id="pHolidays" style="width: 40px;" class="form-control input-sm amount" required />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4" style="display:flex"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>No of Working Days:</label>
+                                <div class="col-sm-2">
+                                    <div class="input-group">
+                                        <input type="text" id="pWorkingDays" style="width: 40px;" class="form-control input-sm amount" required />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4" style="display:flex"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Revenue Stamp:</label>
+                                <div class="col-sm-2">
+                                    <div class="input-group">
+                                        <input type="text" id="pRevenueStamp" style="width: 40px;" class="form-control input-sm amount" required />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4" style="display:flex"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <footer class="panel-footer text-center">
+        <partial name="_ModalButtonGenerate" />
+    </footer>
+</section>
+@section Scripts{
+    <script src="~/js/JSPayroll/GenerateMonthlySalaryService.js" asp-append-version="true"></script>
+}

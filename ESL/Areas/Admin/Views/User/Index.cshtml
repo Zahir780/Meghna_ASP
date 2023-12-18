@@ -1,0 +1,39 @@
+﻿
+<section class="panel">
+    <header class="panel-heading">
+        <div class="panel-actions">
+            <a href="#" class="fa fa-caret-down"></a>
+        </div>
+        <h2 class="panel-title">User's List</h2>
+    </header>
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="mb-md">
+                    <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Register">Add <i class="fa fa-plus"></i></a>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered table-striped" id="tblData">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+@section Scripts{
+
+    <script asp-append-version="true" src="~/js/user.js"></script>
+}

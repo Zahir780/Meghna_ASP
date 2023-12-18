@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="02/20/2021 14:46:25" ReportInfo.Modified="12/09/2023 11:36:44" ReportInfo.CreatorVersion="2019.4.9.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+   
+
+    private void Text4_MouseUp(object sender, MouseEventArgs e)
+    {
+      
+    }
+  }
+}
+</ScriptText>
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection2" ConnectionString="rijcmlqpmPT2REr9siOlDTMq2XO+Vhr+0IBqCuVhkbd0uHZzfQteQuuR+dsVOHD2onBcappbGIuzwYWhie9LuEXgrPcrYkr/tRzo7KnvTFzvjJeKz3pnxBbzT5/FW5gOSQAXeUpvJn1vkleMn1wnsroV02lK7yvsiC1kI6yG5OAbsyQH1FxeZjhpq1pcBNVjqlx/pOQaEpfimCoVwuJSD24sG+cPg==">
+      <TableDataSource Name="Table2" DataType="System.Int32" Enabled="true" SelectCommand="Execute(@Parameter)">
+        <Column Name="iAutoId" DataType="System.Int32"/>
+        <Column Name="vEmployeeId" DataType="System.String"/>
+        <Column Name="vEmployeeName" DataType="System.String"/>
+        <Column Name="vPostOrDesignation" DataType="System.String"/>
+        <Column Name="vCompanyName" DataType="System.String"/>
+        <Column Name="dFrom" DataType="System.String"/>
+        <Column Name="dTo" DataType="System.String"/>
+        <Column Name="vMajorResponsibility" DataType="System.String"/>
+        <Column Name="vCompanyId" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+        <CommandParameter Name="Parameter" DataType="22" Expression="sql2" DefaultValue="select * from tbEmpExperienceInfo where vEmployeeId='EMP-206'"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlqpmPT2REr9siOlDTMq2XO+Vhr+0IBqCuVhkbd0uHZzfQteQuuR+dsVOHD2onBcappbGIuzwYWhie9LuEXgrPcrYkr/tRzo7KnvTFzvjJeKz3pnxBbzT5/FW5gOSQAXeUpvJn1vkleMn1wnsroV02lK59BUGAz2Ww3Nt48oZUQuUrv11oaewSR53NA90jpYdiutl3ca7FjHYQlusMtn8HEug==">
+      <TableDataSource Name="Table" DataType="System.Int32" Enabled="true" SelectCommand="Execute(@Parameter)">
+        <Column Name="vEmployeePhoto" DataType="System.String"/>
+        <Column Name="vEmployeeId" DataType="System.String"/>
+        <Column Name="vEmployeeCode" DataType="System.String"/>
+        <Column Name="vEmployeeName" DataType="System.String"/>
+        <Column Name="vEmployeeNameBangla" DataType="System.String"/>
+        <Column Name="vDesignationName" DataType="System.String"/>
+        <Column Name="vDepartmentName" DataType="System.String"/>
+        <Column Name="vSectionName" DataType="System.String"/>
+        <Column Name="vReligion" DataType="System.String"/>
+        <Column Name="vContactNo" DataType="System.String"/>
+        <Column Name="vEmailAddress" DataType="System.String"/>
+        <Column Name="vGender" DataType="System.String"/>
+        <Column Name="dDateOfBirth" DataType="System.DateTime"/>
+        <Column Name="vNationality" DataType="System.String"/>
+        <Column Name="vNationalIdNo" DataType="System.String"/>
+        <Column Name="vEmployeeType" DataType="System.String"/>
+        <Column Name="vServiceType" DataType="System.String"/>
+        <Column Name="dApplicationDate" DataType="System.DateTime"/>
+        <Column Name="dInterviewDate" DataType="System.DateTime"/>
+        <Column Name="dJoiningDate" DataType="System.DateTime"/>
+        <Column Name="dConfirmationDate" DataType="System.DateTime"/>
+        <Column Name="vProbationPeriod" DataType="System.String"/>
+        <Column Name="vEmployeeStatus" DataType="System.String"/>
+        <Column Name="vFatherName" DataType="System.String"/>
+        <Column Name="vMotherName" DataType="System.String"/>
+        <Column Name="vPresentAddress" DataType="System.String"/>
+        <Column Name="vPermanentAddress" DataType="System.String"/>
+        <Column Name="vBloodGroup" DataType="System.String"/>
+        <Column Name="vMaritalStatus" DataType="System.String"/>
+        <Column Name="dMarriageDate" DataType="System.DateTime"/>
+        <Column Name="vSpouseName" DataType="System.String"/>
+        <Column Name="vSpouseOccupation" DataType="System.String"/>
+        <Column Name="iNumberOfChild" DataType="System.String"/>
+        <Column Name="mBasic" DataType="System.Decimal"/>
+        <Column Name="mHouseRent" DataType="System.Decimal"/>
+        <Column Name="mMedicalAllowance" DataType="System.Decimal"/>
+        <Column Name="mGross" DataType="System.Decimal"/>
+        <Column Name="mIncomeTax" DataType="System.Decimal"/>
+        <Column Name="mProvidentFund" DataType="System.Decimal"/>
+        <Column Name="vMoneyTransferType" DataType="System.String"/>
+        <Column Name="vBankName" DataType="System.String"/>
+        <Column Name="vAccountNo" DataType="System.String"/>
+        <Column Name="vAccountMobileNo" DataType="System.String"/>
+        <Column Name="dStatusDate" DataType="System.String"/>
+        <CommandParameter Name="Parameter" DataType="22" Expression="sql0" DefaultValue=" select CASE WHEN ISNULL(vEmployeePhoto, '') = '' THEN ' '  Else 'https://localhost:44359' + replace(vEmployeePhoto, '\','/')END AS vEmployeePhoto,vEmployeeId,vEmployeeCode,vEmployeeName,vEmployeeNameBangla,vDesignationName,vDepartmentName,vSectionName,vReligion,vContactNo,vEmailAddress,vGender,dDateOfBirth,vNationality,vNationalIdNo,vEmployeeType,vServiceType,dApplicationDate,dInterviewDate,dJoiningDate,dConfirmationDate,vProbationPeriod,vEmployeeStatus,vFatherName,vMotherName,vPresentAddress,vPermanentAddress,vBloodGroup,vMaritalStatus,CASE WHEN vMaritalStatus = 'Unmarried' THEN 'N/A' ELSE CONVERT(VARCHAR, dMarriageDate, 105) END AS dMarriageDate, CASE WHEN vSpouseName=''THEN 'N/A'ELSE vSpouseName END AS vSpouseName,vSpouseOccupation,iNumberOfChild,mBasic,mHouseRent,mMedicalAllowance,mGross,mIncomeTax,mProvidentFund,vMoneyTransferType,vBankName,vAccountNo,vAccountMobileNo,CASE WHEN dStatusDate='1900-01-01' THEN 'N/A'ELSE CONVERT(VARCHAR, dStatusDate, 105) END AS dStatusDate  from tbEmployeeInfo  where vEmployeeId='999'"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+    <MsSqlDataConnection Name="Connection1" ConnectionString="rijcmlqpmPT2REr9siOlDTMq2XO+Vhr+0IBqCuVhkbd0uHZzfQteQuuR+dsVOHD2onBcappbGIuzwYWhie9LuEXgrPcrYkr/tRzo7KnvTFzvjJeKz3pnxBbzT5/FW5gOSQAXeUpvJn1vkleMn1wnsroV02lK7yvsiC1kI6yG5OAbsyQH1FxeZjhpq1pcBNVjqlx/pOQlRL5dD48tOIu1mFJUhbg3g==">
+      <TableDataSource Name="Table1" DataType="System.Int32" Enabled="true" SelectCommand="Execute(@Parameter)">
+        <Column Name="iAutoId" DataType="System.Int32"/>
+        <Column Name="vEmployeeId" DataType="System.String"/>
+        <Column Name="vEmployeeName" DataType="System.String"/>
+        <Column Name="vExamp" DataType="System.String"/>
+        <Column Name="vGroup" DataType="System.String"/>
+        <Column Name="vInstitute" DataType="System.String"/>
+        <Column Name="vBoard" DataType="System.String"/>
+        <Column Name="vDivOrClass" DataType="System.String"/>
+        <Column Name="iYear" DataType="System.String"/>
+        <Column Name="vCompanyId" DataType="System.String"/>
+        <Column Name="UserId" DataType="System.String"/>
+        <Column Name="UserIp" DataType="System.String"/>
+        <Column Name="EntryTime" DataType="System.DateTime"/>
+        <CommandParameter Name="Parameter" DataType="22" Expression="sql1" DefaultValue="select * from tbEmpEducationInfo where  vEmployeeId='EMP-206'"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+    <Parameter Name="sql0" DataType="System.String"/>
+    <Parameter Name="userName" DataType="System.String"/>
+    <Parameter Name="userIp" DataType="System.String"/>
+    <Parameter Name="developer" DataType="System.String"/>
+    <Parameter Name="phone" DataType="System.String"/>
+    <Parameter Name="companyName" DataType="System.String"/>
+    <Parameter Name="companyAddress" DataType="System.String"/>
+    <Parameter Name="title" DataType="System.String"/>
+    <Parameter Name="caption" DataType="System.String"/>
+    <Parameter Name="caption2" DataType="System.String"/>
+    <Parameter Name="sql1" DataType="System.String"/>
+    <Parameter Name="sql2" DataType="System.String"/>
+    <Parameter Name="caption9" DataType="System.String"/>
+    <Parameter Name="Parameter" DataType="System.String"/>
+    <Total Name="EmployeeTotal" TotalType="Count" Evaluator="Data1"/>
+    <Total Name="Total" Expression="[Table.mIncomeTax]" Evaluator="Data1"/>
+  </Dictionary>
+  <ReportPage Name="EmployeeProfile" RawPaperSize="9" LeftMargin="15" TopMargin="5" RightMargin="5" BottomMargin="5" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="64.15" CanGrow="true" CanShrink="true">
+      <TextObject Name="Text24" Left="155.93" Width="406.35" Height="18.9" Text="[companyName]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+      <TextObject Name="Text25" Left="155.93" Top="20.9" Width="406.35" Height="18.9" CanGrow="true" Text="[companyAddress]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text27" Left="155.93" Top="41.25" Width="406.35" Height="18.9" Text="[phone]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt"/>
+      <PictureObject Name="Picture1" Left="-7.33" Top="-3" Width="56.7" Height="56.7" Image="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"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="68.15" Width="718.2" Height="170.1" CanGrow="true">
+      <TextObject Name="Text26" Left="160.65" Top="9.45" Width="396.9" Height="17.12" Text="[title]" HorzAlign="Center" VertAlign="Center" Font="Arial, 11pt, style=Bold"/>
+      <TextObject Name="Text1" Top="37.8" Width="113.4" Height="18.9" CanBreak="false" Text="Employee ID" Font="Arial, 9pt"/>
+      <TextObject Name="Text145" Top="56.7" Width="113.4" Height="18.9" CanBreak="false" Text="Employee Name:" Font="Arial, 9pt"/>
+      <TextObject Name="Text151" Top="94.5" Width="113.4" Height="18.9" CanBreak="false" Text="Department:" Font="Arial, 9pt"/>
+      <TextObject Name="Text146" Top="75.6" Width="113.4" Height="18.9" CanBreak="false" Text="Designation" Font="Arial, 9pt"/>
+      <TextObject Name="Text158" Top="132.3" Width="113.4" Height="18.9" CanBreak="false" Text="Contact:" Font="Arial, 9pt"/>
+      <TextObject Name="Text160" Top="113.4" Width="113.4" Height="18.9" CanBreak="false" Text="Section&#13;&#10;" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text162" Top="151.2" Width="113.4" Height="18.9" CanBreak="false" Text="Email:" Font="Arial, 9pt"/>
+      <TextObject Name="Text311" Left="117.07" Top="37.8" Width="384.93" Height="15.12" Text=": [Table.vEmployeeCode]" Font="Arial, 9pt"/>
+      <TextObject Name="Text312" Left="117.07" Top="56.7" Width="384.93" Height="15.12" Text=": [Table.vEmployeeName]" Font="Arial, 9pt"/>
+      <TextObject Name="Text313" Left="117.07" Top="75.6" Width="384.93" Height="15.12" Text=": [Table.vDesignationName]" Font="Arial, 9pt"/>
+      <TextObject Name="Text314" Left="117.07" Top="94.5" Width="384.93" Height="15.12" Text=": [Table.vDepartmentName]" Font="Arial, 9pt"/>
+      <TextObject Name="Text315" Left="117.07" Top="113.4" Width="384.93" Height="15.12" Text=": [Table.vSectionName]" Font="Arial, 9pt"/>
+      <TextObject Name="Text316" Left="117.07" Top="132.3" Width="384.93" Height="15.12" Text=": [Table.vContactNo]" Font="Arial, 9pt"/>
+      <TextObject Name="Text317" Left="117.07" Top="151.2" Width="384.93" Height="15.12" Text=": [Table.vEmailAddress]" Font="Arial, 9pt"/>
+      <BarcodeObject Name="Barcode3" Left="5" Top="9.45" Width="332.5" Height="18.9" Text="[Table.vEmployeeCode]" ShowText="false" AllowExpressions="true" Barcode="Code128" Barcode.AutoEncode="true"/>
+      <BarcodeObject Name="Barcode1" Left="594.15" Top="28.35" Width="94.5" Height="94.5" AutoSize="false" Text="Employee ID: [Table.vEmployeeCode], &#13;&#10;Employee Name: [Table.vEmployeeName], &#13;&#10;Designation: [Table.vDesignationName], &#13;&#10;Department:[Table.vDepartmentName]&#13;&#10;Mobile: [Table.vContactNo], &#13;&#10;Email: [Table.vEmailAddress], &#13;&#10;Blood Group: [Table.vBloodGroup] " ShowText="false" AllowExpressions="true" Barcode="QR Code" Barcode.ErrorCorrection="L" Barcode.Encoding="UTF8" Barcode.QuietZone="true"/>
+      <PictureObject Name="Picture2" Left="521.2" Top="37.8" Width="75.6" Height="75.6" Border.Lines="All" DataColumn="Table.vEmployeePhoto" SizeMode="StretchImage"/>
+    </PageHeaderBand>
+    <ColumnHeaderBand Name="ColumnHeader1" Top="242.25" Width="718.2" Height="438.9">
+      <TextObject Name="Text164" Top="8.15" Width="162.16" Height="15.12" Text="Personal Information :" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text165" Top="22.53" Width="117.18" Height="15.12" Text="Father's Name" Font="Arial, 9pt"/>
+      <TextObject Name="Text166" Left="117.07" Top="22.39" Width="343.98" Height="15.12" Text=": [Table.vFatherName]: " Font="Arial, 9pt"/>
+      <TextObject Name="Text169" Top="56.97" Width="117.18" Height="15.12" Text="Date Of Birth" Font="Arial, 9pt"/>
+      <TextObject Name="Text170" Left="117.07" Top="56.97" Width="343.98" Height="15.12" Text=": [Table.dDateOfBirth]" Format="Custom" Format.Format="dd-MM-yyy" Font="Arial, 9pt"/>
+      <TextObject Name="Text171" Top="39.83" Width="117.18" Height="15.12" Text="Mother's Name&#13;&#10;" Font="Arial, 9pt"/>
+      <TextObject Name="Text172" Left="117.07" Top="39.68" Width="343.98" Height="15.12" Text=": [Table.vMotherName]" Font="Arial, 9pt"/>
+      <TextObject Name="Text173" Top="74.26" Width="117.18" Height="15.12" Text="Permanent Address" Font="Arial, 9pt"/>
+      <TextObject Name="Text174" Left="123.07" Top="74.26" Width="589.98" Height="30.24" Text="[Table.vPermanentAddress]" Editable="true" HorzAlign="Justify" Font="Arial, 9pt"/>
+      <TextObject Name="Text177" Top="108.28" Width="117.18" Height="15.12" Text="Present Address" Font="Arial, 9pt"/>
+      <TextObject Name="Text178" Left="123.07" Top="108.28" Width="589.98" Height="30.24" Text="[Table.vPresentAddress]" HorzAlign="Justify" Font="Arial, 9pt"/>
+      <TextObject Name="Text191" Left="205.9" Top="260.22" Width="109.18" Height="15.12" Text="Marrige Date" Font="Arial, 9pt"/>
+      <TextObject Name="Text192" Left="315.08" Top="260.22" Width="151.2" Height="15.12" Text=": [Table.dMarriageDate]" Format="Custom" Format.Format="dd-MM-yyy" Font="Arial, 9pt"/>
+      <TextObject Name="Text193" Left="205.9" Top="245.1" Width="109.18" Height="15.12" Text="Maritual Status&#13;&#10;" Font="Arial, 9pt"/>
+      <TextObject Name="Text194" Left="315.08" Top="245.1" Width="151.2" Height="15.12" Text=": [Table.vMaritalStatus]&#13;&#10;&#13;&#10;&#13;&#10;" Font="Arial, 9pt"/>
+      <TextObject Name="Text195" Left="205.9" Top="275.34" Width="109.18" Height="15.12" Text="Spouse Name" Font="Arial, 9pt"/>
+      <TextObject Name="Text196" Left="315.08" Top="275.34" Width="151.2" Height="15.12" Text=": [Table.vSpouseName]" Font="Arial, 9pt"/>
+      <TextObject Name="Text203" Top="157.42" Width="117.18" Height="15.12" Text="Sex&#13;&#10;" Font="Arial, 9pt"/>
+      <TextObject Name="Text204" Left="117.07" Top="157.42" Width="343.98" Height="15.12" Text=": [Table.vGender]" Format="Custom" Format.Format="dd-MM-yyy" Font="Arial, 9pt"/>
+      <TextObject Name="Text205" Top="142.3" Width="117.18" Height="15.12" Text="Religion&#13;&#10;" Font="Arial, 9pt"/>
+      <TextObject Name="Text206" Left="117.07" Top="142.3" Width="343.98" Height="15.12" Text=": [Table.vReligion]" Font="Arial, 9pt"/>
+      <TextObject Name="Text207" Top="172.54" Width="117.18" Height="15.12" Text="Nationality" Font="Arial, 9pt"/>
+      <TextObject Name="Text208" Left="117.07" Top="172.54" Width="343.98" Height="15.12" Text=": [Table.vNationality]" Editable="true" Font="Arial, 9pt"/>
+      <TextObject Name="Text209" Top="187.66" Width="117.18" Height="15.12" Text="NID No" Font="Arial, 9pt"/>
+      <TextObject Name="Text210" Left="117.07" Top="187.66" Width="343.98" Height="15.12" Text=": " Format="Custom" Format.Format="dd-MM-yyy" Font="Arial, 9pt"/>
+      <TextObject Name="Text237" Top="216.05" Width="162.16" Height="15.12" Text="HR Information :" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text238" Top="229.98" Width="117.18" Height="15.12" Text="Application Date" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text239" Left="117.07" Top="229.98" Width="85.42" Height="15.12" Text=": [Table.dApplicationDate]" Format="Custom" Format.Format="dd-MM-yyy" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text242" Top="245.1" Width="117.18" Height="15.12" Text="Interview Date&#13;&#10;" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text243" Left="117.07" Top="245.1" Width="85.42" Height="15.12" Text=": [Table.dInterviewDate]" Format="Custom" Format.Format="dd-MM-yyy" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text244" Top="260.22" Width="117.18" Height="15.12" Text="Joinning Date" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text245" Left="117.07" Top="260.22" Width="85.42" Height="15.12" Text=": [Table.dJoiningDate]" Format="Custom" Format.Format="dd-MM-yyy" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text246" Top="275.34" Width="117.18" Height="15.12" Text="Confirmation Date&#13;&#10;" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text247" Left="117.07" Top="275.34" Width="85.42" Height="15.12" Text=": [Table.dConfirmationDate]" Format="Custom" Format.Format="dd-MM-yyy" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text4" Left="117.4" Top="78.6" Width="8.7" Height="8.9" Text=":" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text336" Left="117.4" Top="110.4" Width="8.7" Height="8.9" Text=":" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text211" Top="302.85" Width="162.16" Height="15.12" Text="Salary Information :" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text2" Left="4" Top="319.5" Width="222.8" Height="19.9" Border.Lines="All" Text="Earning" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text318" Left="226.8" Top="319.5" Width="117.85" Height="19.9" Border.Lines="All" Text="Amount" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text319" Left="344.65" Top="319.5" Width="253.15" Height="19.9" Border.Lines="All" Text="Deduction" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text320" Left="597.9" Top="319.5" Width="117.85" Height="19.9" Border.Lines="All" Text="Amount" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text321" Left="4" Top="339.4" Width="222.8" Height="19.9" Border.Lines="All" Text="Basic" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text322" Left="4" Top="359.3" Width="222.8" Height="19.9" Border.Lines="All" Text="House Rent&#13;&#10;" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text323" Left="4" Top="379.2" Width="222.8" Height="19.9" Border.Lines="All" Text="Medical Allowance" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text324" Left="226.8" Top="339.4" Width="117.85" Height="19.9" Border.Lines="All" Text="[Table.mBasic]" Format="Currency" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="." Format.GroupSeparator="," Format.CurrencySymbol="" Format.PositivePattern="0" Format.NegativePattern="0" HorzAlign="Right" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text325" Left="226.8" Top="359.3" Width="117.85" Height="19.9" Border.Lines="All" Text="[Table.mHouseRent]" Format="Currency" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="." Format.GroupSeparator="," Format.CurrencySymbol="" Format.PositivePattern="0" Format.NegativePattern="0" HorzAlign="Right" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text326" Left="226.8" Top="379.2" Width="117.85" Height="19.9" Border.Lines="All" Text="[Table.mMedicalAllowance]" Format="Currency" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="." Format.GroupSeparator="," Format.CurrencySymbol="" Format.PositivePattern="0" Format.NegativePattern="0" HorzAlign="Right" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text327" Left="344.65" Top="339.4" Width="253.15" Height="19.9" Border.Lines="All" Text=" Income Tax" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text328" Left="344.65" Top="359.3" Width="253.15" Height="19.9" Border.Lines="All" Text=" Providend Fund" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text329" Left="344.65" Top="379.2" Width="253.15" Height="19.9" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text330" Left="597.9" Top="339.4" Width="117.85" Height="19.9" Border.Lines="All" Text="[Table.mIncomeTax]" Format="Currency" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="." Format.GroupSeparator="," Format.CurrencySymbol="" Format.PositivePattern="0" Format.NegativePattern="0" HorzAlign="Right" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text331" Left="597.9" Top="359.3" Width="117.85" Height="19.9" Border.Lines="All" Text="[Table.mProvidentFund]" Format="Currency" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="." Format.GroupSeparator="," Format.CurrencySymbol="" Format.PositivePattern="0" Format.NegativePattern="0" HorzAlign="Right" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text332" Left="597.9" Top="379.2" Width="117.85" Height="19.9" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text3" Left="4" Top="419" Width="222.8" Height="18.9" Border.Lines="All" Text="Total" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text333" Left="226.8" Top="419" Width="117.85" Height="18.9" Border.Lines="All" Text="[Table.mGross]" Format="Currency" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="." Format.GroupSeparator="," Format.CurrencySymbol="" Format.PositivePattern="0" Format.NegativePattern="0" HorzAlign="Right" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text334" Left="344.65" Top="419" Width="253.15" Height="18.9" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text335" Left="597.9" Top="419" Width="117.85" Height="18.9" Border.Lines="All" Format="Currency" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="." Format.GroupSeparator="," Format.CurrencySymbol="" Format.PositivePattern="0" Format.NegativePattern="0" HorzAlign="Right" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text337" Left="4" Top="399.1" Width="222.8" Height="19.9" Border.Lines="All" Text="Conveyance Allowance" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text338" Left="226.8" Top="399.1" Width="117.85" Height="19.9" Border.Lines="All" Text="0" Format="Currency" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="." Format.GroupSeparator="," Format.CurrencySymbol="" Format.PositivePattern="0" Format.NegativePattern="0" HorzAlign="Right" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text339" Left="344.65" Top="399.1" Width="253.15" Height="19.9" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text340" Left="597.9" Top="399.1" Width="117.85" Height="19.9" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text352" Left="205.9" Top="229.98" Width="109.18" Height="15.12" Text="Retirement Date&#13;&#10;" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text353" Left="315.08" Top="229.98" Width="151.2" Height="15.12" Text=": [Table.dStatusDate]" Format="Custom" Format.Format="dd-MM-yyy" VertAlign="Center" Font="Arial, 9pt"/>
+    </ColumnHeaderBand>
+    <DataBand Name="Data1" Top="685.15" Width="718.2" Height="11.34" CanGrow="true" BeforePrintEvent="Data1_BeforPrint" Guides="0" DataSource="Table">
+      <SubreportObject Name="Subreport1" Width="708.75" Height="11.34" ReportPage="Page1"/>
+      <ChildBand Name="Child2" Top="700.49" Width="718.2" Height="11.34">
+        <SubreportObject Name="Subreport2" Width="708.75" Height="11.34" ReportPage="Page2"/>
+      </ChildBand>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="715.83" Width="718.2" Height="21.9" Hyperlink.Kind="PageNumber" Hyperlink.Value="1" CanGrow="true" CanShrink="true">
+      <TextObject Name="Text45" Top="3" Width="112.8" Height="18.9" Text="[Date]" VertAlign="Center" Font="Arial, 7pt"/>
+      <TextObject Name="Text46" Left="114.8" Top="3" Width="74.25" Height="18.9" Text="[userName]" VertAlign="Center" Font="Arial, 7pt"/>
+      <TextObject Name="Text47" Left="190.95" Top="3" Width="79.4" Height="18.9" Text="[userIp]" VertAlign="Center" Font="Arial, 7pt"/>
+      <TextObject Name="Text48" Left="265.2" Top="3" Width="382.75" Height="18.9" Text="[developer]" HorzAlign="Justify" VertAlign="Center" Font="Arial, 7pt"/>
+      <TextObject Name="Text51" Left="651.15" Top="3" Width="130.95" Height="18.9" Text="Page: [Page] of [TotalPages#]" VertAlign="Center" Font="Arial, 7pt"/>
+    </PageFooterBand>
+  </ReportPage>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <DataBand Name="Data2" Top="48.92" Width="718.2" Height="18.9" CanGrow="true" CanShrink="true" CanBreak="true" DataSource="Table1">
+      <TextObject Name="Text253" Left="98.5" Width="92.94" Height="18.9" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="[Table1.vGroup]" VertAlign="Center" Font="Arial, 8pt"/>
+      <TextObject Name="Text254" Left="4" Width="94.5" Height="18.9" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="[Table1.vExamp]" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text255" Left="191.44" Width="249.15" Height="18.9" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="[Table1.vInstitute]" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text256" Left="440.59" Width="189.38" Height="18.9" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="[Table1.vBoard]" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text257" Left="629.97" Width="86.61" Height="18.9" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="[Table1.iYear]" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+      <DataHeaderBand Name="DataHeader2" Width="718.2" Height="46.25">
+        <TextObject Name="Text250" Top="10.9" Width="162.16" Height="14.9" Text="Education Qualification :" Font="Arial, 9pt, style=Bold"/>
+        <TextObject Name="Text258" Left="98.5" Top="27.35" Width="92.94" Height="18.9" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="Group/Subject" HorzAlign="Center" VertAlign="Center" Font="Arial, 8.5pt"/>
+        <TextObject Name="Text259" Left="4" Top="27.35" Width="94.5" Height="18.9" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="Name Of Exam" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+        <TextObject Name="Text260" Left="191.44" Top="27.35" Width="249.15" Height="18.9" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="Name Of Institution" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+        <TextObject Name="Text261" Left="440.59" Top="27.35" Width="189.38" Height="18.9" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="Board" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+        <TextObject Name="Text262" Left="629.97" Top="27.35" Width="86.61" Height="18.9" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="Passsing Year" HorzAlign="Center" VertAlign="Center" Font="Arial, 8.3pt"/>
+      </DataHeaderBand>
+    </DataBand>
+  </ReportPage>
+  <ReportPage Name="Page2" RawPaperSize="9" Watermark.Font="Arial, 60pt">
+    <DataBand Name="Data3" Top="55.92" Width="718.2" Height="18.9" DataSource="Table2">
+      <TextObject Name="Text284" Left="143.86" Width="133.43" Height="18.9" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="[Table2.vPostOrDesignation]" VertAlign="Center" Font="Arial, 8.5pt"/>
+      <TextObject Name="Text285" Left="4" Width="139.86" Height="18.9" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="[Table2.vCompanyName]" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text286" Left="277.49" Width="272.16" Height="18.9" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="[Table2.vMajorResponsibility]" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text287" Left="549.65" Width="94.5" Height="18.9" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="[Table2.dFrom]" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Text288" Left="644.15" Width="71.36" Height="18.9" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="[Table2.dTo]" HorzAlign="Center" VertAlign="Center" Font="Arial, 8.3pt"/>
+      <DataHeaderBand Name="DataHeader1" Width="718.2" Height="53.25">
+        <TextObject Name="Text289" Left="143.86" Top="34.35" Width="133.43" Height="18.9" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="Post Name" HorzAlign="Center" VertAlign="Center" Font="Arial, 8.5pt"/>
+        <TextObject Name="Text290" Left="4" Top="34.35" Width="139.86" Height="18.9" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="Company Name" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+        <TextObject Name="Text291" Left="277.49" Top="34.35" Width="272.16" Height="18.9" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="Responsibility" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+        <TextObject Name="Text292" Left="549.65" Top="34.35" Width="94.5" Height="18.9" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="From" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt"/>
+        <TextObject Name="Text293" Left="644.15" Top="34.35" Width="71.36" Height="18.9" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="TO" HorzAlign="Center" VertAlign="Center" Font="Arial, 8.3pt"/>
+        <TextObject Name="Text273" Top="17.74" Width="162.16" Height="15.12" Text="Experiences :" Font="Arial, 9pt, style=Bold"/>
+      </DataHeaderBand>
+    </DataBand>
+  </ReportPage>
+</Report>

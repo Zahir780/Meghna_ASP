@@ -1,0 +1,51 @@
+﻿@page
+@model LoginModel
+
+@{
+    Layout = "/Views/Shared/_Login.cshtml";
+    ViewData["Title"] = "Log in";
+}
+
+<section id="cover" class="min-vh-100">
+    <div id="cover-caption">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form" style="padding-right: 0px; padding-left: 0px;">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <img asp-append-version="true" src="/images/logo.png" style="width: 128px;" alt="PMS" />
+                            <h3 class="mt-2 mb-4 pb-1">Payroll Management System</h3>
+                        </div>
+
+                        <div class="px-4">
+                            <form form id="account" method="post" class="justify-content-center">
+                                <p>Please login to your account</p>
+                                <div class="form-group">
+                                    <label style="float: left;" asp-for="Input.Email"></label>
+                                    <input type="text" asp-for="Input.Email" class="form-control" placeholder="your user name or email" style="border-top:0px">
+                                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 30px;">
+                                    <label style="float: left;" asp-for="Input.Password"></label>
+                                    <input type="password" asp-for="Input.Password" class="form-control" placeholder="your password" style="border-top:0px">
+                                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-lg" style="width:100% !important;">Log in</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="gradient-custom-2">
+                        <img src="/images/esl_logo.png" height="28" alt="Evision Software Ltd." style="margin-right: 10px;" />
+                        <span style="margin-right:5px;">&copy; Powered by: </span><a style="color: #fff;" target="_blank" href="http://www.eslctg.com">Evision Software Ltd.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts 
+{
+    <partial name="_ValidationScriptsPartial" />
+}

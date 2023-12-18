@@ -1,0 +1,32 @@
+﻿<div class="modal fade" id="bankBranchInfo" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Branch Information</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal form-bordered"  autocomplete="off">
+                    <input type="hidden" id="autoId" />
+                   
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Branch Name :</label>
+                        <div class="col-sm-6">
+                            <input id="branchName" class="form-control input-sm" />
+                        </div>
+                    </div>
+                   
+
+                </form>
+            </div>
+            <div class="modal-footer customFooter">
+                <div id="add">
+                    <partial name="_ModalButtonCreate" />
+                </div>
+                <div id="edit">
+                    <partial name="_ModalButtonEdit" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,115 @@
+﻿@model ESL.Models.ViewModels.Menus
+@using ESL.Models.ViewModels
+@using ESL.Utility
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@functions{
+
+    public string ShowSubItems(IEnumerable<Menu> menus, string html)
+    {
+
+        foreach (Menu subItem in menus)
+        {
+
+            if (subItem.IsActive)
+            {
+                
+                    if (!subItem.IsReporting && subItem.Menus.Any()) // add child Menu
+                    {
+                        html += "<li class='nav-parent'>" +
+                            "<a data-toggle='tooltip' data-placement='top' title='' data-original-title='" + subItem.Name + "'>" +
+                                "<i class='" + subItem.Icon + "' aria-hidden='true'></i>" +
+                                "<span>" + subItem.Name + "</span>" +
+                            "</a>" +
+                            "<ul class='nav nav-children'>";
+                        html = ShowSubItems(subItem.Menus, html);
+                        html += "</ul></li>";
+                    }
+                    else // add parent Menu
+                    {
+                        html += "<li>" +
+                                    "<a class='gotocontroller' data-mId='" + subItem.Id + "' data-uId='" + @ViewBag.UserId + "' data-href='" + subItem.Url + "' onclick='menuset(event)' data-toggle='tooltip' data-placement='top' title='' data-original-title='" + subItem.Name + "' >" + subItem.Name + "</a>" +
+                                "</li>";
+                    }
+                
+
+            }
+
+        }
+
+        return html;
+    }
+}
+
+
+
+<div class="nano">
+    <div class="nano-content">
+        <nav id="menu" class="nav-main" role="navigation">
+            <ul class="nav nav-main">
+                <li class="nav-active">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Index">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                        <span>Dashboard</span>
+                </a>
+                </li>
+                @{
+                    foreach (Menu menu in Model.Modules)
+                    {
+                        string html = "";
+                        if (menu.IsActive)
+                        {
+                            <li class="nav-parent">
+                                <a>
+                                    <i class="@menu.Icon" aria-hidden="true"></i>
+                                    <span>@menu.Name</span>
+                                </a>
+                                <ul class="nav nav-children">
+                                    @Html.Raw(ShowSubItems(menu.Menus, html))
+                                </ul>
+                            </li>
+                        }
+
+
+                    }
+                }
+
+
+
+
+            </ul>
+        </nav>
+
+        <hr class="separator" />
+
+
+    </div>
+
+</div>
+
+<script>
+
+    function delay(URL) {
+        setTimeout(function () { window.location = URL }, 3000);
+    }
+    
+    function menuset(e) {
+        var mId = e.target.getAttribute('data-mId');
+        var uId = e.target.getAttribute('data-uId');
+        var url = e.target.getAttribute('data-href');
+        $.ajax({
+            url: '/api/menupush',
+            data: JSON.stringify({ "uId": uId, "menuVId": mId }),
+            type: 'POST',
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function (result) {
+                window.location = url;
+            }
+        });
+
+}
+</script>
+

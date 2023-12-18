@@ -1,0 +1,945 @@
+﻿@using ESL.Utility
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@if (User.IsInRole(SD.Role_Admin))
+{
+    <style>
+        .table-striped > tbody > tr:nth-child(2n+1) {
+            background-color: ivory;
+        }
+        .table-striped > tbody > tr:nth-child(2n) {
+            background-color: aliceblue;
+        }
+    </style>
+    <div class="row">
+        <div class="col-sm-12">
+            <section class="panel dashTopPanel dashPanelMarginBottom">
+                <div class="panel-body dashHeadPanel">
+                    <div class="col-md-11">
+                        <p class="panel-title panelTitle" style="padding-top: 5px;">Dashboard (HRM)</p>
+                    </div>
+                    <div class="col-md-1">
+                        <button class="btn btn-primary input-sm btnDashRefresh" id="btnRefresh">
+                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="row">
+        @*Employee PIE Chart*@
+        <div class="col-md-4">
+            <section class="panel dashPanelMarginBottom" style=" margin-bottom: 5px;">
+                <header class="panel-heading panelHead" style="padding:10px 0px 46px 0px">
+                    <div class="col-md-8">
+                        <h2 class="panel-title panelTitle" style="padding-top: 10px;">Employee</h2>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span style="float:right;color: darkviolet;font-weight: bold;border: 1px solid green;border-radius: 50%;padding: 6px;">
+                                307
+                            </span>
+                        </div>
+                    </div>                   
+                </header>
+                <div class="panel-body" style="min-height: 388px;">
+                    <div class="chart chart-md" style="height:305px;" id="flotPie"></div>
+                </div>
+            </section>
+        </div>
+
+        @*Daily Manpower Status*@
+        <div class="col-md-5">
+            <section class="panel dashPanelMarginBottom" style=" margin-bottom: 5px;">
+                <header class="panel-heading panelHead" style="padding:16px 0px 40px 0px">
+                    <div class="col-md-8">
+                        <h2 class="panel-title panelTitle">Daily Manpower Status</h2>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                            <input type="text" id="dDateDailyManPowerStatus" onkeypress="inputMask(event,'00-00-0000')" class="form-control input-sm datepick" required />
+                        </div>
+                    </div>
+                </header>
+                <div class="panel-body" style="min-height: 389px;">
+                    <table class="table table-bordered table-striped tableStyle" id="gridDailyManpowerStatus">
+                        <thead>
+                            <tr>
+                                <th class="no-sort" style="width:5%" id="vSl">SL#</th>
+                                <th class="no-sort" style="width:50%" id="vDepartment">Department</th>
+                                <th class="no-sort" style="width:10%" id="vStrength">Emp.</th>
+                                <th class="no-sort" style="width:10%" id="vPresent">Present</th>
+                                <th class="no-sort" style="width:10%" id="vLeave">Leave</th>
+                                <th class="no-sort" style="width:10%" id="vAbsent">Abs.</th>
+                                <th class="no-sort" style="width:5%" id="vPrint"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="text-align:center;">01</td>
+                                <td>Production</td>
+                                <td style="text-align:center;">195</td>
+                                <td style="text-align:center;">188</td>
+                                <td style="text-align:center;">5</td>
+                                <td style="text-align:center;">2</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">02</td>
+                                <td>HRD</td>
+                                <td style="text-align:center;">31</td>
+                                <td style="text-align:center;">25</td>
+                                <td style="text-align:center;">3</td>
+                                <td style="text-align:center;">3</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">03</td>
+                                <td>Sales</td>
+                                <td style="text-align:center;">21</td>
+                                <td style="text-align:center;">18</td>
+                                <td style="text-align:center;">2</td>
+                                <td style="text-align:center;">1</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">04</td>
+                                <td>Technical</td>
+                                <td style="text-align:center;">20</td>
+                                <td style="text-align:center;">19</td>
+                                <td style="text-align:center;">1</td>
+                                <td style="text-align:center;">0</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">05</td>
+                                <td>Store</td>
+                                <td style="text-align:center;">14</td>
+                                <td style="text-align:center;">12</td>
+                                <td style="text-align:center;">1</td>
+                                <td style="text-align:center;">1</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">06</td>
+                                <td>Quality Assurance</td>
+                                <td style="text-align:center;">11</td>
+                                <td style="text-align:center;">11</td>
+                                <td style="text-align:center;">0</td>
+                                <td style="text-align:center;">0</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">07</td>
+                                <td>Accounts</td>
+                                <td style="text-align:center;">9</td>
+                                <td style="text-align:center;">8</td>
+                                <td style="text-align:center;">1</td>
+                                <td style="text-align:center;">0</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">08</td>
+                                <td>Marketing</td>
+                                <td style="text-align:center;">9</td>
+                                <td style="text-align:center;">9</td>
+                                <td style="text-align:center;">0</td>
+                                <td style="text-align:center;">0</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">09</td>
+                                <td>Commercial</td>
+                                <td style="text-align:center;">6</td>
+                                <td style="text-align:center;">5</td>
+                                <td style="text-align:center;">1</td>
+                                <td style="text-align:center;">0</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">10</td>
+                                <td>Audit & Compliance</td>
+                                <td style="text-align:center;">2</td>
+                                <td style="text-align:center;">2</td>
+                                <td style="text-align:center;">0</td>
+                                <td style="text-align:center;">0</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">11</td>
+                                <td>Civil & Project</td>
+                                <td style="text-align:center;">2</td>
+                                <td style="text-align:center;">1</td>
+                                <td style="text-align:center;">1</td>
+                                <td style="text-align:center;">0</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2" style="text-align:right;">Total:</td>
+                                <td style="text-align:center;">320</td>
+                                <td style="text-align:center;">298</td>
+                                <td style="text-align:center;">15</td>
+                                <td style="text-align:center;">7</td>
+                                <td style="text-align:center;"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        @*Increment Due List*@
+        <div class="col-md-3">
+            <section class="panel dashPanelMarginBottom">
+                <header class="panel-heading panelHead" style="padding:16px 0px 40px 0px">
+                    <div class="col-md-12">
+                        <h2 class="panel-title panelTitle">Increment Due List</h2>
+                    </div>
+                </header>
+                <div class="panel-body" style="min-height: 389px;">
+                    <table class="table table-bordered table-striped tableStyle" id="gridIncrementDue">
+                        <thead>
+                            <tr>
+                                <th class="no-sort" style="width:5%" id="vSl">SL#</th>
+                                <th class="no-sort" style="width:80%" id="vDepartment">Month</th>
+                                <th class="no-sort" style="width:10%" id="vStrength">No</th>
+                                <th class="no-sort" style="width:5%" id="vStrength"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="text-align:center;">01</td>
+                                <td>January</td>
+                                <td style="text-align:center;">25</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">02</td>
+                                <td>February</td>
+                                <td style="text-align:center;">32</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">03</td>
+                                <td>March</td>
+                                <td style="text-align:center;">35</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">04</td>
+                                <td>April</td>
+                                <td style="text-align:center;">42</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">05</td>
+                                <td>May</td>
+                                <td style="text-align:center;">28</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">06</td>
+                                <td>June</td>
+                                <td style="text-align:center;">22</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">07</td>
+                                <td>July</td>
+                                <td style="text-align:center;">17</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">08</td>
+                                <td>August</td>
+                                <td style="text-align:center;">23</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">09</td>
+                                <td>September</td>
+                                <td style="text-align:center;">15</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">10</td>
+                                <td>October</td>
+                                <td style="text-align:center;">22</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">11</td>
+                                <td>November</td>
+                                <td style="text-align:center;">16</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">12</td>
+                                <td>December</td>
+                                <td style="text-align:center;">18</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        @*Type Wise Employee Salary*@
+        <div class="col-md-4">
+            <section class="panel dashPanelMarginBottom">
+                <div class="panel-body" style="min-height: 390px;">
+                    <div id="flotSalary2"></div>
+                </div>
+            </section>
+        </div>
+
+        @*Yearly Employee Salary Bar Chart*@
+        <div class="col-md-8">
+            <section class="panel dashPanelMarginBottom" >
+                <header class="panel-heading panelHead" style="padding:10px 0px 40px 0px">
+                    <div class="col-md-8">
+                        <h2 class="panel-title panelTitle">Salary Info</h2>
+                    </div>
+                    <div class="col-md-4">
+                        <select data-plugin-selectTwo id="year" class="form-control" style="min-width: 100px;"></select>
+                    </div>
+                </header>
+                <div class="panel-body" style="min-height: 315px;">
+                    <div id="flotSalary" style="height:300px;"></div>
+                </div>
+            </section>
+        </div>
+
+        @*Employee Over Time Bar Chart*@
+        <div class="col-md-6">
+            <section class="panel dashPanelMarginBottom">
+                <div class="panel-body">
+                    <div id="flotOverTime"></div>
+                </div>
+            </section>
+        </div>
+                
+        @*Employee Meal Bar Chart*@
+        <div class="col-md-6">
+            <section class="panel dashPanelMarginBottom">
+                <div class="panel-body">
+                    <div id="flotMeal" @*style="height:160px;"*@></div>
+                </div>
+            </section>
+        </div>
+
+        @*Salary Comparison*@
+        <div class="col-md-6">
+            <section class="panel dashPanelMarginBottom">
+                <header class="panel-heading panelHead" style="padding:10px 0px 40px 0px">
+                    <div class="col-md-8">
+                        <h2 class="panel-title panelTitle">Salary Comparison</h2>
+                    </div>
+                    <div class="col-md-4"></div>
+                </header>
+                <div class="panel-body" style="min-height: 315px;">
+                    <table class="table table-bordered table-striped tableStyle" id="gridSalaryComparison">
+                        <thead>
+                            <tr>
+                                <th rowspan="2" id="vSl">SL#</th>
+                                <th rowspan="2" id="vMonths">Months</th>
+                                <th colspan="2" id="vYearA">2022</th>
+                                <th colspan="2" id="vYearB">2021</th>
+                            </tr>
+                            <tr>
+                                <th id="vManpowerA">Manpower</th>
+                                <th id="vAmountA">Amount</th>
+                                <th id="vManpowerB">Manpower</th>
+                                <th id="vAmountB">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>01</th>
+                                <th>January</th>
+                                <td style="text-align:center;">280</td>
+                                <td style="text-align:right;">1,825,790.00</td>
+                                <td style="text-align:center;">250</td>
+                                <td style="text-align:right;">1,785,320.00</td>
+                            </tr>
+                            <tr>
+                                <th>02</th>
+                                <th>February</th>
+                                <td style="text-align:center;">282</td>
+                                <td style="text-align:right;">1,843,200.00</td>
+                                <td style="text-align:center;">250</td>
+                                <td style="text-align:right;">1,789,540.00</td>
+                            </tr>
+                            <tr>
+                                <th>03</th>
+                                <th>March</th>
+                                <td style="text-align:center;">287</td>
+                                <td style="text-align:right;">1,987,500.00</td>
+                                <td style="text-align:center;">265</td>
+                                <td style="text-align:right;">1,819,543.00</td>
+                            </tr>
+                            <tr>
+                                <th>04</th>
+                                <th>April</th>
+                                <td style="text-align:center;">287</td>
+                                <td style="text-align:right;">1,987,600.00</td>
+                                <td style="text-align:center;">265</td>
+                                <td style="text-align:right;">1,820,743.00</td>
+                            </tr>
+                            <tr>
+                                <th>05</th>
+                                <th>May</th>
+                                <td style="text-align:center;">290</td>
+                                <td style="text-align:right;">2,005,350.00</td>
+                                <td style="text-align:center;">272</td>
+                                <td style="text-align:right;">1,870,500.00</td>
+                            </tr>
+                            <tr>
+                                <th>06</th>
+                                <th>June</th>
+                                <td style="text-align:center;">295</td>
+                                <td style="text-align:right;">2,115,670.00</td>
+                                <td style="text-align:center;">271</td>
+                                <td style="text-align:right;">1,865,890.00</td>
+                            </tr>
+                            <tr>
+                                <th>07</th>
+                                <th>July</th>
+                                <td style="text-align:center;">295</td>
+                                <td style="text-align:right;">2,110,870.00</td>
+                                <td style="text-align:center;">270</td>
+                                <td style="text-align:right;">1,870,870.00</td>
+                            </tr>
+                            <tr>
+                                <th>08</th>
+                                <th>August</th>
+                                <td style="text-align:center;">320</td>
+                                <td style="text-align:right;">2,250,750.00</td>
+                                <td style="text-align:center;">270</td>
+                                <td style="text-align:right;">1,865,890.00</td>
+                            </tr>
+                            <tr>
+                                <th>09</th>
+                                <th>September</th>
+                                <td style="text-align:center;"></td>
+                                <td style="text-align:right;"></td>
+                                <td style="text-align:center;">275</td>
+                                <td style="text-align:right;">1,935,790.00</td>
+                            </tr>
+                            <tr>
+                                <th>10</th>
+                                <th>October</th>
+                                <td style="text-align:center;"></td>
+                                <td style="text-align:right;"></td>
+                                <td style="text-align:center;">275</td>
+                                <td style="text-align:right;">1,930,678.00</td>
+                            </tr>
+                            <tr>
+                                <th>11</th>
+                                <th>November</th>
+                                <td style="text-align:center;"></td>
+                                <td style="text-align:right;"></td>
+                                <td style="text-align:center;">272</td>
+                                <td style="text-align:right;">1,920,760.00</td>
+                            </tr>
+                            <tr>
+                                <th>12</th>
+                                <th>December</th>
+                                <td style="text-align:center;"></td>
+                                <td style="text-align:right;"></td>
+                                <td style="text-align:center;">272</td>
+                                <td style="text-align:right;">1,922,500.00</td>
+                            </tr>
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="3"></th>
+                                <td>16,126,730.00</td>
+                                <td></td>
+                                <td>22,398,024.00</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        @*Over Time Comparison*@
+        <div class="col-md-6">
+            <section class="panel dashPanelMarginBottom">
+                <header class="panel-heading panelHead" style="padding:10px 0px 40px 0px">
+                    <div class="col-md-8">
+                        <h2 class="panel-title panelTitle">Over Time Comparison</h2>
+                    </div>
+                    <div class="col-md-4"></div>
+                </header>
+                <div class="panel-body" style="min-height: 315px;">
+                    <table class="table table-bordered table-striped tableStyle" id="gridOverTimeComparison">
+                        <thead>
+                            <tr>
+                                <th rowspan="2" id="vSl">SL#</th>
+                                <th rowspan="2" id="vMonths">Months</th>
+                                <th colspan="2" id="vYearA">2022</th>
+                                <th colspan="2" id="vYearB">2021</th>
+                            </tr>
+                            <tr>
+                                <th id="vManpowerA">Manpower</th>
+                                <th id="vAmountA">OT Amount</th>
+                                <th id="vManpowerB">Manpower</th>
+                                <th id="vAmountB">OTAmount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>01</th>
+                                <th>January</th>
+                                <td style="text-align:center;">280</td>
+                                <td style="text-align:right;">1,825,790.00</td>
+                                <td style="text-align:center;">250</td>
+                                <td style="text-align:right;">1,785,320.00</td>
+                            </tr>
+                            <tr>
+                                <th>02</th>
+                                <th>February</th>
+                                <td style="text-align:center;">282</td>
+                                <td style="text-align:right;">1,843,200.00</td>
+                                <td style="text-align:center;">250</td>
+                                <td style="text-align:right;">1,789,540.00</td>
+                            </tr>
+                            <tr>
+                                <th>03</th>
+                                <th>March</th>
+                                <td style="text-align:center;">287</td>
+                                <td style="text-align:right;">1,987,500.00</td>
+                                <td style="text-align:center;">265</td>
+                                <td style="text-align:right;">1,819,543.00</td>
+                            </tr>
+                            <tr>
+                                <th>04</th>
+                                <th>April</th>
+                                <td style="text-align:center;">287</td>
+                                <td style="text-align:right;">1,987,600.00</td>
+                                <td style="text-align:center;">265</td>
+                                <td style="text-align:right;">1,820,743.00</td>
+                            </tr>
+                            <tr>
+                                <th>05</th>
+                                <th>May</th>
+                                <td style="text-align:center;">290</td>
+                                <td style="text-align:right;">2,005,350.00</td>
+                                <td style="text-align:center;">272</td>
+                                <td style="text-align:right;">1,870,500.00</td>
+                            </tr>
+                            <tr>
+                                <th>06</th>
+                                <th>June</th>
+                                <td style="text-align:center;">295</td>
+                                <td style="text-align:right;">2,115,670.00</td>
+                                <td style="text-align:center;">271</td>
+                                <td style="text-align:right;">1,865,890.00</td>
+                            </tr>
+                            <tr>
+                                <th>07</th>
+                                <th>July</th>
+                                <td style="text-align:center;">295</td>
+                                <td style="text-align:right;">2,110,870.00</td>
+                                <td style="text-align:center;">270</td>
+                                <td style="text-align:right;">1,870,870.00</td>
+                            </tr>
+                            <tr>
+                                <th>08</th>
+                                <th>August</th>
+                                <td style="text-align:center;">320</td>
+                                <td style="text-align:right;">2,250,750.00</td>
+                                <td style="text-align:center;">270</td>
+                                <td style="text-align:right;">1,865,890.00</td>
+                            </tr>
+                            <tr>
+                                <th>09</th>
+                                <th>September</th>
+                                <td style="text-align:center;"></td>
+                                <td style="text-align:right;"></td>
+                                <td style="text-align:center;">275</td>
+                                <td style="text-align:right;">1,935,790.00</td>
+                            </tr>
+                            <tr>
+                                <th>10</th>
+                                <th>October</th>
+                                <td style="text-align:center;"></td>
+                                <td style="text-align:right;"></td>
+                                <td style="text-align:center;">275</td>
+                                <td style="text-align:right;">1,930,678.00</td>
+                            </tr>
+                            <tr>
+                                <th>11</th>
+                                <th>November</th>
+                                <td style="text-align:center;"></td>
+                                <td style="text-align:right;"></td>
+                                <td style="text-align:center;">272</td>
+                                <td style="text-align:right;">1,920,760.00</td>
+                            </tr>
+                            <tr>
+                                <th>12</th>
+                                <th>December</th>
+                                <td style="text-align:center;"></td>
+                                <td style="text-align:right;"></td>
+                                <td style="text-align:center;">272</td>
+                                <td style="text-align:right;">1,922,500.00</td>
+                            </tr>
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="3"></th>
+                                <td style="text-align:right;">16,126,730.00</td>
+                                <td></td>
+                                <td style="text-align:right;">22,398,024.00</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </section>
+        </div>
+                
+        @*LoanInformation*@
+        <div class="col-md-6">
+            <section class="panel dashPanelMarginBottom">
+                <header class="panel-heading panelHead" style="padding:10px 0px 40px 0px">
+                    <div class="col-md-12">
+                        <h2 class="panel-title panelTitle">Loan Information</h2>
+                    </div>
+                </header>
+                <div class="panel-body" style="min-height: 315px;">
+                    <table class="table table-bordered table-striped tableStyle" id="gridLoanInformation">
+                        <thead>
+                            <tr>
+                                <th class="no-sort" style="width:10%" id="vSl">SL#</th>
+                                <th class="no-sort" style="width:50%" id="vDepartment">Department</th>
+                                <th class="no-sort" style="width:10%" id="vStrength">Emp.</th>
+                                <th class="no-sort" style="width:10%" id="vPresent">Loan</th>
+                                <th class="no-sort" style="width:10%" id="vLeave">Payment</th>
+                                <th class="no-sort" style="width:10%" id="vAbsent">Balance</th>
+                                <th class="no-sort" style="width:10%" id="vPrint"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="text-align:center;">01</td>
+                                <td>Production</td>
+                                <td style="text-align:center;">15</td>
+                                <td style="text-align:right;">350000</td>
+                                <td style="text-align:right;">50000</td>
+                                <td style="text-align:right;">300000</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">02</td>
+                                <td>HRD</td>
+                                <td style="text-align:center;">10</td>
+                                <td style="text-align:right;">180000</td>
+                                <td style="text-align:right;">85000</td>
+                                <td style="text-align:right;">95000</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">03</td>
+                                <td>Sales</td>
+                                <td style="text-align:center;">5</td>
+                                <td style="text-align:right;">100000</td>
+                                <td style="text-align:right;">80000</td>
+                                <td style="text-align:right;">20000</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">04</td>
+                                <td>Technical</td>
+                                <td style="text-align:center;">4</td>
+                                <td style="text-align:right;">80000</td>
+                                <td style="text-align:right;">50000</td>
+                                <td style="text-align:right;">30000</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">05</td>
+                                <td>Store</td>
+                                <td style="text-align:center;">8</td>
+                                <td style="text-align:right;">125000</td>
+                                <td style="text-align:right;">45000</td>
+                                <td style="text-align:right;">80000</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">06</td>
+                                <td>Quality Assurance</td>
+                                <td style="text-align:center;">9</td>
+                                <td style="text-align:right;">190000</td>
+                                <td style="text-align:right;">75000</td>
+                                <td style="text-align:right;">115000</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">07</td>
+                                <td>Accounts</td>
+                                <td style="text-align:center;">6</td>
+                                <td style="text-align:right;">250000</td>
+                                <td style="text-align:right;">25000</td>
+                                <td style="text-align:right;">225000</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">08</td>
+                                <td>Marketing</td>
+                                <td style="text-align:center;">3</td>
+                                <td style="text-align:right;">60000</td>
+                                <td style="text-align:right;">35000</td>
+                                <td style="text-align:right;">25000</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">09</td>
+                                <td>Commercial</td>
+                                <td style="text-align:center;">6</td>
+                                <td style="text-align:right;">70000</td>
+                                <td style="text-align:right;">45000</td>
+                                <td style="text-align:right;">25000</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">10</td>
+                                <td>Audit & Compliance</td>
+                                <td style="text-align:center;">8</td>
+                                <td style="text-align:right;">95000</td>
+                                <td style="text-align:right;">90000</td>
+                                <td style="text-align:right;">5000</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">11</td>
+                                <td>Civil & Project</td>
+                                <td style="text-align:center;">2</td>
+                                <td style="text-align:right;">45000</td>
+                                <td style="text-align:right;">35000</td>
+                                <td style="text-align:right;">10000</td>
+                                <td style="text-align:center; cursor: pointer; color:green;">
+                                    <i class="fa fa-print" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2" style="text-align:right;">Total:</td>
+                                <td style="text-align:center;">76</td>
+                                <td style="text-align:right;">1545000</td>
+                                <td style="text-align:right;">615000</td>
+                                <td style="text-align:right;">930000</td>
+                                <td style="text-align:right;"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <div class="row">
+        @*<div class="col-md-3">
+            <section class="panel panelRight dashPanelMarginBottom">
+                <div class="panel-body">
+                    <div id="flotElectricity"></div>
+                </div>
+            </section>
+        </div>*@
+    </div>
+
+    @*<div class="row">
+        <div class="col-md-12">
+            <section class="panel panelLeft panelRight dashPanelMarginBottom">
+                <header class="panel-heading panelHead">
+                    <div class="col-md-10">
+                    </div>
+                    <div class="col-md-2">
+                        <select data-plugin-selectTwo id="monthPfFund" class="form-control">
+                        </select>
+                    </div>
+                </header>
+                <div class="panel-body">
+                    <div id="flotPfFund" style="height:160px;"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panelLeft panelRight dashPanelMarginBottom">
+                <header class="panel-heading panelHead">
+                    <div class="col-md-10">
+                    </div>
+                    <div class="col-md-2">
+                        <select data-plugin-selectTwo id="monthPfLoan" class="form-control">
+                        </select>
+                    </div>
+                </header>
+                <div class="panel-body">
+                    <div class="col-md-6">
+                        <div id="flotPfLoan" style="height:160px;"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="flotPfLoanInterest" style="height:160px;"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel panelLeft panelRight dashPanelMarginBottom">
+                <header class="panel-heading panelHead">
+                    <div class="col-md-10">
+                    </div>
+                    <div class="col-md-2">
+                        <select data-plugin-selectTwo id="monthPfRecovery" class="form-control">
+                        </select>
+                    </div>
+                </header>
+                <div class="panel-body">
+                    <div class="col-md-6">
+                        <div id="flotPfRecovery" style="height:160px;"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="flotPfRecoveryInterest" style="height:160px;"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-12 col-xl-6">
+        <div class="row">
+            <div class="col-md-12 col-md-3 col-md-3">
+                <div class="panel-body employeePanel">
+                    <div class="widget-summary">
+                        <div class="widget-summary-col widget-summary-col-icon">
+                            <div class="summary-icon bg-quartenary">
+                                <i class="fa fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="widget-summary-col">
+                            <div class="summary" id="employeePanel">
+                                <h4 class="title" style="color:#fff;font-weight:bold;font-size:20px;">Rbej</h4>
+                            </div>
+                            <div class="summary-footer">
+                                me©‡gvU <a style="font-weight: bold;color: #fff;" id="totalEmployee"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+}
+else
+{
+
+}
+
+@section Scripts{
+    <script asp-append-version="true" src="~/js/dashboardPulling.js"></script>
+    <script src="~/js/JSPayroll/dashboardHRM.js" asp-append-version="true"></script>
+    @*<script asp-append-version="true" src="~/js/JSPayroll/dashboardHRM.js"></script>*@
+    @*<script asp-append-version="true" type="text/javascript">
+        $(document).ready(function () {
+            var date = new Date();
+            var currentDate = document.getElementById("currentDate");
+            currentDate.setAttribute("data-date", date);
+            currentDate.innerHTML = (moment(date).format('DD-MM-YYYY'));
+
+            var currentMonth = document.getElementById("currentMonth");
+            var prvMonth = document.getElementById("prvMonth");
+            var currentYear = document.getElementById("currentYear");
+            var prvYear = document.getElementById("prvYear");
+            currentMonth.innerHTML = (moment(date).format('MMMM, YYYY'));
+            currentYear.innerHTML = (moment(date).format('YYYY'));
+            date = new Date(date.setMonth(date.getMonth() - 1));
+            prvMonth.innerHTML = (moment(date).format('MMMM, YYYY'));
+            var date = new Date();
+            date = new Date(date.setFullYear(date.getFullYear() - 1));
+            prvYear.innerHTML = (moment(date).format('YYYY'));
+        });
+    </script>*@
+}

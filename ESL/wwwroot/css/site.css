@@ -1,0 +1,417 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+/*
+    DEMO STYLE
+*/
+html {
+    --scrollbarBG: #f0f3f5;
+    --thumbBG: #0088cc;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbarBG);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--thumbBG);
+    border-radius: 6px;
+}
+
+
+
+// custom css
+
+tbody {
+    color: #000000;
+}
+
+/*.btn {
+    width: 100px !important;
+    margin-right: 10px !important;
+}*/
+.header {
+    background: linear-gradient(to bottom, #34495e 0%, #3b5773 100%);
+    box-shadow: 0 5px 20px rgba(0,0,0,.25),0 10px 10px rgba(0,0,0,.22) !important;
+    border-bottom: none !important;
+    border-top: none !important;
+}
+.userbox .name {
+    color: #eeeeee !important;
+}
+.userbox .custom-caret {
+    color: #eeeeee !important;
+}
+.header .separator {
+    background-color: #555555;
+    background-image: none !important;
+}
+
+.sidebar-left {
+    max-width: 250px !important;
+    box-shadow: none !important;
+}
+.sidebar-left .sidebar-header .sidebar-toggle {
+   background-color: transparent !important; 
+}
+ul.nav-main > li > a:hover, ul.nav-main > li > a:focus {
+   
+    background-color: rgba(255,255,255,.1) !important;
+    color: #fff;
+}
+ul.nav-main > li.nav-expanded > a {
+    background: #3a546f !important;
+}
+ul.nav-main li .nav-children {
+    background: #34495e !important;
+    box-shadow: 0px -3px 3px -3px rgba(0, 0, 0, 0.7) inset !important;
+}
+ul.nav-main li .nav-children li a:hover, ul.nav-main li .nav-children li a:focus {
+    background: #3a546f !important;
+}
+
+.panel-title {
+    color: #08c !important;
+}
+.success {
+    color: #47a447;
+}
+.no_success {
+    color: #d2322d;
+}
+.notifications .notification-menu {
+    width: 400px;
+    max-height: 500px;
+}
+.notification_img {
+    width: 40px;
+    height: 40px;
+}
+.notification-menu li :hover {
+    background: #eee;
+}
+.notification-menu ul {
+    max-height: 405px;
+    min-height: 150px;
+    overflow-y: auto;
+}
+.notifications .notification-menu .view-more {
+    color: #0088cc;
+    margin-bottom: 10px;
+}
+.notifications .notification-menu .content {
+    /*padding: 5px 4px 5px 12px;*/
+    padding: 0px;
+}
+.notifications .notification-menu .notification-title {
+    padding: 15px 6px 15px 12px;
+}
+.notifications .notification-menu hr {
+    margin: 0px 10px 20px;
+}
+.notification-menu ul::-webkit-scrollbar {
+    width: 12px;
+}
+
+/*.content-body {
+    padding: 20px 40px;
+
+}*/
+
+div.widget-todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+    div.widget-todo-list .table-striped > tbody > tr.parent {
+        background-color: #fff !important;
+    }
+div.widget-todo-list .table-striped > tbody > tr.child {
+    background-color: #f9f9f9 !important;
+}
+.leftPadding {
+    margin-left: 20px !important;
+}
+
+.bold {
+    font-weight: 600;
+}
+ul.nav-main li .nav-children li a {
+    padding-right: 40px;
+}
+ul.nav-main li .nav-children .nav-children li a {
+    padding-right: 10px;
+}
+.checkAllPermession {
+    cursor: inherit !important;
+    color: #de2828;
+    font-weight: 600;
+}
+.gotocontroller {
+    cursor: pointer;
+}
+th {
+    text-align: center;
+}
+thead {
+    background-color: #0088cc;
+    color: #fff;
+    
+}
+.btn-sm, .btn-group-sm > .btn
+{
+    padding:2px 8px;
+}
+
+.image-upload > input {
+    display: none;
+}
+
+.image-upload img {
+    width: 80px;
+    cursor: pointer;
+}
+
+.oiltablepicColumn i {
+   color: #e36159;
+}
+.oiltablepay button {
+    background: #e36159;
+    border-color: #e36159 
+    
+}
+.oiltablepay .btn-primary.dropdown-toggle {
+    border-left-color: #e36159;
+}
+
+.oiltablepay .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #0088cc;
+}
+
+.oilSalestablepicColumn i {
+        color: #0088cc;
+}
+.red_color {
+    color: #c71f1f
+}
+.green_color {
+    color: #239347
+}
+.disabledelement {
+    pointer-events: none;
+}
+button.dt-button.buttons-html5,
+button.dt-button.buttons-print {
+    background: #0088cc;
+    border: none;
+    padding: 2px 8px;
+    color: white;
+    margin-right: 3px;
+}
+.dt-button {
+    float: left;
+}
+.dataTables_info {
+    float: left;
+}
+.chatboxWrapper {
+    position: fixed;
+    bottom: 0;
+    right: 100px;
+    z-index: 1000;
+    width: auto;
+    margin: 0 10px;
+}
+.chatbox {
+    float: right;
+    /*max-height: 350px;*/
+    width: 360px;
+    padding: 0px;
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: 14px;
+    text-align: left;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    webkit-box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
+    box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
+    background-clip: padding-box;
+}
+.chatbox header.panel-heading {
+    padding: 10px;
+    display: flex;
+}
+.chatbox header .panel-actions a {
+    color: #08c;
+}
+.profile-picture {
+    position: relative;
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+}
+.chatbox header .panel-title {
+   font-size: 13px;
+    vertical-align: middle;
+    line-height: inherit;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+.chatbox header .profile{
+    left: 15px;
+    display: flex;
+    vertical-align: middle;
+}
+.chatbox .panel-body{
+    padding: 10px;
+}
+.chatbox .panel-body hr{
+    margin: 10px 0 10px 0;
+}
+.chatbox .panel-body .chatlist{
+    min-height: 200px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 0px 5px;
+}
+.chatbox .panel-body .input-group{
+    bottom: 0;
+}
+.chatbox .panel-body ul li{
+    background: rgb(0, 132, 255);
+    color: #fff;
+    border-radius: 10px;
+    max-width: 80%;
+    padding: 5px 10px;
+    line-height: 1;
+    margin-bottom: 3px;
+}
+.chatbox .panel-body .left{
+    text-align: left;
+    float: left;
+    background: #eee;
+    color: #000;
+}
+.chatbox .panel-body .right{
+    text-align: right;
+    float: right;
+    background: rgb(0, 132, 255);
+    color: #fff;
+}
+.chatbox .panel-body .date{
+    font-size: 1rem;
+    line-height: 1.8;
+}
+.chatbox .panel-body .message{
+    line-height: 1.4;
+}
+.show{
+    display:block;
+}
+.hide{
+    display:none;
+}
+.clear {
+    clear: both;
+}
+.customFooter {
+    padding: 20px 10px 20px;
+}
+.isRead {
+    background: #f5f5f5;
+}
+.boldtext {
+    font-weight: 600;
+    color: #000 !important;
+}
+.reportTools {
+    position: absolute;
+    z-index: 100;
+    cursor: pointer;
+    top: 80px;
+}
+.reportPdf {
+   right: 53%;
+}
+.reportExcel {
+    right: 50%;
+}
+.reportWord {
+    right: 47%;
+}
+.reportTools i{
+    font-size: 24px
+}
+.reportExcel i {
+    color: #089208 !important;
+}
+.reportWord i {
+    color: #08c !important;
+}
+.reportViewWrapper {
+    overflow: auto;
+    height: 650px;
+    padding: 0px;
+}
+
+.loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 120px;
+    height: 120px;
+    margin: -76px 0 0 -76px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.amount{
+    text-align:right;
+}
+
+.drag-drop-hover {
+    border: 2px dashed #0088cc;
+}
+
+
+

@@ -1,0 +1,644 @@
+﻿<div class="modal fade" id="EmployeeInfo" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="width: 75%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <i class="fa fa-times windowClose" aria-hidden="true"></i>
+                </button>
+                <h4 class="modal-title">Employee Info</h4>
+            </div>
+            <div class="modal-body" style="padding:5px;">
+                <form class="form-horizontal form-bordered" autocomplete="off">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#OfficialInfo" style="background: aliceblue;"><i style="color:#0099e6;" class="fa fa-user"></i> Official Info</a></li>
+                        <li><a data-toggle="tab" href="#PersonalInfo"style="background: azure;"><i style="color:#0099e6;" class="fa fa-building"></i> Personal Info</a></li>
+                        <li><a data-toggle="tab" href="#HrInfo"style="background: azure;"><i style="color:#0099e6;" class="fa fa-building"></i> HR Info</a></li>
+                        <li><a data-toggle="tab" href="#EducationInfo" style="background:mintcream"><i style="color:#0099e6;" class="fa fa-graduation-cap"></i> Education</a></li>
+                        <li><a data-toggle="tab" href="#ExperienceInfo" style="background: snow;"><i style="color:#0099e6;" class="fa fa-briefcase"></i> Experience</a></li>
+                        <li><a data-toggle="tab" href="#SalaryInfo" style="background: ghostwhite;"><i style="color:#0099e6;" class="fa fa-money"></i> Salary Info</a></li>
+                    </ul>
+                    <div class="tab-content" style="padding:0px;">
+                        <div id="OfficialInfo" class="tab-pane fade in active" style="min-height: 385px; padding-top:10px; background: aliceblue;">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <input type="hidden" id="iAutoId" />
+                                                <input type="hidden" id="vEmployeeId" />
+                                                <input type="hidden" id="upload" />
+
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Employee ID:</label>
+                                                <div class="col-sm-4">
+                                                    <input id="vEmployeeCode" class="form-control input-sm" placeholder="Employee ID" required />
+                                                </div>
+                                                <label class="col-sm-4 control-label"></label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Finger ID:</label>
+                                                <div class="col-sm-5">
+                                                    <input id="vFingerId" class="form-control input-sm" placeholder="Finger ID/ Proximity ID, Face ID" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Employee Name:</label>
+                                                <div class="col-sm-8">
+                                                    <input id="vEmployeeName" class="form-control input-sm" placeholder="Employee Name" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">Name (Bangla):</label>
+                                                <div class="col-sm-8">
+                                                    <input id="vEmployeeNameBangla" class="form-control input-sm" placeholder="Employee Name (Bangla)" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Contact No:</label>
+                                                <div class="col-sm-5">
+                                                    <input id="vContactNo" class="form-control input-sm" placeholder="Contact No" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">Email:</label>
+                                                <div class="col-sm-5">
+                                                    <input type="email" value="user@gmail.com" id="vEmailAddress" class="form-control input-sm" placeholder="Email" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Designation:</label>
+                                                <div class="col-sm-6" style="display: flex;">
+                                                    <select data-plugin-selectTwo id="vDesignationId" class="form-control input-sm">
+                                                        <option value="0">==Choose a Designation==</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Department:</label>
+                                                <div class="col-sm-6" style="display: flex;">
+                                                    <select data-plugin-selectTwo id="vDepartmentId" class="form-control input-sm">
+                                                        <option value="0">==Choose a Department==</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Section:</label>
+                                                <div class="col-sm-6" style="display: flex;">
+                                                    <select data-plugin-selectTwo id="vSectionId" class="form-control input-sm">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"></label>
+                                                <div class="col-sm-6" style="float:left; padding-left:0;">
+                                                    <div class="media-gallery">
+                                                        <div class="row mg-files" style="padding: 0; margin:0;">
+                                                            <div class="isotope-item document col-sm-12 col-md-12 col-lg-12">
+                                                                <div class="thumbnail" style="margin: 0;" id="dropthumbnail" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="leaveDrop(event)">
+                                                                    <div class="thumb-preview">
+                                                                        <a href="" class="thumb-image attachmentlink" download="">
+                                                                            <img src="/images/default-image.png" class="img-responsive attachmentshow" alt="Attachment" style="max-height: 200px; width: 99%;">
+                                                                        </a>
+                                                                        <div class="mg-thumb-options">
+                                                                            <div class="mg-zoom"><i class="fa fa-search"></i></div>
+                                                                            <div class="mg-toolbar">
+                                                                                <div class="mg-group pull-right">
+                                                                                    <button class="dropdown-toggle mg-toggle" type="button" data-toggle="dropdown">
+                                                                                        <i class="fa fa-caret-up"></i>
+                                                                                    </button>
+                                                                                    <ul class="dropdown-menu mg-menu" role="menu">
+                                                                                        <li><a href="" class="attachmentlink" download=""><i class="fa fa-download"></i> Download</a></li>
+                                                                                        <li><a href="#" onclick="clearAttachment()"><i class="fa fa-trash-o"></i> Delete</a></li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="text-center">
+                                                                        <h5 class="text-center mg-title text-semibold" style="font-size: 14px; text-align: center;">Employee Picture</h5>
+                                                                    </div>
+                                                                    <div class="mg-description text-center">
+                                                                        <small class="text-muted">
+                                                                            <a href="" class="attachmentlink" download="" id="fileName"></a>
+                                                                        </small>
+                                                                        <small class="pull-right text-muted"></small>
+                                                                    </div>
+
+                                                                    <div class="text-center">
+                                                                        <div class="image-upload">
+                                                                            <label for="attachmentUP" class="control-label">
+                                                                                <i class="fa fa-camera fa-lg" aria-hidden="true" style="color: #0088cc;
+                                                                   font-size: 1.3em !important;cursor:pointer;"></i>
+                                                                            </label>
+                                                                            <input type="file" name="Item-attachment" id="attachmentUP" accept="image/*,.pdf,capture=camera"
+                                                                                   class="form-control" runat="server" />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Service Type:</label>
+                                                <div class="col-sm-4">
+                                                    <select id="vServiceType" data-plugin-selectTwo style="min-width:196px;" class="form-control-populate">
+                                                        <option value="Management">Management</option>
+                                                        <option value="Office Staff">Office Staff</option>
+                                                        <option value="Supervisor">Supervisor</option>
+                                                        <option value="Driver">Driver</option>
+                                                        <option value="Factory Worker">Factory Worker</option>
+                                                        <option value="Security">Security</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Employee Status:</label>
+                                                <div class="col-sm-4">
+                                                    <select id="vEmployeeStatus" data-plugin-selectTwo style="min-width:132px;" class="form-control-populate">
+                                                        <option value="Continue">Continue</option>
+                                                        <option value="Discontinue">Discontinue</option>
+                                                        <option value="Resignation">Resignation</option>
+                                                        <option value="Retired">Retired</option>
+                                                        <option value="Dismiss">Dismiss</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="employeeStatus">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Status Date:</label>
+                                                <div class="col-sm-4">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </span>
+                                                        <input type="text" id="dStatusDate" onkeypress="inputMask(event,'00-00-0000')" class="form-control input-sm datepick" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        
+                        <div id="HrInfo" class="tab-pane fade in" style="min-height: 385px; padding-top:10px; background: aliceblue;">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Application Date:</label>
+                                                <div class="col-sm-4">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </span>
+                                                        <input type="text" id="dApplicationDate" onkeypress="inputMask(event,'00-00-0000')" class="form-control input-sm datepick" required />
+                                                    </div>
+                                                </div>
+                                                @* <div class="col-sm-4" style="display:flex">
+                                                    <div style="padding-left:6px;">
+                                                        <a href="#" id="btnAddPrimaryBirthDayFileUpload"><i class="fa fa-upload"></i></a>
+                                                    </div>
+                                                    <div style="padding-left:6px;">
+                                                        <a href="#" id="btnAddPrimaryBirthDayFileShow"><i class="fa fa-paperclip"></i></a>
+                                                    </div>
+                                                </div> *@
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Interview Date:</label>
+                                                <div class="col-sm-4">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </span>
+                                                        <input type="text" id="dInterviewDate" onkeypress="inputMask(event,'00-00-0000')" class="form-control input-sm datepick" required />
+                                                    </div>
+                                                </div>
+                                                @* <div class="col-sm-4" style="display:flex">
+                                                    <div style="padding-left:6px;">
+                                                        <a href="#" id="btnAddPrimaryBirthDayFileUpload"><i class="fa fa-upload"></i></a>
+                                                    </div>
+                                                    <div style="padding-left:6px;">
+                                                        <a href="#" id="btnAddPrimaryBirthDayFileShow"><i class="fa fa-paperclip"></i></a>
+                                                    </div>
+                                                </div> *@
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Joining Date:</label>
+                                                <div class="col-sm-4">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </span>
+                                                        <input type="text" id="dJoiningDate" onkeypress="inputMask(event,'00-00-0000')" class="form-control input-sm datepick" required />
+                                                    </div>
+                                                </div>
+                                                @* <div class="col-sm-4" style="display:flex">
+                                                    <div style="padding-left:6px;">
+                                                        <a href="#" id="btnAddPrimaryBirthDayFileUpload"><i class="fa fa-upload"></i></a>
+                                                    </div>
+                                                    <div style="padding-left:6px;">
+                                                        <a href="#" id="btnAddPrimaryBirthDayFileShow"><i class="fa fa-paperclip"></i></a>
+                                                    </div>
+                                                </div> *@
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Probation Period:</label>
+                                                <div class="col-sm-4">
+                                                    <select id="vProbationPeriod" data-plugin-selectTwo style="min-width:125px;" class="form-control-populate">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                        <option value="13">13</option>
+                                                        <option value="14">14</option>
+                                                        <option value="15">15</option>
+                                                    </select>
+                                                </div>
+                                                <label class="col-sm-1 control-label"><span class="text-danger">Month</span></label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Confirmation Date:</label>
+                                                <div class="col-sm-4">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </span>
+                                                        <input type="text" id="dConfirmationDate" onkeypress="inputMask(event,'00-00-0000')" class="form-control input-sm datepick" required />
+                                                    </div>
+                                                </div>
+                                                @* <div class="col-sm-4" style="display:flex">
+                                                    <div style="padding-left:6px;">
+                                                        <a href="#" id="btnAddPrimaryBirthDayFileUpload"><i class="fa fa-upload"></i></a>
+                                                    </div>
+                                                    <div style="padding-left:6px;">
+                                                        <a href="#" id="btnAddPrimaryBirthDayFileShow"><i class="fa fa-paperclip"></i></a>
+                                                    </div>
+                                                </div> *@
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Employee Type:</label>
+                                                <div class="col-sm-4">
+                                                    <select id="vEmployeeType" data-plugin-selectTwo style="min-width:196px;" class="form-control-populate">
+                                                        <option value="Permanent">Permanent</option>
+                                                        <option value="Casual">Casual</option>
+                                                        <option value="Probationary">Probationary</option>
+                                                        <option value="Temporary">Temporary</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="PersonalInfo" class="tab-pane fade" style="min-height: 385px; padding-top:10px; background: azure;">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Date Of Birth:</label>
+                                                <div class="col-sm-4">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </span>
+                                                        <input type="text" id="dDateOfBirth" onkeypress="inputMask(event,'00-00-0000')" class="form-control input-sm datepick" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Religion:</label>
+                                                <div class="col-sm-4">
+                                                    <select id="vReligion" data-plugin-selectTwo style="min-width:110px;" class="form-control-populate">
+                                                        <option value="Islam">Islam</option>
+                                                        <option value="Hindu">Hindu</option>
+                                                        <option value="Buddism">Buddism</option>
+                                                        <option value="Cristian">Cristian</option>
+                                                        <option value="Other">Other</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Gender:</label>
+                                                <div class="col-sm-4">
+                                                    <select id="vGender" data-plugin-selectTwo style="min-width:110px;" class="form-control-populate">
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Father Name:</label>
+                                                <div class="col-sm-8">
+                                                    <input id="vFatherName" class="form-control input-sm" placeholder="Father Name" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Mother Name:</label>
+                                                <div class="col-sm-8">
+                                                    <input id="vMotherName" class="form-control input-sm" placeholder="Mother Name" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">Present Address:</label>
+                                                <div class="col-sm-8">
+                                                    <textarea id="vPresentAddress" class="form-control input-sm" style="height: 64px;"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">Permanent Address:</label>
+                                                <div class="col-sm-8">
+                                                    <textarea id="vPermanentAddress" class="form-control input-sm" style="height: 64px;"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">Nationality:</label>
+                                                <div class="col-sm-5">
+                                                    <input id="vNationality" value="Bangladeshi" class="form-control input-sm" placeholder="Nationality" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">NID:</label>
+                                                <div class="col-sm-4">
+                                                    <input id="vNationalIdNo" class="form-control input-sm" placeholder="NID" />
+                                                </div>
+                                                @* <div class="col-sm-4" style="display:flex">
+                                                    <div style="padding-left:6px;">
+                                                        <a href="#" id="btnAddPrimaryBirthDayFileUpload"><i class="fa fa-upload"></i></a>
+                                                    </div>
+                                                    <div style="padding-left:6px;">
+                                                        <a href="#" id="btnAddPrimaryBirthDayFileShow"><i class="fa fa-paperclip"></i></a>
+                                                    </div>
+                                                </div> *@
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">Blood Group:</label>
+                                                <div class="col-sm-4">
+                                                    <select id="vBloodGroup" data-plugin-selectTwo style="min-width:110px;" class="form-control-populate">
+                                                        <option value="0">==Choose a Group==</option>
+                                                        <option value="A+">A+</option>
+                                                        <option value="B+">B+</option>
+                                                        <option value="AB+">AB+</option>
+                                                        <option value="O+">O+</option>
+                                                        <option value="A-">A-</option>
+                                                        <option value="B-">B-</option>
+                                                        <option value="O-">O-</option>
+                                                        <option value="AB-">AB-</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Marital Status:</label>
+                                                <div class="col-sm-4">
+                                                    <select id="vMaritalStatus" data-plugin-selectTwo style="min-width:132px;" class="form-control-populate">
+                                                        <option value="Unmarried">Unmarried</option>
+                                                        <option value="Married">Married</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div id="maritalStatus">
+                                                <div class="form-group" id="">
+                                                    <label class="col-sm-4 control-label"><span class="text-danger">*</span>Marriage Date:</label>
+                                                    <div class="col-sm-4">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </span>
+                                                            <input type="text" id="dMarriageDate" onkeypress="inputMask(event,'00-00-0000')" class="form-control input-sm datepick" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label"><span class="text-danger">*</span>Spouse Name:</label>
+                                                    <div class="col-sm-7">
+                                                        <input id="vSpouseName" class="form-control input-sm" placeholder="Spouse Name" required />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label"><span class="text-danger">*</span>Spouse Occupation:</label>
+                                                    <div class="col-sm-7">
+                                                        <input id="vSpouseOccupation" class="form-control input-sm" placeholder="Spouse Occupation" required />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label"><span class="text-danger">*</span>Number Of Child:</label>
+                                                    <div class="col-sm-4">
+                                                        <input id="iNumberOfChild" type="number" class="form-control input-sm amount" placeholder="Number Of Child" required />
+                                                    </div>
+                                                    <label class="col-sm-4 control-label"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @*<hr class="mt-md mb-md">*@
+
+                            </div>
+                        </div>
+
+                        <div id="EducationInfo" class="tab-pane fade" style="min-height: 385px; padding-top:10px; background: mintcream;">
+                            <div class="form-group">
+                                <div class="col-sm-11 control-label pointTax"></div>
+                                <div class="col-sm-1 addRowPositionEducation" style="text-align: right;">
+                                    <a class="btn btn-primary btn-sm text-right" id="btnAddRowEducation"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                            <table class="table table-bordered table-striped tableStyle" id="gridEducation">
+                                <thead>
+                                    <tr>
+                                        <th class="no-sort" style="width:15%" id="vExamp">EXAM</th>
+                                        <th class="no-sort" style="width:10%" id="vGroup">GROUP</th>
+                                        <th class="no-sort" style="width:25%" id="vInstitute">INSTITUTE</th>
+                                        <th class="no-sort" style="width:25%" id="vBoard">BOARD/UNIVERSITY</th>
+                                        <th class="no-sort" style="width:10%" id="vDivOrClass">DIV/CLASS</th>
+                                        <th class="no-sort" style="width:10%" id="iYear">YEAR</th>
+                                        <th class="no-sort" style="width:5%" id="removeEducation"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                                <tfoot>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        <div id="ExperienceInfo" class="tab-pane fade" style="min-height: 385px; padding-top: 10px; background: snow; ">
+                            <div class="form-group">
+                                <div class="col-sm-11 control-label pointTax"></div>
+                                <div class="col-sm-1 addRowPositionExperience" style="text-align: right;">
+                                    <a class="btn btn-primary btn-sm text-right" id="btnAddRowExperience"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                            <table class="table table-bordered table-striped tableStyle" id="gridExperience">
+                                <thead>
+                                    <tr>
+                                        <th class="no-sort" style="width:15%" id="vPostOrDesignation">POST/DESIG.</th>
+                                        <th class="no-sort" style="width:25%" id="vCompanyName">COMPANY NAME</th>
+                                        <th class="no-sort" style="width:15%" id="dFrom">FROM</th>
+                                        <th class="no-sort" style="width:15%" id="dTo">TO</th>
+                                        <th class="no-sort" style="width:25%" id="vMajorResponsibility">MAJOR RESPONSIBILITY</th>
+                                        <th class="no-sort" style="width:5%" id="removeExperience"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                                <tfoot>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        <div id="SalaryInfo" class="tab-pane fade" style="min-height: 385px; padding-top: 10px;  background: ghostwhite;">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Basic:</label>
+                                                <div class="col-sm-4">
+                                                    <input id="mBasic" onkeyup="amountWithComma('#mBasic'),setGrossAmount()" class="form-control input-sm amount" placeholder="Basic" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>House Rent:</label>
+                                                <div class="col-sm-4">
+                                                    <input id="mHouseRent" onkeyup="amountWithComma('#mHouseRent'),setGrossAmount()" class="form-control input-sm amount" placeholder="House Rent" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Medical:</label>
+                                                <div class="col-sm-4">
+                                                    <input id="mMedicalAllowance" onkeyup="amountWithComma('#mMedicalAllowance'),setGrossAmount()" class="form-control input-sm amount" placeholder="Medical Allowance" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Gross:</label>
+                                                <div class="col-sm-4">
+                                                    <input id="mGross" class="form-control input-sm amount" placeholder="Gross" required />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Income Tax:</label>
+                                                <div class="col-sm-4">
+                                                    <input id="mIncomeTax" class="form-control input-sm amount" placeholder="Income Tax" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Provident Fund %:</label>
+                                                <div class="col-sm-4">
+                                                    <input id="mProvidentFund" class="form-control input-sm amount" placeholder="Provident Fund (%)" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="rdoMoneyTransferType">
+                                                <label class="col-sm-4 control-label">Type:</label>
+                                                <div class="col-sm-8">
+                                                    <label class="radio-inline">
+                                                        <input type="radio" id="radio1" value="Bank" name="vMoneyTransferType" checked>Bank A/C
+                                                    </label>
+                                                    <label class="radio-inline">
+                                                        <input type="radio" id="radio2" value="BFTN" name="vMoneyTransferType">BFTN
+                                                    </label>
+                                                    <label class="radio-inline">
+                                                        <input type="radio" id="radio3" value="Cash" name="vMoneyTransferType">Cash
+                                                    </label>
+                                                    <label class="radio-inline">
+                                                        <input type="radio" id="radio4" value="Mobile" name="vMoneyTransferType">Mobile
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group" id="bankOptionBankId">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Bank:</label>
+                                                <div class="col-sm-6" style="display: flex;">
+                                                    <select data-plugin-selectTwo id="vBankId" class="form-control input-sm">
+                                                        <option value="0">==Choose a Bank==</option>
+                                                    </select>
+                                                    @*<div style="padding-left:6px;">
+                                                        <a href="/Payroll/BankInfo" id="btnAddPrimary"><i class="fa fa-plus"></i></a>
+                                                    </div>*@
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="bankOptionBankBranchId">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Bank Branch:</label>
+                                                <div class="col-sm-6" style="display: flex;">
+                                                    <select data-plugin-selectTwo id="vBankBranchId" class="form-control input-sm">
+                                                        <option value="0">==Choose a Bank Branch</option>
+                                                    </select>
+                                                    @*<div style="padding-left:6px;">
+                                                        <a href="/Payroll/BankBranchInfo" id="btnAddPrimary"><i class="fa fa-plus"></i></a>
+                                                    </div>*@
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="bankOptionAccountNo">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Account No:</label>
+                                                <div class="col-sm-6">
+                                                    <input id="vAccountNo" class="form-control input-sm" placeholder="Account No" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="bftnOptionRoutingNo">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Routing No:</label>
+                                                <div class="col-sm-6">
+                                                    <input id="vRoutingNo" class="form-control input-sm" placeholder="Routing No" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="mobileBankinAccountMobileNo">
+                                                <label class="col-sm-4 control-label"><span class="text-danger">*</span>Mobile No:</label>
+                                                <div class="col-sm-6">
+                                                    <input id="vAccountMobileNo" class="form-control input-sm" placeholder="Banking Mobile" required />
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="mt-md mb-md">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer customFooter" style="margin:0px;">
+                <div id="add">
+                    <partial name="_ModalButtonCreate" />
+                </div>
+                <div id="edit">
+                    <partial name="_ModalButtonEdit" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/assets/javascripts/pages/examples.mediagallery.js"></script>
+<script asp-append-version="true" src="~/js/FileUpload.js"></script>

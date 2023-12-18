@@ -1,0 +1,444 @@
+﻿@using ESL.Utility
+@using ESL.DataAccess
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor httpcontext;
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject IBackgroundTaskQueue Background
+<!doctype html>
+<html class="fixed">
+<head>
+
+    <!-- Basic -->
+    <meta charset="UTF-8">
+    <title>MEGHNA - Payroll Management System</title>
+    <meta name="keywords" content="MEGHNA Payroll" />
+    <meta name="description" content="MEGHNA Payroll">
+    <meta name="author" content="eslctg@gmail.com">
+    <link rel="icon" href="/images/favicon.png" type="image/png" sizes="16x16">
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- Web Fonts  -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/assets/vendor/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="~/assets/vendor/magnific-popup/magnific-popup.css" />
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap-datepicker/css/datepicker3.css" />
+
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.css" />
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap-colorpicker/css/bootstrap-colorpicker.css" />
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap-timepicker/css/bootstrap-timepicker.css" />
+    <link rel="stylesheet" href="~/assets/vendor/dropzone/css/basic.css" />
+    <link rel="stylesheet" href="~/assets/vendor/dropzone/css/dropzone.css" />
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap-markdown/css/bootstrap-markdown.min.css" />
+    <link rel="stylesheet" href="~/assets/vendor/summernote/summernote.css" />
+    <link rel="stylesheet" href="~/assets/vendor/summernote/summernote-bs3.css" />
+    <link rel="stylesheet" href="~/assets/vendor/codemirror/lib/codemirror.css" />
+    <link rel="stylesheet" href="~/assets/vendor/codemirror/theme/monokai.css" />
+
+    <!-- Specific Page Vendor CSS -->
+    <link rel="stylesheet" href="~/assets/vendor/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css" />
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap-multiselect/bootstrap-multiselect.css" />
+    <link rel="stylesheet" href="~/assets/vendor/morris/morris.css" />
+
+
+    <!-- for Time Picker -->
+    @*<link rel="stylesheet" href="~/assets/vendor/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">*@
+    <!-- for Time Picker -->
+    <!-- Specific Page Vendor CSS -->
+    <link rel="stylesheet" href="~/assets/vendor/select2/select2.css" />
+    <link rel="stylesheet" href="~/assets/vendor/jquery-datatables-bs3/assets/css/datatables.css" />
+    <!-- Specific Page Vendor CSS -->
+    <link rel="stylesheet" href="~/assets/vendor/pnotify/pnotify.custom.css" />
+    <!--Moris Chart-->
+    <link rel="stylesheet" href="~/assets/vendor/morris/morris.css" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="~/assets/stylesheets/theme.css" />
+
+    <!-- Skin CSS -->
+    <link rel="stylesheet" href="~/assets/stylesheets/skins/default.css" />
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="~/assets/stylesheets/theme-custom.css">
+
+    <link asp-append-version="true" rel="stylesheet" href="~/css/site.css">
+    <link rel="stylesheet" href="~/css/bootstrap-datetimepicker.min.css" />
+    <link asp-append-version="true" rel="stylesheet" href="~/assets/vendor/isotope/jquery.isotope.css" />
+    <!-- Head Libs -->
+    <script src="~/assets/vendor/modernizr/modernizr.js"></script>
+    <!----dtsel-->>
+    <link asp-append-version="true" rel="stylesheet" href="~/css/dtsel.css" />
+    <link asp-append-version="true" rel="stylesheet" href="~/css/autocomplete.css">
+
+
+
+    <!-- fullCalendar -->
+    <link asp-append-version="true" rel="stylesheet" href="~/assets/adminLT/plugins/fullcalendar/main.min.css">
+    <link asp-append-version="true" rel="stylesheet" href="~/assets/adminLT/plugins/fullcalendar-daygrid/main.min.css">
+    <link asp-append-version="true" rel="stylesheet" href="~/assets/adminLT/plugins/fullcalendar-timegrid/main.min.css">
+    <link asp-append-version="true" rel="stylesheet" href="~/assets/adminLT/plugins/fullcalendar-bootstrap/main.min.css">
+    
+    <link href="~/dist/apexcharts.css" rel="stylesheet" />
+
+    <style media="only screen and (min-width: 768px)">
+
+        html.fixed .content-body {
+            margin-left: 250px;
+        }
+    </style>
+
+    <style media="only screen and (max-width: 767px)">
+
+        .header .logo-container, .header .header-right {
+            background: linear-gradient(to bottom, #34495e 0%, #3b5773 100%);
+            box-shadow: 0 5px 20px rgba(0,0,0,.25),0 10px 10px rgba(0,0,0,.22) !important;
+            border-bottom: none !important;
+            border-top: none !important;
+        }
+    </style>
+
+
+
+</head>
+<body>
+    <section class="body">
+
+        <!-- start: header -->
+        <header class="header">
+            <div class="logo-container">
+                <a class="logo" style="display: flex; text-decoration: none;">
+                    <img src="/images/logo.png" height="45" alt="MEGHNA" />
+                    <h2 style="margin: 0 !important;color: #fff; padding-top:5px;">MEGHNA</h2>
+                </a>
+                <div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
+                    <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+                </div>
+            </div>
+
+            <!-- start: search & user box -->
+            <div class="header-right">
+                @*<span class="separator"></span>*@
+                <!--<ul class="notifications">
+                    <li>-->
+                        <!--Chat Message-->
+                        <!--<a href="#" id="chat_toggole" class="dropdown-toggle notification-icon" data-toggle="dropdown">
+                            <i class="fa fa-envelope"></i>
+                            <span id="chatmessageCount" class="badge hide">0</span>
+                        </a>
+
+                        <div class="dropdown-menu notification-menu">
+                            <div class="notification-title">
+                                <span class="pull-right label label-default">0</span>
+                                Messages
+                            </div>
+
+                            <div class="content">
+                                <ul id="chatNotificationList"></ul>
+
+                                <hr />
+
+                                <div class="text-right">
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>-->
+                        <!--Notifications-->
+                        <!--<a href="#" id="notify_toggole" class="dropdown-toggle notification-icon" data-toggle="dropdown">
+                            <i class="fa fa-bell"></i>
+                            <span class="badge hide" id="verify_notification">0</span>
+                        </a>
+
+                        <a href="" id="notify_verify_page" class="on-default edit-row">
+
+                        </a>
+
+                        <div class="dropdown-menu notification-menu">
+                            <div class="notification-title">
+                                <span class="pull-right label label-default"></span>
+                                Alerts
+                            </div>
+
+                            <div class="content">
+                                <ul id="notification_list">
+                                </ul>
+
+                                <hr />
+
+                                <div class="text-left">
+                                    <a class="view-more">View All</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>-->
+
+
+                <span class="separator"></span>
+
+                <div id="userbox" class="userbox">
+                    <a href="#" data-toggle="dropdown">
+                        <figure class="profile-picture">
+                            <img src="@httpcontext.HttpContext.Session.GetString("profilePic")" style="width:35px; height:35px;" onerror="this.src = '/images/defult_user.jpg'" alt="PF" class="img-circle" data-lock-picture="/images/defult_user.jpg" />
+                        </figure>
+                        <div class="profile-info" data-lock-name="" data-lock-email="">
+                            <span class="name">@User.Identity.Name</span>
+                            @if (User.IsInRole(SD.Role_Admin))
+                            {
+                                <span id="user-type" class="role">Admin</span>
+                            }
+                            else
+                            {
+                                <span id="user-type" class="role">User</span>
+                            }
+
+                        </div>
+
+                        <i class="fa custom-caret"></i>
+                    </a>
+
+                    <div class="dropdown-menu">
+                        <ul class="list-unstyled">
+                            <li class="divider"></li>
+                            <li>
+                                <a role="menuitem" tabindex="-1" asp-area="Admin" asp-controller="UserProfile" asp-action="Upsert"><i class="fa fa-user"></i> My Profile</a>
+                            </li>
+                            <li>
+                                <a role="menuitem" tabindex="-1" asp-area="Identity" asp-page="/Account/Manage/ChangePassword"><i class="fa fa-lock"></i> Change Password</a>
+                            </li>
+                            <li>
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <a role="menuitem" tabindex="-1"><i class="fa fa-power-off"></i><button type="submit" style="background: none;border: none;width: 80%;text-align: left;">Logout</button></a>
+                                </form>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- end: search & user box -->
+        </header>
+        <!-- end: header -->
+
+        <div class="inner-wrapper">
+            <!-- start: sidebar -->
+            <aside id="sidebar-left" class="sidebar-left">
+
+                <div class="sidebar-header">
+                    <div class="sidebar-title">
+                        Navigation
+                    </div>
+                    <div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
+                        <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+                    </div>
+                </div>
+
+
+                @await Component.InvokeAsync("Menu")
+
+                @* <footer style="bottom: 0; background: #29394a; border-top: 1px solid #828080; cursor: pointer; position: absolute; width: 100%; padding: 10px;">
+                        <img src="/images/esl_logo.png" height="28" alt="Evision Software Ltd." style="margin-right: 10px;" />
+                        <a style="color: white;" target="_blank" href="http://www.eslctg.com">Evision Software Ltd.</a>
+                    </footer>*@
+
+            </aside>
+            <!-- end: sidebar -->
+
+            <section role="main" class="content-body">
+                <div class="">
+                    @RenderBody()
+                </div>
+            </section>
+
+            <!--Chat-->
+            @*<a class="sidebar-right-toggle" data-open="sidebar-right" data-toggle="tooltip" data-placement="top" title="" data-original-title="Chat"><i class="fa fa-plus"></i></a>
+            <div class="chatboxWrapper">
+                <section id="chatboxWrapper" data-reciver="" class="panel chatbox hide">
+                    <header class="panel-heading">
+                        <div class="profile">
+                            <figure class="profile-picture">
+                                <img src="/images/defult_user.jpg" alt="" class="img-circle">
+                            </figure>
+                            <h5 class="panel-title"></h5>
+                        </div>
+                        <div class="panel-actions">
+                            <a href="#" class="fa fa-caret-down"></a>
+                            <a href="#" class="fa fa-times"></a>
+                        </div>
+                    </header>
+                    <div class="panel-body">
+                        <ul id="chat_list" class="chatlist">
+                        </ul>
+
+                        <hr />
+                        <div class="input-group mb-md">
+                            <textarea id="chatText" class="form-control" rows="2"></textarea>
+                            <span class="input-group-btn">
+                                <button id="sendChat" class="btn btn-primary" type="button" style="line-height: 2.9;background: rgb(0, 132, 255);">
+                                    <i class="fa fa-chevron-right"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </section>
+            </div>*@
+            @*<aside id="sidebar-right" class="sidebar-right">
+                <div class="nano">
+                    <div class="nano-content">
+                        <a href="#" class="mobile-close visible-xs">
+                            <i class="fa fa-chevron-left"></i> Back
+                        </a>
+
+                        <div class="sidebar-right-wrapper">
+
+
+                            <div class="sidebar-widget widget-friends">
+                                <h6>Friends</h6>
+                                <ul id="myFriendList">
+
+                                    @foreach (ApplicationUser user in Background.getUsers())
+                                    {
+                                        if (user.Email != User.Identity.Name)
+                                        {
+                                            var status = Background.getOnlineUsers().Contains(user.Id) ? "status-online" : "status-offline";
+                                            var pic = @user.ImagePF == null ? "/images/defult_user.jpg" : @user.ImagePF;
+                                            <li onclick="openChatBox(this.id,this.dataset.name,this.dataset.pic)" class="@status myfriends" id="@user.Id" data-name="@user.Name" data-pic="@pic">
+                                                <figure class="profile-picture">
+                                                    <img src="@pic" onerror="this.src='/images/defult_user.jpg';" alt="" class="img-circle">
+                                                </figure>
+                                                <div class="profile-info">
+                                                    <span class="name">@user.Name</span>
+                                                </div>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            var pic = @user.ImagePF == null ? "/images/defult_user.jpg" : @user.ImagePF;
+                                            <input asp-for="@user.Id" id="user-me" class="form-control" type="hidden">
+                                            <input asp-for="@user.Name" id="user-me-name" class="form-control" type="hidden">
+                                            <input asp-for="@pic" id="user-me-pic" class="form-control" type="hidden">
+                                        }
+                                    }
+
+
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </aside>*@
+        </div>
+    </section>
+
+    <!-- Vendor -->
+    <script src="~/assets/vendor/jquery/jquery.js"></script>
+
+
+    <script src="~/assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="~/assets/vendor/nanoscroller/nanoscroller.js"></script>
+    <script src="~/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="~/assets/vendor/magnific-popup/magnific-popup.js"></script>
+    <script src="~/assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
+
+    <!-- Specific Page Vendor -->
+    <script src="~/assets/vendor/jquery-ui/js/jquery-ui-1.10.4.custom.js"></script>
+    <script src="~/assets/vendor/jquery-ui-touch-punch/jquery.ui.touch-punch.js"></script>
+    <script src="~/assets/vendor/jquery-appear/jquery.appear.js"></script>
+    <script src="~/assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+    <script src="~/assets/vendor/jquery-easypiechart/jquery.easypiechart.js"></script>
+    <script src="~/assets/vendor/flot/jquery.flot.js"></script>
+    <script src="~/assets/vendor/flot-tooltip/jquery.flot.tooltip.js"></script>
+    <script src="~/assets/vendor/flot/jquery.flot.pie.js"></script>
+    <script src="~/assets/vendor/flot/jquery.flot.categories.js"></script>
+    <script src="~/assets/vendor/flot/jquery.flot.resize.js"></script>
+    <script src="~/assets/vendor/raphael/raphael.js"></script>
+    <script src="~/assets/vendor/snap-svg/snap.svg.js"></script>
+    <script src="~/assets/vendor/liquid-meter/liquid.meter.js"></script>
+    <script src="~/assets/vendor/morris/morris.js"></script>
+    <script src="~/assets/vendor/ios7-switch/ios7-switch.js"></script>
+
+
+    <script src="~/assets/vendor/select2/select2.js"></script>
+    <script src="~/assets/vendor/jquery-datatables/media/js/jquery.dataTables.js"></script>
+    <script src="~/assets/vendor/jquery-datatables-bs3/assets/js/datatables.js"></script>
+
+    <script src="~/assets/vendor/jquery-maskedinput/jquery.maskedinput.js"></script>
+    <script src="~/assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+    <script src="~/assets/vendor/bootstrap-maxlength/bootstrap-maxlength.js"></script>
+    <script src="~/assets/vendor/fuelux/js/spinner.js"></script>
+    <script src="~/assets/vendor/dropzone/dropzone.js"></script>
+    <script src="~/assets/vendor/bootstrap-markdown/js/markdown.js"></script>
+    <script src="~/assets/vendor/bootstrap-markdown/js/to-markdown.js"></script>
+    <script src="~/assets/vendor/bootstrap-markdown/js/bootstrap-markdown.js"></script>
+    <script src="~/assets/vendor/codemirror/lib/codemirror.js"></script>
+    <script src="~/assets/vendor/codemirror/addon/selection/active-line.js"></script>
+    <script src="~/assets/vendor/codemirror/addon/edit/matchbrackets.js"></script>
+    <script src="~/assets/vendor/codemirror/mode/javascript/javascript.js"></script>
+    <script src="~/assets/vendor/codemirror/mode/xml/xml.js"></script>
+    <script src="~/assets/vendor/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="~/assets/vendor/codemirror/mode/css/css.js"></script>
+    <script src="~/assets/vendor/summernote/summernote.js"></script>
+    <script src="~/assets/vendor/imagepreview/imagepreview.min.js"></script>
+
+
+    @*<script src="~/assets/vendor/moment/moment.min.js"></script>*@
+    <!-- for Time Picker -->
+    @*<script src="~/assets/vendor/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>*@
+    <!-- for Time Picker -->
+    <!-- Specific Page Vendor -->
+    @* <script src="~/lib/toaster/toaster.js"></script>*@
+    <script src="~/assets/vendor/pnotify/pnotify.custom.js"></script>
+
+    <!-- Theme Base, Components and Settings -->
+    <script src="~/assets/javascripts/theme.js"></script>
+
+    <!-- Theme Custom -->
+    <script src="~/assets/javascripts/theme.custom.js"></script>
+
+    <!-- Theme Initialization Files -->
+    <script src="~/assets/javascripts/theme.init.js"></script>
+
+    <script src="~/lib/data-table-moment/moment.min.2.24.0.js"></script>
+    <!-- Examples -->
+    <script src="~/assets/vendor/isotope/jquery.isotope.js"></script>
+    <script asp-append-version="true" src="~/assets/javascripts/pages/examples.mediagallery.js"></script>
+    <script src="~/assets/javascripts/forms/examples.wizard.js"></script>
+    <script src="~/assets/javascripts/forms/examples.advanced.form.js" /></script>
+
+    <!-- ESL Custom JS -->
+    @RenderSection("Scripts", required: false)
+    <script asp-append-version="true" src="~/js/notifyShare.js"></script>
+    <script asp-append-version="true" src="~/js/service.js"></script>
+    <script asp-append-version="true" src="~/js/bootstrap-datetimepicker.js"></script>
+    <script asp-append-version="true" src="~/js/notificationPulling.js"></script>
+    <script asp-append-version="true" src="~/js/dtsel.js"></script>
+    <script asp-append-version="true" src="~/js/FileUpload.js"></script>
+    <script type="text/javascript">
+
+    </script>
+
+    
+
+    <!-- fullCalendar 2.2.5 -->
+    <script asp-append-version="true" src="~/assets/adminLT/plugins/moment/moment.min.js"></script>
+    <script asp-append-version="true" src="~/assets/adminLT/plugins/fullcalendar/main.min.js"></script>
+    <script asp-append-version="true" src="~/assets/adminLT/plugins/fullcalendar-daygrid/main.min.js"></script>
+    <script asp-append-version="true" src="~/assets/adminLT/plugins/fullcalendar-timegrid/main.min.js"></script>
+    <script asp-append-version="true" src="~/assets/adminLT/plugins/fullcalendar-interaction/main.min.js"></script>
+    <script asp-append-version="true" src="~/assets/adminLT/plugins/fullcalendar-bootstrap/main.min.js"></script>
+
+    <script src="~/dist/apexcharts.js"></script>
+
+</body>
+</html>
+
+

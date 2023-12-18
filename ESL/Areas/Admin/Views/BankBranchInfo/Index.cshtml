@@ -1,0 +1,37 @@
+﻿<section class="panel">
+    <header class="panel-heading">
+        <div class="panel-actions">
+            <a href="#" class="fa fa-caret-down"></a>
+        </div>
+        <h2 class="panel-title">Branch  List</h2>
+    </header>
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="mb-md">
+                    <a class="btn btn-primary" id="btnAdd">Add <i class="fa fa-plus"></i></a>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered table-striped" id="tbBankBranch">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>    
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+
+@section Scripts{
+    <partial name="/Areas/Admin/Views/BankBranchInfo/_BankBranch.cshtml" />
+    <script src="~/js/JSAccounts/bankBranchList.js"></script>
+    <script src="~/js/JSAccounts/bankBranchService.js"></script>
+}

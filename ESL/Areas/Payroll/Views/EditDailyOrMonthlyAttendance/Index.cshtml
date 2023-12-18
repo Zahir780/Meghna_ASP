@@ -1,0 +1,122 @@
+﻿<style>
+    .select2-container .select2-choice {
+        height: 30px;
+        line-height: 1.42857;
+    }
+</style>
+
+<section class="panel">
+    <header class="panel-heading">
+        <div class="panel-actions">
+            <a href="#" class="fa fa-caret-down"></a>
+        </div>
+        <h2 class="panel-title entryListHeader">Edit Daily Or Monthly Attendance</h2>
+    </header>
+
+    <div class="panel-body">
+        <form class="form-horizontal form-bordered" autocomplete="off">
+            <input type="hidden" id="autoId" />
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="form-group" id="rdoMoneyTransferType">
+                                <label class="col-sm-3 control-label">Attendance:</label>
+                                <div class="col-sm-4">
+                                    <label class="radio-inline">
+                                        <input type="radio" id="radio1" value="Date" name="vAttendanceBy" checked>Date
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" id="radio2" value="Month" name="vAttendanceBy">Month
+                                    </label>
+                                </div>
+                                <label class="col-sm-4 control-label"><span class="text-danger">* Use 24-Hour Format</span></label>
+                            </div>
+                            <div class="form-group">
+                                <div id="pDate">
+                                    <label class="col-sm-3 control-label"><span class="text-danger">*</span>Date:</label>
+                                    <div class="col-sm-4">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </span>
+                                            <input type="text" id="dDate" onkeypress="inputMask(event,'00-00-0000')" class="form-control input-sm datepick" required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="pMonth" hidden>
+                                    <label class="col-sm-3 control-label"><span class="text-danger">*</span>Month:</label>
+                                    <div class="col-sm-7" style="display: flex;">
+                                        <select data-plugin-selectTwo id="vMonth" class="form-control input-sm">
+                                            <option value="0">==Choose a Month==</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span class="text-danger">*</span>Department:</label>
+                                <div class="col-sm-7" style="display: flex;">
+                                    <select data-plugin-selectTwo id="pDepartmentId" class="form-control input-sm">
+                                        <option value="0">==Choose a Department==</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span class="text-danger">*</span>Section:</label>
+                                <div class="col-sm-7" style="display: flex;">
+                                    <select data-plugin-selectTwo id="pSectionId" class="form-control input-sm">
+                                        <option value="0">==Choose a Section==</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span class="text-danger">*</span>Employee:</label>
+                                <div class="col-sm-7" style="display: flex;">
+                                    <select data-plugin-selectTwo id="pEmployeeId" class="form-control input-sm">
+                                        <option value="0">==Choose a Employee==</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <table class="table table-bordered table-striped" id="tbEditDailyOrMonthlyAttendance" width="100%">
+                <thead>
+                    <tr>
+                        <th>Emp. ID</th>
+                        <th>Code</th>
+                        <th>Employee Name</th>
+                        <th>Department Name</th>
+                        <th>Day</th>
+
+                        <th>Date (IN)</th>
+                        <th>HH (IN)</th>
+                        <th>MIM (IN)</th>
+
+                        <th>Date (OUT)</th>
+                        <th>HH (OUT)</th>
+                        <th>MIM (OUT)</th>
+
+                        <th>Permitted By</th>
+                        <th>Reason</th>
+                        @*vEmployeeId,vEmployeeCode,vEmployeeName,vDepartmentName,vSectionName,dAttendanceDate,inHour,inMinute,outHour,outMinute,PermittedBy,vReason*@
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <footer class="panel-footer text-center">
+        <partial name="_UpdateExit" />
+    </footer>
+</section>
+@section Scripts{
+    <script src="~/js/JSPayroll/EditDailyOrMonthlyAttendanceService.js" asp-append-version="true"></script>
+}

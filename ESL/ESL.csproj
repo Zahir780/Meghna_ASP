@@ -1,0 +1,74 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-ESL-84744C35-FD70-418D-AA51-23B5CAF11134</UserSecretsId>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Services\Inventory\**" />
+    <Content Remove="Services\Inventory\**" />
+    <EmbeddedResource Remove="Services\Inventory\**" />
+    <None Remove="Services\Inventory\**" />
+    <TypeScriptCompile Remove="Services\Inventory\**" />
+  </ItemGroup>
+
+
+
+  <ItemGroup>
+    <PackageReference Include="BouncyCastle" Version="1.8.6.1" />
+    <PackageReference Include="FastReport.Core" Version="2019.4.9" />
+    <PackageReference Include="FastReport.Data.MsSql" Version="2019.4.0" />
+    <PackageReference Include="FastReport.Web" Version="2019.4.9" />
+    <PackageReference Include="iTextSharp" Version="5.5.13.2" />
+    <PackageReference Include="jQuery" Version="3.5.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.8" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.7.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Quartz" Version="3.2.3" />
+    <PackageReference Include="System.CodeDom" Version="5.0.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ESL.DataAccess\ESL.DataAccess.csproj" />
+    <ProjectReference Include="..\ESL.Models\ESL.Models.csproj" />
+    <ProjectReference Include="..\ESL.Utility\ESL.Utility.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\Inventory\invoiceAttach\" />
+    <Folder Include="wwwroot\images\Inventory\poAttach\" />
+    <Folder Include="wwwroot\images\Inventory\item\" />
+    <Folder Include="wwwroot\images\Inventory\attachment\" />
+    <Folder Include="wwwroot\images\Inventory\challanAttach\" />
+    <Folder Include="wwwroot\images\Inventory\supplier\vat\" />
+    <Folder Include="wwwroot\images\Inventory\supplier\tin\" />
+    <Folder Include="wwwroot\images\Inventory\supplier\tradeLicense\" />
+    <Folder Include="wwwroot\images\bank\" />
+    <Folder Include="wwwroot\images\journal\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\dist\apexcharts.amd.js" />
+    <None Include="wwwroot\dist\apexcharts.common.js" />
+    <None Include="wwwroot\dist\apexcharts.esm.js" />
+    <None Include="wwwroot\dist\apexcharts.js" />
+    <None Include="wwwroot\dist\apexcharts.min.js" />
+    <None Include="wwwroot\dist\locales\ko.js" />
+  </ItemGroup>
+
+</Project>

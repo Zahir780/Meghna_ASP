@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="02/20/2021 14:46:25" ReportInfo.Modified="01/10/2023 16:32:59" ReportInfo.CreatorVersion="2019.4.9.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+   
+  }
+}
+</ScriptText>
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlqpmPT2REr9siOlDTMq2XO+Vhr+0IBqCuVhkbd0uHZzfQteQuuR+dsVOHD2onBcappVp8LizhAiKe/7ZUbkFdU+/1HTv1ZOtjMFAZjoiKY9q2a9wUfwF9fMOR68PytTxcWAygCMHwsSrCb1jTyirE0YFMRDukcXOd2eB7euPN02fv/ffmc7w/wg3ms26Z/M5XS">
+      <TableDataSource Name="Table" DataType="System.Int32" Enabled="true" SelectCommand="Execute(@Parameter)">
+        <Column Name="vEmployeeId" DataType="System.String"/>
+        <Column Name="vEmployeeCode" DataType="System.String"/>
+        <Column Name="vFingerId" DataType="System.String"/>
+        <Column Name="vEmployeeName" DataType="System.String"/>
+        <Column Name="vDesignationId" DataType="System.String"/>
+        <Column Name="vDepartmentId" DataType="System.String"/>
+        <Column Name="vDepartmentName" DataType="System.String"/>
+        <Column Name="vSectionId" DataType="System.String"/>
+        <Column Name="vSectionName" DataType="System.String"/>
+        <Column Name="vContactNo" DataType="System.String"/>
+        <Column Name="vEmployeeType" DataType="System.String"/>
+        <Column Name="vEmployeePhoto" DataType="System.String"/>
+        <Column Name="dJoinDate" DataType="System.DateTime"/>
+        <Column Name="vDesignation" DataType="System.String"/>
+        <Column Name="iRank" DataType="System.Int32"/>
+        <Column Name="vShiftId" DataType="System.String"/>
+        <Column Name="vShiftName" DataType="System.String"/>
+        <Column Name="dTxtDate" DataType="System.DateTime"/>
+        <Column Name="vDayName" DataType="System.String"/>
+        <Column Name="dInTime" DataType="System.DateTime"/>
+        <Column Name="dOutTime" DataType="System.DateTime"/>
+        <Column Name="dutyHour" DataType="System.Int32"/>
+        <Column Name="dutyMin" DataType="System.Int32"/>
+        <Column Name="dutySec" DataType="System.Int32"/>
+        <Column Name="OTHour" DataType="System.Int32"/>
+        <Column Name="OTMin" DataType="System.Int32"/>
+        <Column Name="OTSec" DataType="System.Int32"/>
+        <Column Name="vTxtStatus" DataType="System.String"/>
+        <Column Name="vTxtRemarks" DataType="System.String"/>
+        <Column Name="iPresentCount" DataType="System.Int32"/>
+        <Column Name="iAbsentCount" DataType="System.Int32"/>
+        <Column Name="iLWPCount" DataType="System.Int32"/>
+        <Column Name="iNotCount" DataType="System.Int32"/>
+        <Column Name="iHolidayCount" DataType="System.Int32"/>
+        <Column Name="iCLeaveCount" DataType="System.Int32"/>
+        <Column Name="iSkLeaveCount" DataType="System.Int32"/>
+        <Column Name="iEarLeaveCount" DataType="System.Int32"/>
+        <Column Name="iMLeaveCount" DataType="System.Int32"/>
+        <Column Name="iSpecialCount" DataType="System.Int32"/>
+        <Column Name="iLateCount" DataType="System.Int32"/>
+        <Column Name="TotalHour" DataType="System.Int32"/>
+        <Column Name="TotalMin" DataType="System.Int32"/>
+        <Column Name="TotalSec" DataType="System.Int32"/>
+        <Column Name="TotalOTHour" DataType="System.Int32"/>
+        <Column Name="TotalOTMin" DataType="System.Int32"/>
+        <Column Name="TotalOTSec" DataType="System.Int32"/>
+        <Column Name="lateCountOfAbsent" DataType="System.Int32"/>
+        <Column Name="earlyOutCount" DataType="System.Int32"/>
+        <Column Name="tourCount" DataType="System.Int32"/>
+        <Column Name="SuspendCount" DataType="System.Int32"/>
+        <Column Name="dayOffCount" DataType="System.Int32"/>
+        <Column Name="holidayPresentCount" DataType="System.Int32"/>
+        <Column Name="mDays" DataType="System.Int32"/>
+        <Column Name="totalHoliday" DataType="System.Int32"/>
+        <Column Name="iOtEnable" DataType="System.Int32"/>
+        <Column Name="iHolidayEnable" DataType="System.Int32"/>
+        <Column Name="vDailyTotalHour" DataType="System.String"/>
+        <Column Name="vDailyTotalOTHour" DataType="System.String"/>
+        <CommandParameter Name="Parameter" DataType="22" Expression="sql0" DefaultValue="select * from funMonthlyEmployeeAttendance ('2022-09-01', '%', '%', '700')"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+    <Parameter Name="sql0" DataType="System.String"/>
+    <Parameter Name="userName" DataType="System.String"/>
+    <Parameter Name="userIp" DataType="System.String"/>
+    <Parameter Name="developer" DataType="System.String"/>
+    <Parameter Name="phone" DataType="System.String"/>
+    <Parameter Name="companyName" DataType="System.String"/>
+    <Parameter Name="companyAddress" DataType="System.String"/>
+    <Parameter Name="title" DataType="System.String"/>
+    <Parameter Name="caption" DataType="System.String"/>
+    <Parameter Name="caption2" DataType="System.String"/>
+    <Total Name="EmployeeTotal" TotalType="Count" Evaluator="Data1"/>
+  </Dictionary>
+  <ReportPage Name="Page1" RawPaperSize="9" LeftMargin="5" TopMargin="5" RightMargin="5" BottomMargin="5" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="756" Height="60.15" CanGrow="true" CanShrink="true">
+      <TextObject Name="Text24" Width="756" Height="18.9" Text="[companyName]" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+      <TextObject Name="Text25" Top="20.9" Width="756" Height="18.9" CanGrow="true" Text="[companyAddress]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text27" Top="41.25" Width="756" Height="18.9" Text="[phone]" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt"/>
+      <PictureObject Name="Picture1" Left="9.45" Top="-3" Width="75.6" Height="56.7" Image="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"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="64.15" Width="756" Height="110.63">
+      <TextObject Name="Text191" Top="26.35" Width="735.21" Height="84.28" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text26" Top="3" Width="756" Height="13.99" Text="[title]" HorzAlign="Center" VertAlign="Center" Font="Arial, 11pt, style=Bold"/>
+      <TextObject Name="Text1" Left="84" Top="37.42" Width="102.06" Height="13.99" Text="Employee ID" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text2" Left="186.73" Top="37.42" Width="207.9" Height="13.99" Text=": [Table.vEmployeeCode]" Font="Arial, 9pt"/>
+      <TextObject Name="Text150" Left="398.8" Top="37.42" Width="79.38" Height="13.99" Text="Department" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text152" Left="480.57" Top="37.42" Width="189" Height="13.99" Text=": [Table.vDepartmentName]" Font="Arial, 9pt"/>
+      <TextObject Name="Text145" Left="84" Top="55.19" Width="102.06" Height="13.99" Text="Emp Name:" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text3" Left="186.73" Top="55.19" Width="207.9" Height="13.99" Text=": [Table.vEmployeeName]" Font="Arial, 9pt"/>
+      <TextObject Name="Text151" Left="398.8" Top="55.19" Width="79.38" Height="13.99" Text="Section" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text153" Left="480.57" Top="55.19" Width="189" Height="13.99" Text=": [Table.vSectionName]" Font="Arial, 9pt"/>
+      <TextObject Name="Text146" Left="84" Top="72.58" Width="102.06" Height="13.99" Text="Designation" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text147" Left="186.73" Top="72.58" Width="207.9" Height="13.99" Text=": [Table.vDesignation]" Font="Arial, 9pt"/>
+      <TextObject Name="Text154" Left="398.8" Top="72.58" Width="79.38" Height="13.99" Text="Joining" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text155" Left="480.57" Top="72.58" Width="189" Height="13.99" Text=": [Table.dJoinDate]" Format="Custom" Format.Format="dd-MM-yyy" Font="Arial, 9pt"/>
+      <TextObject Name="Text148" Left="84" Top="90.34" Width="102.06" Height="13.99" Text="Employee Type" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text149" Left="186.73" Top="90.34" Width="207.9" Height="13.99" Text=": [Table.vEmployeeType]" Font="Arial, 9pt"/>
+      <TextObject Name="Text156" Left="398.8" Top="90.34" Width="79.38" Height="13.99" Text="Contact No" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text157" Left="480.57" Top="90.34" Width="189" Height="13.99" Text=": [Table.vContactNo]" Font="Arial, 9pt"/>
+      <PictureObject Name="Picture3" Left="9.45" Top="37.8" Width="66.15" Height="66.15" Image="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"/>
+      <BarcodeObject Name="Barcode1" Left="667.17" Top="35.8" Width="68.04" Height="68.04" AutoSize="false" Text="Employee ID: [Table.vEmployeeCode], &#13;&#10;Employee Name: [Table.vEmployeeName],&#13;&#10;Designation: [Table.vDesignation],  &#13;&#10;Mobile: [Table.vContactNo] " ShowText="false" AllowExpressions="true" Barcode="QR Code" Barcode.ErrorCorrection="L" Barcode.Encoding="UTF8" Barcode.QuietZone="true"/>
+    </PageHeaderBand>
+    <ColumnHeaderBand Name="ColumnHeader1" Top="178.78" Width="756" Height="38.74">
+      <TextObject Name="Text159" Top="4.56" Width="132.3" Height="34.02" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="Date &amp; Day" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt, style=Bold">
+        <Formats>
+          <CustomFormat Format="dd-MM-yyy"/>
+          <GeneralFormat/>
+        </Formats>
+      </TextObject>
+      <TextObject Name="Text160" Left="132.3" Top="4.56" Width="130.41" Height="34.02" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="Shift" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text161" Left="262.71" Top="4.56" Width="69.93" Height="34.02" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="Time In" Format="Time" Format.Format="T" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text162" Left="332.64" Top="4.56" Width="69.93" Height="34.02" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="Time Out" Format="Time" Format.Format="T" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text164" Left="459.27" Top="4.56" Width="56.7" Height="34.02" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="OT-hrs" Format="Custom" Format.Format="G" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text165" Left="515.97" Top="4.56" Width="113.4" Height="34.02" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="Status" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text163" Left="402.57" Top="4.56" Width="56.7" Height="34.02" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="Total hrs" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt, style=Bold">
+        <Formats>
+          <CustomFormat/>
+          <GeneralFormat/>
+          <GeneralFormat/>
+        </Formats>
+      </TextObject>
+      <TextObject Name="Text166" Left="629.37" Top="4.72" Width="105.84" Height="34.02" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="Remarks" HorzAlign="Center" VertAlign="Center" Font="Arial, 9pt, style=Bold"/>
+    </ColumnHeaderBand>
+    <DataBand Name="Data1" Top="221.52" Width="756" Height="23.44" CanGrow="true" BeforePrintEvent="Data1_BeforPrint" Guides="0" DataSource="Table">
+      <TextObject Name="Text130" Width="132.3" Height="23.44" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="[Table.dTxtDate]-[Table.vDayName]" VertAlign="Center" Font="Arial, 8pt">
+        <Formats>
+          <CustomFormat Format="dd-MM-yyy"/>
+          <GeneralFormat/>
+        </Formats>
+      </TextObject>
+      <TextObject Name="Text132" Left="132.3" Width="130.41" Height="23.44" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="[Table.vShiftName]" HorzAlign="Center" VertAlign="Center" Font="Arial, 7pt"/>
+      <TextObject Name="Text133" Left="262.71" Width="69.93" Height="23.44" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="[Table.dInTime]" HideZeros="true" Format="Time" Format.Format="T" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt"/>
+      <TextObject Name="Text135" Left="332.64" Width="69.93" Height="23.44" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="[Table.dOutTime]" HideZeros="true" Format="Time" Format.Format="T" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt"/>
+      <TextObject Name="Text139" Left="402.57" Width="56.7" Height="23.44" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="[Table.vDailyTotalHour]" HideZeros="true" HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt">
+        <Formats>
+          <CustomFormat/>
+          <GeneralFormat/>
+          <GeneralFormat/>
+        </Formats>
+      </TextObject>
+      <TextObject Name="Text141" Left="459.27" Width="56.7" Height="23.44" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="[Table.vDailyTotalOTHour]" HideZeros="true" Format="Custom" Format.Format="G" HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt"/>
+      <TextObject Name="Text144" Left="629.37" Width="105.84" Height="23.44" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="[Table.vTxtRemarks]" HorzAlign="Center" VertAlign="Center" Font="Arial, 7pt"/>
+      <TextObject Name="Text142" Left="515.97" Width="113.4" Height="23.44" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" Text="[Table.vTxtStatus]" HorzAlign="Center" VertAlign="Center" Font="Arial, 7pt"/>
+    </DataBand>
+    <ColumnFooterBand Name="ColumnFooter1" Top="248.96" Width="756" Height="117.23">
+      <TextObject Name="Text194" Top="23.35" Width="735.21" Height="93.88" Border.Lines="All" CanGrow="true" CanShrink="true" GrowToBottom="true" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text5" Left="326.64" Width="69.93" Height="18.9" Text="Total:" HorzAlign="Right" VertAlign="Center" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text6" Left="394.25" Width="65.02" Height="18.9" Text="[Table.TotalHour]:[Table.TotalMin]:[Table.TotalSec]" HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text183" Left="459.27" Width="56.7" Height="18.9" Text="[Table.TotalOTHour]:[Table.TotalOTMin]:[Table.TotalOTSec]" HorzAlign="Right" VertAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text167" Left="3.72" Top="34.4" Width="114.91" Height="13.99" Text="01. Days in month" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text169" Left="120.3" Top="34.4" Width="42.34" Height="13.99" Text=": [Table.mDays]" Font="Arial, 9pt"/>
+      <TextObject Name="Text175" Left="265.37" Top="54.43" Width="143.64" Height="13.99" Text="06. Incomplete Present" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text177" Left="409.99" Top="54.43" Width="42.34" Height="13.99" Text=": [Table.iNotCount]" Font="Arial, 9pt"/>
+      <TextObject Name="Text168" Left="3.72" Top="54.43" Width="114.91" Height="13.99" Text="02. Holidays" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text170" Left="120.2" Top="54.43" Width="42.34" Height="13.99" Text=": [Table.totalHoliday]" Font="Arial, 9pt"/>
+      <TextObject Name="Text176" Left="265.37" Top="73.71" Width="143.64" Height="13.99" Text="07. Absent" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text178" Left="409.99" Top="73.71" Width="42.34" Height="13.99" Text=": [Table.iAbsentCount]" Font="Arial, 9pt"/>
+      <TextObject Name="Text171" Left="3.72" Top="73.71" Width="114.91" Height="13.99" Text="03. Working Days" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text173" Left="120.3" Top="73.71" Width="42.34" Height="13.99" Text=": [[Table.mDays]-[Table.totalHoliday]]" Font="Arial, 9pt"/>
+      <TextObject Name="Text179" Left="265.37" Top="93.37" Width="143.64" Height="13.99" Text="08. Approved Leave" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text181" Left="409.99" Top="93.37" Width="42.34" Height="13.99" Text=": [[Table.iCLeaveCount]+[Table.iSkLeaveCount]+[Table.iEarLeaveCount]+[Table.iMLeaveCount]+[Table.iSpecialCount]]" Font="Arial, 9pt"/>
+      <TextObject Name="Text172" Left="3.72" Top="93.37" Width="114.86" Height="13.99" Text="04. Present Days" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text182" Left="675.59" Top="34.4" Width="42.34" Height="13.99" Text=": [Table.tourCount]" Font="Arial, 9pt"/>
+      <TextObject Name="Text184" Left="551.5" Top="54.43" Width="120.96" Height="13.99" Text="10. Late In" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text186" Left="675.59" Top="54.43" Width="42.34" Height="13.99" Text=": [Table.iLateCount]" Font="Arial, 9pt"/>
+      <TextObject Name="Text185" Left="551.5" Top="73.71" Width="120.96" Height="13.99" Text="11. Early Out" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text187" Left="675.59" Top="73.71" Width="42.34" Height="13.99" Text=": [Table.earlyOutCount]" Font="Arial, 9pt"/>
+      <TextObject Name="Text180" Left="551.5" Top="34.4" Width="120.96" Height="13.99" Text="09. Approved Tour" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text195" Left="120.3" Top="93.37" Width="42.34" Height="13.99" Text=": [Table.iPresentCount]" Font="Arial, 9pt"/>
+      <TextObject Name="Text196" Left="265.37" Top="34.4" Width="143.64" Height="13.99" Text="05. Holiday Present" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text197" Left="409.99" Top="34.4" Width="42.34" Height="13.99" Text=": [Table.holidayPresentCount]" Font="Arial, 9pt"/>
+    </ColumnFooterBand>
+    <PageFooterBand Name="PageFooter1" Top="370.19" Width="756" Height="21.9" Hyperlink.Kind="PageNumber" Hyperlink.Value="1" CanGrow="true" CanShrink="true">
+      <TextObject Name="Text45" Top="3" Width="111.51" Height="18.9" Text="[Date]" HorzAlign="Center" Font="Arial, 7pt"/>
+      <TextObject Name="Text46" Left="113.25" Top="3" Width="74.25" Height="18.9" Text="[userName]" HorzAlign="Center" Font="Arial, 7pt"/>
+      <TextObject Name="Text47" Left="191.4" Top="3" Width="120.96" Height="18.9" Text="[userIp]" HorzAlign="Center" Font="Arial, 7pt"/>
+      <TextObject Name="Text48" Left="316.45" Top="3" Width="331.5" Height="18.9" Text="[developer]" HorzAlign="Center" Font="Arial, 7pt"/>
+      <TextObject Name="Text51" Left="652.05" Top="3" Width="93.15" Height="18.9" Text="Page: [Page] of [TotalPages#]" HorzAlign="Center" Font="Arial, 7pt"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>
