@@ -1,0 +1,71 @@
+USE [SEPL_ASP26-12-2023]
+GO
+/****** Object:  UserDefinedFunction [dbo].[funGetLeaveBalance]    Script Date: 12/27/2023 12:53:36 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+Alter FUNCTION [dbo].[funGetLeaveBalanceTemp]
+(
+	@pTransId varchar(500)
+)
+RETURNS @leaveBalanceDetails TABLE
+(
+	vEmployeeId varchar(50),			iLeaveDays int,		iApproveDays int,	iLeaveBalance int, vLeaveBalance varchar(150)
+)
+AS
+
+BEGIN
+	declare @vEmployeeId varchar(50),	@iYear int,	@iLeaveDays int,		@iApproveDays int	,@iLeaveBalance int	,@vLeaveBalance varchar(150)
+	declare leaveBalanceDetails cursor for 
+		select vEmployeeId,YEAR(dSanctionFrom) from tbLeaveApplication where vTransactionId = @pTransId 
+	open leaveBalanceDetails 
+	fetch next from leaveBalanceDetails into @vEmployeeId,@iYear
+
+	while @@fetch_status = 0
+	begin
+		
+	while @@fetch_status = 0
+	begin
+		select @iLeaveDays = ISNULL(SUM(iLeaveDays),0) from tbLeaveEntitlement 
+		where vEmployeeId = @vEmployeeId and iLeaveTypeId=1 and YEAR(dEntitleDate) = @iYear
+
+		select @iApproveDays = COUNT(dLeaveDate) from tbLeaveApplicationDetails 
+		where vEmployeeId = @vEmployeeId and iLeaveTypeId = 1 and iStatus = 1 and YEAR(dLeaveDate) = @iYear
+		
+		if (@iLeaveDays-@iApproveDays)<0
+		begin
+			set @vLeaveBalance = 0
+		end
+		else
+		begin
+			set @iLeaveBalance = (@iLeaveDays-@iApproveDays)
+		end
+
+		set @vLeaveBalance='Remaning Balance: '+ cast(@iLeaveBalance as varchar(150))+' Days'
+		insert into @leaveBalanceDetails
+		(
+			vEmployeeId,iLeaveDays,iApproveDays,iLeaveBalance,vLeaveBalance
+		)
+		values
+		(
+			@vEmployeeId,@iLeaveDays,@iApproveDays,@iLeaveBalance,@vLeaveBalance
+		)
+
+		fetch next from leaveBalanceDetails into @vEmployeeId
+
+	end
+	close leaveBalanceDetails
+	deallocate leaveBalanceDetails
+	RETURN;
+END;
+
+/*
+select * from tbLeaveEntitlement where vEmployeeId='EMP-154'
+select * from tbLeaveApplicationDetails where vEmployeeId='EMP-154'
+select from funGetLeaveBalance('1')
+
+*/
+
